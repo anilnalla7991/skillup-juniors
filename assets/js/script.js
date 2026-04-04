@@ -1,21 +1,49 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // ── Mobile Nav Toggle ──────────────────────────────────
-    const toggle = document.querySelector('.sj-header__toggle');
-    const nav    = document.querySelector('.sj-header__nav');
+    // ── Side Drawer ────────────────────────────────────────
+    const hamburger = document.getElementById('sj-hamburger');
+    const drawer    = document.getElementById('sj-drawer');
+    const overlay   = document.getElementById('sj-drawer-overlay');
+    const closeBtn  = document.getElementById('sj-drawer-close');
 
-    if (toggle && nav) {
-        toggle.addEventListener('click', function () {
-            const isOpen = nav.classList.toggle('is-open');
-            toggle.classList.toggle('is-active', isOpen);
-            toggle.setAttribute('aria-expanded', isOpen);
-        });
-        document.addEventListener('click', function (e) {
-            if (!toggle.contains(e.target) && !nav.contains(e.target)) {
-                nav.classList.remove('is-open');
-                toggle.classList.remove('is-active');
-                toggle.setAttribute('aria-expanded', 'false');
-            }
+    function openDrawer() {
+        overlay.classList.add('is-visible');
+        // Force reflow so transition fires
+        overlay.getBoundingClientRect();
+        overlay.classList.add('is-open');
+        drawer.classList.add('is-open');
+        drawer.setAttribute('aria-hidden', 'false');
+        hamburger.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('sj-drawer-open');
+    }
+
+    function closeDrawer() {
+        overlay.classList.remove('is-open');
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('sj-drawer-open');
+        // Hide overlay after transition
+        setTimeout(function () { overlay.classList.remove('is-visible'); }, 300);
+    }
+
+    if (hamburger) hamburger.addEventListener('click', openDrawer);
+    if (closeBtn)  closeBtn.addEventListener('click', closeDrawer);
+    if (overlay)   overlay.addEventListener('click', closeDrawer);
+
+    // Close on Escape key
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && drawer && drawer.classList.contains('is-open')) {
+            closeDrawer();
+        }
+    });
+
+    // Close drawer when a nav link is clicked
+    if (drawer) {
+        drawer.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                closeDrawer();
+            });
         });
     }
 
@@ -26,14 +54,14 @@ document.addEventListener('DOMContentLoaded', function () {
         form.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const btn    = form.querySelector('.sj-form__submit');
-            const msgEl  = form.querySelector('.sj-form__msg');
-            const data   = new FormData(form);
+            const btn   = form.querySelector('.sj-form__submit');
+            const msgEl = form.querySelector('.sj-form__msg');
+            const data  = new FormData(form);
 
             data.append('action', 'sj_submit_lead');
             data.append('nonce',  sj_ajax.nonce);
 
-            // Validate required fields client-side
+            // Client-side validation
             let valid = true;
             form.querySelectorAll('[required]').forEach(function (field) {
                 if (!field.value.trim()) {
@@ -73,53 +101,47 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
         });
 
-        // Clear red border on input
         form.querySelectorAll('.sj-form__input').forEach(function (field) {
-            field.addEventListener('input', function () {
-                field.style.borderColor = '';
-            });
+            field.addEventListener('input', function () { field.style.borderColor = ''; });
         });
     }
 
     function showMsg(el, text, type) {
         el.textContent = text;
-        el.className = 'sj-form__msg sj-form__msg--' + type;
+        el.className   = 'sj-form__msg sj-form__msg--' + type;
     }
 
-    // ── Smooth scroll for anchor links ────────────────────
+    // ── Smooth Scroll for Anchor Links ────────────────────
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
         anchor.addEventListener('click', function (e) {
-            const target = document.querySelector(this.getAttribute('href'));
+            const id = this.getAttribute('href');
+            if (id === '#') return;
+            const target = document.querySelector(id);
             if (target) {
                 e.preventDefault();
-                const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 76;
+                const offset = 76;
                 const top    = target.getBoundingClientRect().top + window.scrollY - offset;
                 window.scrollTo({ top: top, behavior: 'smooth' });
-                // close mobile nav if open
-                if (nav) {
-                    nav.classList.remove('is-open');
-                    if (toggle) { toggle.classList.remove('is-active'); toggle.setAttribute('aria-expanded', 'false'); }
-                }
             }
         });
     });
 
-    // ── Scroll reveal animation ────────────────────────────
+    // ── Scroll Reveal Animation ────────────────────────────
     if ('IntersectionObserver' in window) {
         const revealEls = document.querySelectorAll(
             '.sj-course-card, .sj-card, .sj-testimonial-card, .sj-approach__step'
         );
         revealEls.forEach(function (el) {
-            el.style.opacity  = '0';
+            el.style.opacity   = '0';
             el.style.transform = 'translateY(24px)';
             el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
         });
 
         const observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry, i) {
+            entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
                     setTimeout(function () {
-                        entry.target.style.opacity  = '1';
+                        entry.target.style.opacity   = '1';
                         entry.target.style.transform = 'translateY(0)';
                     }, 80);
                     observer.unobserve(entry.target);

@@ -46,6 +46,39 @@ function sj_register_menus() {
 }
 add_action('init', 'sj_register_menus');
 
+// ─── Fallback Nav (shown when no menu assigned in WP Admin) ────────────────────
+function sj_header_fallback_menu() {
+    $pages = [
+        home_url('/')                   => 'Home',
+        home_url('/about')              => 'About Us',
+        home_url('/vedic-maths')        => 'Vedic Maths Program',
+        home_url('/phonics')            => 'Phonics Program',
+        home_url('/skill-development')  => 'Skill Development',
+        home_url('/contact')            => 'Contact Us',
+    ];
+    echo '<ul class="sj-nav__list">';
+    foreach ($pages as $url => $label) {
+        echo '<li><a href="' . esc_url($url) . '">' . esc_html($label) . '</a></li>';
+    }
+    echo '</ul>';
+}
+
+function sj_drawer_fallback_menu() {
+    $pages = [
+        home_url('/')                   => 'Home',
+        home_url('/about')              => 'About Us',
+        home_url('/vedic-maths')        => 'Vedic Maths Program',
+        home_url('/phonics')            => 'Phonics Program',
+        home_url('/skill-development')  => 'Skill Development',
+        home_url('/contact')            => 'Contact Us',
+    ];
+    echo '<ul class="sj-drawer__list">';
+    foreach ($pages as $url => $label) {
+        echo '<li><a href="' . esc_url($url) . '">' . esc_html($label) . '</a></li>';
+    }
+    echo '</ul>';
+}
+
 // ─── ACF Options Page ──────────────────────────────────────────────────────────
 if (function_exists('acf_add_options_page')) {
     acf_add_options_page([
