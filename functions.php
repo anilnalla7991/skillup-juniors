@@ -79,15 +79,114 @@ function sj_drawer_fallback_menu() {
     echo '</ul>';
 }
 
-// ─── ACF Options Page ──────────────────────────────────────────────────────────
-if (function_exists('acf_add_options_page')) {
-    acf_add_options_page([
-        'page_title' => 'Theme Settings',
-        'menu_title' => 'Theme Settings',
-        'menu_slug'  => 'theme-settings',
-        'capability' => 'edit_posts',
-        'redirect'   => false,
-    ]);
+// ─── Theme Settings Page (Native WP — no ACF PRO needed) ──────────────────────
+add_action('admin_menu', 'sj_add_settings_page');
+
+function sj_add_settings_page() {
+    add_menu_page(
+        'Theme Settings',
+        'Theme Settings',
+        'manage_options',
+        'sj-theme-settings',
+        'sj_settings_page_html',
+        'dashicons-admin-customizer',
+        60
+    );
+}
+
+function sj_settings_page_html() {
+    if (!current_user_can('manage_options')) return;
+
+    // Save
+    if (isset($_POST['sj_settings_nonce']) && wp_verify_nonce($_POST['sj_settings_nonce'], 'sj_save_settings')) {
+        $fields = [
+            'sj_header_login_text', 'sj_header_login_url',
+            'sj_header_app_text',   'sj_header_app_url',
+            'sj_footer_tagline',    'sj_footer_address',
+            'sj_footer_phone',      'sj_footer_email',
+            'sj_footer_copyright',
+        ];
+        foreach ($fields as $key) {
+            $val = $_POST[$key] ?? '';
+            if (in_array($key, ['sj_header_login_url', 'sj_header_app_url'])) {
+                update_option($key, esc_url_raw($val));
+            } elseif ($key === 'sj_footer_email') {
+                update_option($key, sanitize_email($val));
+            } elseif ($key === 'sj_footer_address') {
+                update_option($key, sanitize_textarea_field($val));
+            } else {
+                update_option($key, sanitize_text_field($val));
+            }
+        }
+        echo '<div class="notice notice-success is-dismissible"><p><strong>Settings saved successfully!</strong></p></div>';
+    }
+
+    // Read current values
+    $v = [
+        'login_text'  => get_option('sj_header_login_text', 'LOGIN'),
+        'login_url'   => get_option('sj_header_login_url',  ''),
+        'app_text'    => get_option('sj_header_app_text',   'App Download'),
+        'app_url'     => get_option('sj_header_app_url',    ''),
+        'tagline'     => get_option('sj_footer_tagline',    'Transforming young minds through expert education.'),
+        'address'     => get_option('sj_footer_address',    ''),
+        'phone'       => get_option('sj_footer_phone',      ''),
+        'email'       => get_option('sj_footer_email',      ''),
+        'copyright'   => get_option('sj_footer_copyright',  '&copy; ' . date('Y') . ' SkillUp Juniors. All Rights Reserved.'),
+    ];
+    ?>
+    <div class="wrap">
+        <h1 style="margin-bottom:20px;">&#9881; Theme Settings</h1>
+        <form method="post">
+            <?php wp_nonce_field('sj_save_settings', 'sj_settings_nonce'); ?>
+
+            <h2 style="border-bottom:1px solid #ddd;padding-bottom:8px;">&#128279; Header Buttons</h2>
+            <table class="form-table" role="presentation">
+                <tr>
+                    <th scope="row"><label for="sj_header_login_text">Login / Portal Button Text</label></th>
+                    <td><input type="text" id="sj_header_login_text" name="sj_header_login_text" value="<?php echo esc_attr($v['login_text']); ?>" class="regular-text" placeholder="e.g. Web Portal"></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="sj_header_login_url">Login / Portal Button URL</label></th>
+                    <td><input type="url" id="sj_header_login_url" name="sj_header_login_url" value="<?php echo esc_attr($v['login_url']); ?>" class="regular-text" placeholder="https://"></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="sj_header_app_text">App Download Button Text</label></th>
+                    <td><input type="text" id="sj_header_app_text" name="sj_header_app_text" value="<?php echo esc_attr($v['app_text']); ?>" class="regular-text" placeholder="e.g. App Download"></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="sj_header_app_url">App Download URL</label></th>
+                    <td><input type="url" id="sj_header_app_url" name="sj_header_app_url" value="<?php echo esc_attr($v['app_url']); ?>" class="regular-text" placeholder="https://play.google.com/..."></td>
+                </tr>
+            </table>
+
+            <h2 style="border-bottom:1px solid #ddd;padding-bottom:8px;margin-top:30px;">&#128196; Footer</h2>
+            <table class="form-table" role="presentation">
+                <tr>
+                    <th scope="row"><label for="sj_footer_tagline">Brand Tagline</label></th>
+                    <td><input type="text" id="sj_footer_tagline" name="sj_footer_tagline" value="<?php echo esc_attr($v['tagline']); ?>" class="regular-text"></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="sj_footer_address">Address</label></th>
+                    <td><textarea id="sj_footer_address" name="sj_footer_address" rows="3" class="regular-text"><?php echo esc_textarea($v['address']); ?></textarea></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="sj_footer_phone">Phone Number</label></th>
+                    <td><input type="text" id="sj_footer_phone" name="sj_footer_phone" value="<?php echo esc_attr($v['phone']); ?>" class="regular-text" placeholder="+91 00000 00000"></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="sj_footer_email">Email Address</label></th>
+                    <td><input type="email" id="sj_footer_email" name="sj_footer_email" value="<?php echo esc_attr($v['email']); ?>" class="regular-text" placeholder="hello@skillupjuniors.com"></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="sj_footer_copyright">Copyright Text</label></th>
+                    <td><input type="text" id="sj_footer_copyright" name="sj_footer_copyright" value="<?php echo esc_attr($v['copyright']); ?>" class="regular-text"></td>
+                </tr>
+            </table>
+
+            <?php submit_button('Save Settings', 'primary large'); ?>
+        </form>
+    </div>
+    <?php
 }
 
 // ─── ACF Field Groups ──────────────────────────────────────────────────────────
@@ -102,18 +201,8 @@ function sj_register_acf_fields() {
         'value'    => 'front_page',
     ]]];
 
-    // ── Header Settings ────────────────────────────────────────────────────────
-    acf_add_local_field_group([
-        'key'    => 'group_header',
-        'title'  => 'Header Settings',
-        'fields' => [
-            ['key' => 'field_header_login_text', 'label' => 'Login Button Text',     'name' => 'header_login_text', 'type' => 'text',  'default_value' => 'LOGIN'],
-            ['key' => 'field_header_login_url',  'label' => 'Login Button URL',      'name' => 'header_login_url',  'type' => 'url'],
-            ['key' => 'field_header_app_text',   'label' => 'App Download Text',     'name' => 'header_app_text',   'type' => 'text',  'default_value' => 'App Download'],
-            ['key' => 'field_header_app_url',    'label' => 'App Download URL',      'name' => 'header_app_url',    'type' => 'url'],
-        ],
-        'location' => [[['param' => 'options_page', 'operator' => '==', 'value' => 'theme-settings']]],
-    ]);
+    // Header & Footer settings are now managed via the native Theme Settings page
+    // (WP Admin → Theme Settings) using get_option() / update_option().
 
     // ── Home: Hero ─────────────────────────────────────────────────────────────
     acf_add_local_field_group([
@@ -263,32 +352,7 @@ function sj_register_acf_fields() {
         'menu_order' => 60,
     ]);
 
-    // ── Footer Settings ────────────────────────────────────────────────────────
-    acf_add_local_field_group([
-        'key'    => 'group_footer',
-        'title'  => 'Footer Settings',
-        'fields' => [
-            ['key' => 'field_footer_tagline',   'label' => 'Brand Tagline',  'name' => 'footer_tagline',   'type' => 'text',     'default_value' => 'Transforming young minds through expert education.'],
-            ['key' => 'field_footer_address',   'label' => 'Address',        'name' => 'footer_address',   'type' => 'textarea', 'rows' => 2],
-            ['key' => 'field_footer_phone',     'label' => 'Phone',          'name' => 'footer_phone',     'type' => 'text',     'default_value' => '+91 00000 00000'],
-            ['key' => 'field_footer_email',     'label' => 'Email',          'name' => 'footer_email',     'type' => 'email',    'default_value' => 'hello@skillupjuniors.com'],
-            ['key' => 'field_footer_copyright', 'label' => 'Copyright Text', 'name' => 'footer_copyright', 'type' => 'text'],
-            [
-                'key'        => 'field_footer_social_links',
-                'label'      => 'Social Links',
-                'name'       => 'footer_social_links',
-                'type'       => 'repeater',
-                'layout'     => 'table',
-                'button_label' => 'Add Social Link',
-                'sub_fields' => [
-                    ['key' => 'field_footer_social_platform', 'label' => 'Platform', 'name' => 'social_platform', 'type' => 'text'],
-                    ['key' => 'field_footer_social_url',      'label' => 'URL',      'name' => 'social_url',      'type' => 'url'],
-                ],
-            ],
-        ],
-        'location' => [[['param' => 'options_page', 'operator' => '==', 'value' => 'theme-settings']]],
-        'menu_order' => 100,
-    ]);
+    // Footer settings are managed via WP Admin → Theme Settings (native page).
 }
 
 // ─── Lead Form AJAX Handler ────────────────────────────────────────────────────

@@ -1,10 +1,10 @@
 <?php
-$tagline   = get_field('footer_tagline',   'option') ?: 'Transforming young minds through expert education.';
-$address   = get_field('footer_address',   'option') ?: 'India';
-$phone     = get_field('footer_phone',     'option') ?: '+91 00000 00000';
-$email     = get_field('footer_email',     'option') ?: 'hello@skillupjuniors.com';
-$copyright = get_field('footer_copyright', 'option') ?: '&copy; ' . date('Y') . ' SkillUp Juniors. All Rights Reserved.';
-$socials   = get_field('footer_social_links', 'option');
+$tagline   = get_option('sj_footer_tagline',   'Transforming young minds through expert education.');
+$address   = get_option('sj_footer_address',   'India');
+$phone     = get_option('sj_footer_phone',     '+91 00000 00000');
+$email     = get_option('sj_footer_email',     'hello@skillupjuniors.com');
+$copyright = get_option('sj_footer_copyright', '&copy; ' . date('Y') . ' SkillUp Juniors. All Rights Reserved.');
+$socials   = null; // Add social links via Theme Settings when needed
 ?>
 
 <footer class="sj-footer" aria-label="Site Footer">

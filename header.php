@@ -40,10 +40,10 @@
 
     <div class="sj-drawer__cta">
         <?php
-        $login_text = get_field('header_login_text', 'option') ?: 'LOGIN';
-        $login_url  = get_field('header_login_url',  'option') ?: '#';
-        $app_text   = get_field('header_app_text',   'option') ?: 'App Download';
-        $app_url    = get_field('header_app_url',    'option') ?: '#';
+        $login_text = get_option('sj_header_login_text', 'LOGIN');
+        $login_url  = get_option('sj_header_login_url',  '#');
+        $app_text   = get_option('sj_header_app_text',   'App Download');
+        $app_url    = get_option('sj_header_app_url',    '#');
         ?>
         <a href="<?php echo esc_url($login_url); ?>" class="sj-btn sj-btn--login sj-btn--full">
             <?php echo esc_html($login_text); ?>
