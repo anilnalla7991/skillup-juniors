@@ -395,7 +395,7 @@ get_header();
                 <p class="sj-section-sub"><?php echo esc_html($vm_video_sub); ?></p>
             </div>
 
-            <div class="vm-videos__grid">
+            <div class="vm-videos__scroll">
                 <?php foreach ($vm_video_list as $vid) :
                     $vtitle = $vid['video_title'] ?? '';
                     $vurl   = $vid['video_url']   ?? '';
