@@ -3114,7 +3114,7 @@ a.ct-info__value:hover { color: var(--clr-blue); }
 
 /* ── App Download ───────────────────────────────────────── */
 .ph-app {
-    background: #f8fafb;
+    background: linear-gradient(135deg, var(--clr-navy) 0%, #1a3a7a 100%);
     padding: 72px 0;
 }
 .ph-app__inner { display: flex; justify-content: center; }
@@ -3126,12 +3126,12 @@ a.ct-info__value:hover { color: var(--clr-blue); }
 .ph-app__heading {
     font-size: clamp(22px, 2.4vw, 32px);
     font-weight: 800;
-    color: var(--clr-navy);
+    color: #fff;
     margin: 0 0 12px;
 }
 .ph-app__sub {
     font-size: 16px;
-    color: #555;
+    color: rgba(255,255,255,.8);
     line-height: 1.6;
     margin: 0 0 28px;
 }
