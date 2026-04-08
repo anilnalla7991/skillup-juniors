@@ -34,31 +34,8 @@ $ab_founder_image  = get_field('about_founder_image');
 // ── Section 4: Teaching Approach ──────────────────────────────────────────
 $ab_approach_heading = get_field('about_approach_heading')    ?: 'Teaching Approach';
 $ab_approach_sub     = get_field('about_approach_subheading') ?: 'A proven, child-centric methodology that makes learning fun, effective, and long-lasting.';
-$ab_approach_items   = get_field('about_approach_items');
 
-$ab_approach_defaults = [
-    [
-        'approach_title'       => 'Activity-Based Learning',
-        'approach_description' => 'Hands-on activities that make concepts memorable and fun, turning learning into an adventure children love.',
-        'approach_color'       => 'blue',
-    ],
-    [
-        'approach_title'       => 'Interactive Live Sessions',
-        'approach_description' => 'Real-time engagement with expert trainers to ensure every child stays curious, focused, and motivated.',
-        'approach_color'       => 'green',
-    ],
-    [
-        'approach_title'       => 'Personal Attention',
-        'approach_description' => 'Small batch sizes and one-on-one support ensure every child gets the attention they deserve to thrive.',
-        'approach_color'       => 'yellow',
-    ],
-    [
-        'approach_title'       => 'Result-Oriented Approach',
-        'approach_description' => 'Structured curriculum with regular assessments and progress tracking for measurable growth every step of the way.',
-        'approach_color'       => 'teal',
-    ],
-];
-
+// Teaching Approach — 4 individual card fields (no repeater)
 $ab_approach_svg = [
     'blue'   => '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',
     'green'  => '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 10l4.553-2.069A1 1 0 0121 8.87V15.13a1 1 0 01-1.447.9L15 14M3 8h12a2 2 0 012 2v4a2 2 0 01-2 2H3a2 2 0 01-2-2v-4a2 2 0 012-2z"/></svg>',
@@ -66,7 +43,12 @@ $ab_approach_svg = [
     'teal'   => '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
 ];
 
-$ab_items = ($ab_approach_items && count($ab_approach_items)) ? $ab_approach_items : $ab_approach_defaults;
+$ab_items = [
+    ['approach_title' => get_field('about_approach1_title') ?: 'Activity-Based Learning',   'approach_description' => get_field('about_approach1_desc') ?: 'Hands-on activities that make concepts memorable and fun, turning learning into an adventure children love.',       'approach_icon' => get_field('about_approach1_icon'), 'approach_color' => get_field('about_approach1_color') ?: 'blue'],
+    ['approach_title' => get_field('about_approach2_title') ?: 'Interactive Live Sessions', 'approach_description' => get_field('about_approach2_desc') ?: 'Real-time engagement with expert trainers to ensure every child stays curious, focused, and motivated.',           'approach_icon' => get_field('about_approach2_icon'), 'approach_color' => get_field('about_approach2_color') ?: 'green'],
+    ['approach_title' => get_field('about_approach3_title') ?: 'Personal Attention',        'approach_description' => get_field('about_approach3_desc') ?: 'Small batch sizes and one-on-one support ensure every child gets the attention they deserve to thrive.',          'approach_icon' => get_field('about_approach3_icon'), 'approach_color' => get_field('about_approach3_color') ?: 'yellow'],
+    ['approach_title' => get_field('about_approach4_title') ?: 'Result-Oriented Approach',  'approach_description' => get_field('about_approach4_desc') ?: 'Structured curriculum with regular assessments and progress tracking for measurable growth every step of the way.','approach_icon' => get_field('about_approach4_icon'), 'approach_color' => get_field('about_approach4_color') ?: 'teal'],
+];
 
 // ── Section 5: App Download ────────────────────────────────────────────────
 $ab_app_heading      = get_field('about_app_heading')       ?: 'Start Learning Anywhere, Anytime';

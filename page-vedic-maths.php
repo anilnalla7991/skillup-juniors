@@ -5,72 +5,60 @@
  */
 
 // ── Section 1: Hero ────────────────────────────────────────────────────────
-$vm_hero_badge       = get_field('vm_hero_badge')        ?: 'India\'s #1 Vedic Maths Program for Kids';
-$vm_hero_heading     = get_field('vm_hero_heading')      ?: 'Faster Calculations.<br><span>Sharper Mind.</span><br>Confident Child.';
-$vm_hero_sub         = get_field('vm_hero_subheading')   ?: 'Expert-led Vedic Maths training that makes your child lightning-fast at numbers — building real confidence in academics and beyond.';
-$vm_hero_image       = get_field('vm_hero_image');
-$vm_hero_cta1_text   = get_field('vm_hero_cta1_text')    ?: 'Book Free Demo';
-$vm_hero_cta1_url    = get_field('vm_hero_cta1_url')     ?: '#vm-lead-form';
-$vm_hero_cta2_text   = get_field('vm_hero_cta2_text')    ?: 'View Curriculum';
-$vm_hero_cta2_url    = get_field('vm_hero_cta2_url')     ?: '#vm-curriculum';
+$vm_hero_badge     = get_field('vm_hero_badge')       ?: 'India\'s #1 Vedic Maths Program for Kids';
+$vm_hero_heading   = get_field('vm_hero_heading')     ?: 'Faster Calculations.<br><span>Sharper Mind.</span><br>Confident Child.';
+$vm_hero_sub       = get_field('vm_hero_subheading')  ?: 'Expert-led Vedic Maths training that makes your child lightning-fast at numbers — building real confidence in academics and beyond.';
+$vm_hero_image     = get_field('vm_hero_image');
+$vm_hero_cta1_text = get_field('vm_hero_cta1_text')   ?: 'Book Free Demo';
+$vm_hero_cta1_url  = get_field('vm_hero_cta1_url')    ?: '#vm-lead-form';
+$vm_hero_cta2_text = get_field('vm_hero_cta2_text')   ?: 'View Curriculum';
+$vm_hero_cta2_url  = get_field('vm_hero_cta2_url')    ?: '#vm-curriculum';
 
-$vm_steps            = get_field('vm_hero_steps');
-$vm_steps_default    = [
-    ['step_text' => 'Choose your child\'s grade & batch'],
-    ['step_text' => 'Attend a Free Trial Class'],
-    ['step_text' => 'Enroll & start learning!'],
+$vm_stat1_num = get_field('vm_stat1_num')   ?: '10K+';
+$vm_stat1_lbl = get_field('vm_stat1_label') ?: 'Students Trained';
+$vm_stat2_num = get_field('vm_stat2_num')   ?: '98%';
+$vm_stat2_lbl = get_field('vm_stat2_label') ?: 'Score Improvement';
+$vm_stat3_num = get_field('vm_stat3_num')   ?: '3x';
+$vm_stat3_lbl = get_field('vm_stat3_label') ?: 'Faster Calculation';
+
+// Join Steps — 3 individual fields (no repeater)
+$vm_steps_items = array_filter([
+    get_field('vm_step1_text') ?: 'Choose your child\'s grade & batch',
+    get_field('vm_step2_text') ?: 'Attend a Free Trial Class',
+    get_field('vm_step3_text') ?: 'Enroll & start learning!',
+]);
+
+// ── Section 2: Curriculum — 3 individual card groups (no repeater) ─────────
+$vm_curr_heading = get_field('vm_curriculum_heading')    ?: 'Our Curriculum';
+$vm_curr_sub     = get_field('vm_curriculum_subheading') ?: 'Structured, grade-wise syllabus covering all Vedic Maths techniques — from basics to advanced speed tricks.';
+
+$vm_curr_list = [
+    [
+        'curr_grade'    => get_field('vm_curr1_grade')    ?: 'Class 3 – 4',
+        'curr_subtitle' => get_field('vm_curr1_subtitle') ?: 'Building the Foundation',
+        'curr_topics'   => get_field('vm_curr1_topics')   ?: "Addition & Subtraction tricks\nMultiplication basics (tables 1–20)\nNumber sense & place value\nMental maths warm-ups\nFun pattern recognition",
+        'curr_pdf'      => get_field('vm_curr1_pdf'),
+        'curr_color'    => get_field('vm_curr1_color')    ?: 'blue',
+    ],
+    [
+        'curr_grade'    => get_field('vm_curr2_grade')    ?: 'Class 5 – 6',
+        'curr_subtitle' => get_field('vm_curr2_subtitle') ?: 'Speed & Accuracy',
+        'curr_topics'   => get_field('vm_curr2_topics')   ?: "Duplex method for squares\nVertical & crosswise multiplication\nDivision by flag method\nFractions & decimals shortcuts\nWord problem strategies",
+        'curr_pdf'      => get_field('vm_curr2_pdf'),
+        'curr_color'    => get_field('vm_curr2_color')    ?: 'green',
+    ],
+    [
+        'curr_grade'    => get_field('vm_curr3_grade')    ?: 'Class 7 – 8',
+        'curr_subtitle' => get_field('vm_curr3_subtitle') ?: 'Advanced Techniques',
+        'curr_topics'   => get_field('vm_curr3_topics')   ?: "Algebraic operations (Vedic way)\nCube roots & square roots\nHigh-speed division\nCompetitive exam tricks\nSelf-checking techniques",
+        'curr_pdf'      => get_field('vm_curr3_pdf'),
+        'curr_color'    => get_field('vm_curr3_color')    ?: 'yellow',
+    ],
 ];
-$vm_steps_items      = ($vm_steps && count($vm_steps)) ? $vm_steps : $vm_steps_default;
 
-$vm_stat1_num        = get_field('vm_stat1_num')   ?: '10K+';
-$vm_stat1_lbl        = get_field('vm_stat1_label') ?: 'Students Trained';
-$vm_stat2_num        = get_field('vm_stat2_num')   ?: '98%';
-$vm_stat2_lbl        = get_field('vm_stat2_label') ?: 'Score Improvement';
-$vm_stat3_num        = get_field('vm_stat3_num')   ?: '3x';
-$vm_stat3_lbl        = get_field('vm_stat3_label') ?: 'Faster Calculation';
-
-// ── Section 2: Curriculum ──────────────────────────────────────────────────
-$vm_curr_heading     = get_field('vm_curriculum_heading')    ?: 'Our Curriculum';
-$vm_curr_sub         = get_field('vm_curriculum_subheading') ?: 'Structured, grade-wise syllabus covering all Vedic Maths techniques — from basics to advanced speed tricks.';
-$vm_curr_items       = get_field('vm_curriculum_items');
-$vm_curr_default     = [
-    [
-        'curr_grade'       => 'Class 3 – 4',
-        'curr_subtitle'    => 'Building the Foundation',
-        'curr_topics'      => "Addition & Subtraction tricks\nMultiplication basics (tables 1–20)\nNumber sense & place value\nMental maths warm-ups\nFun pattern recognition",
-        'curr_pdf'         => null,
-        'curr_color'       => 'blue',
-    ],
-    [
-        'curr_grade'       => 'Class 5 – 6',
-        'curr_subtitle'    => 'Speed & Accuracy',
-        'curr_topics'      => "Duplex method for squares\nVertical & crosswise multiplication\nDivision by flag method\nFractions & decimals shortcuts\nWord problem strategies",
-        'curr_pdf'         => null,
-        'curr_color'       => 'green',
-    ],
-    [
-        'curr_grade'       => 'Class 7 – 8',
-        'curr_subtitle'    => 'Advanced Techniques',
-        'curr_topics'      => "Algebraic operations (Vedic way)\nCube roots & square roots\nHigh-speed division\nCompetitive exam tricks\nSelf-checking techniques",
-        'curr_pdf'         => null,
-        'curr_color'       => 'yellow',
-    ],
-];
-$vm_curr_list        = ($vm_curr_items && count($vm_curr_items)) ? $vm_curr_items : $vm_curr_default;
-
-// ── Section 3: Learning Approach ───────────────────────────────────────────
+// ── Section 3: Learning Approach — 6 individual cards (no repeater) ────────
 $vm_approach_heading = get_field('vm_approach_heading')    ?: 'Learning Approach';
 $vm_approach_sub     = get_field('vm_approach_subheading') ?: 'Every session is designed to make Maths feel less like a subject and more like a superpower.';
-$vm_approach_items   = get_field('vm_approach_items');
-$vm_approach_default = [
-    ['approach_title' => 'Fun & Engaging Learning',        'approach_color' => 'blue'],
-    ['approach_title' => 'Interactive Live Sessions',      'approach_color' => 'green'],
-    ['approach_title' => 'Regular Work Sheets',            'approach_color' => 'yellow'],
-    ['approach_title' => 'Personal Attention',             'approach_color' => 'teal'],
-    ['approach_title' => 'Practice with Fun Challenges',   'approach_color' => 'navy'],
-    ['approach_title' => 'Step-by-Step Concept Clarity',   'approach_color' => 'blue'],
-];
-$vm_approach_list    = ($vm_approach_items && count($vm_approach_items)) ? $vm_approach_items : $vm_approach_default;
 
 $vm_approach_icons = [
     'blue'   => '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',
@@ -80,27 +68,41 @@ $vm_approach_icons = [
     'navy'   => '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>',
 ];
 
-// ── Section 4: Foundation / Root Problem ──────────────────────────────────
-$vm_found_heading    = get_field('vm_foundation_heading') ?: 'We Fix the Root Problem — Foundation';
-$vm_found_text       = get_field('vm_foundation_text')    ?: 'At SkillUp Juniors, we don\'t just teach Maths... we train children to think fast, calculate smart, and feel confident. Our Vedic Maths program addresses the root cause of Maths fear — lack of foundational understanding and speed — and replaces it with genuine confidence.';
-$vm_found_highlights = get_field('vm_foundation_highlights');
-$vm_found_hi_default = [
-    ['highlight_text' => 'Think Fast'],
-    ['highlight_text' => 'Calculate Smart'],
-    ['highlight_text' => 'Feel Confident'],
+$vm_approach_list = [
+    ['approach_title' => get_field('vm_approach1_title') ?: 'Fun & Engaging Learning',      'approach_description' => get_field('vm_approach1_desc') ?: '', 'approach_icon' => get_field('vm_approach1_icon'), 'approach_color' => get_field('vm_approach1_color') ?: 'blue'],
+    ['approach_title' => get_field('vm_approach2_title') ?: 'Interactive Live Sessions',    'approach_description' => get_field('vm_approach2_desc') ?: '', 'approach_icon' => get_field('vm_approach2_icon'), 'approach_color' => get_field('vm_approach2_color') ?: 'green'],
+    ['approach_title' => get_field('vm_approach3_title') ?: 'Regular Work Sheets',          'approach_description' => get_field('vm_approach3_desc') ?: '', 'approach_icon' => get_field('vm_approach3_icon'), 'approach_color' => get_field('vm_approach3_color') ?: 'yellow'],
+    ['approach_title' => get_field('vm_approach4_title') ?: 'Personal Attention',           'approach_description' => get_field('vm_approach4_desc') ?: '', 'approach_icon' => get_field('vm_approach4_icon'), 'approach_color' => get_field('vm_approach4_color') ?: 'teal'],
+    ['approach_title' => get_field('vm_approach5_title') ?: 'Practice with Fun Challenges', 'approach_description' => get_field('vm_approach5_desc') ?: '', 'approach_icon' => get_field('vm_approach5_icon'), 'approach_color' => get_field('vm_approach5_color') ?: 'navy'],
+    ['approach_title' => get_field('vm_approach6_title') ?: 'Step-by-Step Concept Clarity', 'approach_description' => get_field('vm_approach6_desc') ?: '', 'approach_icon' => get_field('vm_approach6_icon'), 'approach_color' => get_field('vm_approach6_color') ?: 'blue'],
 ];
-$vm_found_hi_list    = ($vm_found_highlights && count($vm_found_highlights)) ? $vm_found_highlights : $vm_found_hi_default;
 
-// ── Section 5: Demo Videos ─────────────────────────────────────────────────
-$vm_video_heading    = get_field('vm_video_heading')    ?: 'Demo Videos / Student Videos';
-$vm_video_sub        = get_field('vm_video_subheading') ?: 'Watch our students solve complex calculations in seconds — the Vedic Maths way!';
-$vm_videos           = get_field('vm_video_items');
-$vm_videos_default   = [
-    ['video_title' => 'Student Demo — Class 5', 'video_url' => '', 'video_thumb' => null],
-    ['video_title' => 'Speed Maths Challenge',  'video_url' => '', 'video_thumb' => null],
-    ['video_title' => 'Parent Testimonial',     'video_url' => '', 'video_thumb' => null],
-];
-$vm_video_list       = ($vm_videos && count($vm_videos)) ? $vm_videos : $vm_videos_default;
+// ── Section 4: Foundation ──────────────────────────────────────────────────
+$vm_found_heading  = get_field('vm_foundation_heading') ?: 'We Fix the Root Problem — Foundation';
+$vm_found_text     = get_field('vm_foundation_text')    ?: 'At SkillUp Juniors, we don\'t just teach Maths... we train children to think fast, calculate smart, and feel confident. Our Vedic Maths program addresses the root cause of Maths fear — lack of foundational understanding and speed — and replaces it with genuine confidence.';
+
+// Highlight pills — 3 individual fields (no repeater)
+$vm_found_hi_list = array_filter([
+    get_field('vm_highlight1_text') ?: 'Think Fast',
+    get_field('vm_highlight2_text') ?: 'Calculate Smart',
+    get_field('vm_highlight3_text') ?: 'Feel Confident',
+]);
+
+// ── Section 5: Demo Videos — 4 individual slots (no repeater) ─────────────
+$vm_video_heading = get_field('vm_video_heading')    ?: 'Demo Videos / Student Videos';
+$vm_video_sub     = get_field('vm_video_subheading') ?: 'Watch our students solve complex calculations in seconds — the Vedic Maths way!';
+
+$vm_video_list = [];
+for ( $i = 1; $i <= 4; $i++ ) {
+    $title = get_field( "vm_video{$i}_title" );
+    $url   = get_field( "vm_video{$i}_url" );
+    $thumb = get_field( "vm_video{$i}_thumb" );
+    $vm_video_list[] = [
+        'video_title' => $title ?: "Video {$i}",
+        'video_url'   => $url   ?: '',
+        'video_thumb' => $thumb,
+    ];
+}
 
 // ── Section 6: CTA ────────────────────────────────────────────────────────
 $vm_cta_heading      = get_field('vm_cta_heading')   ?: 'Give Your Child a Strong Maths Foundation Today';
@@ -173,7 +175,7 @@ get_header();
                         <p class="vm-hero__steps-label">Join SkillUp Juniors in <?php echo count($vm_steps_items); ?> Simple Steps</p>
                         <ol class="vm-hero__steps-list">
                             <?php foreach ($vm_steps_items as $step) : ?>
-                                <li><?php echo esc_html($step['step_text'] ?? ''); ?></li>
+                                <li><?php echo esc_html(is_array($step) ? ($step['step_text'] ?? '') : $step); ?></li>
                             <?php endforeach; ?>
                         </ol>
                     </div>
@@ -374,7 +376,7 @@ get_header();
                         <?php foreach ($vm_found_hi_list as $hi) : ?>
                             <span class="vm-foundation__pill">
                                 <span aria-hidden="true">&#9989;</span>
-                                <?php echo esc_html($hi['highlight_text'] ?? ''); ?>
+                                                <?php echo esc_html(is_array($hi) ? ($hi['highlight_text'] ?? $hi) : $hi); ?>
                             </span>
                         <?php endforeach; ?>
                     </div>
