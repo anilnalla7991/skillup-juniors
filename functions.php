@@ -535,6 +535,98 @@ function sj_register_acf_fields() {
         'menu_order' => 70,
     ]);
 
+    // ── Contact Us Page ────────────────────────────────────────────────────────
+    $ct_page_location = [[[
+        'param'    => 'page_template',
+        'operator' => '==',
+        'value'    => 'page-contact.php',
+    ]]];
+
+    // Contact: Hero
+    acf_add_local_field_group([
+        'key'    => 'group_ct_hero',
+        'title'  => 'Contact — Hero',
+        'fields' => [
+            ['key' => 'field_ct_hero_heading', 'label' => 'Page Heading (HTML ok)', 'name' => 'contact_hero_heading', 'type' => 'text',    'default_value' => 'Get in Touch <span>With Us</span>'],
+            ['key' => 'field_ct_hero_sub',     'label' => 'Sub-text',               'name' => 'contact_hero_sub',     'type' => 'textarea','rows' => 2],
+        ],
+        'location'   => $ct_page_location,
+        'menu_order' => 10,
+    ]);
+
+    // Contact: Form Labels
+    acf_add_local_field_group([
+        'key'    => 'group_ct_form',
+        'title'  => 'Contact — Form Heading',
+        'fields' => [
+            ['key' => 'field_ct_form_heading', 'label' => 'Form Heading (HTML ok)', 'name' => 'contact_form_heading', 'type' => 'text',    'default_value' => 'Book a <span>Free Demo Class</span> Today!'],
+            ['key' => 'field_ct_form_sub',     'label' => 'Form Sub-text',          'name' => 'contact_form_sub',     'type' => 'textarea','rows' => 2],
+        ],
+        'location'   => $ct_page_location,
+        'menu_order' => 20,
+    ]);
+
+    // Contact: Map & Details
+    acf_add_local_field_group([
+        'key'    => 'group_ct_details',
+        'title'  => 'Contact — Map & Details',
+        'fields' => [
+            ['key' => 'field_ct_phone',    'label' => 'Phone Number',           'name' => 'contact_phone',    'type' => 'text', 'default_value' => '+91 00000 00000'],
+            ['key' => 'field_ct_whatsapp', 'label' => 'WhatsApp Number',        'name' => 'contact_whatsapp', 'type' => 'text', 'default_value' => '+91 00000 00000'],
+            ['key' => 'field_ct_email',    'label' => 'Email Address',          'name' => 'contact_email',    'type' => 'text', 'default_value' => 'hello@skillupjuniors.com'],
+            ['key' => 'field_ct_address',  'label' => 'Office Address',         'name' => 'contact_address',  'type' => 'textarea', 'rows' => 3],
+            ['key' => 'field_ct_hours',    'label' => 'Working Hours',          'name' => 'contact_hours',    'type' => 'text', 'default_value' => 'Mon – Sat: 9:00 AM – 7:00 PM'],
+            ['key' => 'field_ct_map_url',  'label' => 'Google Maps Embed URL', 'name' => 'contact_map_url',  'type' => 'url'],
+        ],
+        'location'   => $ct_page_location,
+        'menu_order' => 30,
+    ]);
+
+    // Contact: Social Links
+    acf_add_local_field_group([
+        'key'    => 'group_ct_social',
+        'title'  => 'Contact — Social Media Links',
+        'fields' => [
+            ['key' => 'field_ct_facebook',  'label' => 'Facebook URL',  'name' => 'contact_facebook_url',  'type' => 'url'],
+            ['key' => 'field_ct_instagram', 'label' => 'Instagram URL', 'name' => 'contact_instagram_url', 'type' => 'url'],
+            ['key' => 'field_ct_youtube',   'label' => 'YouTube URL',   'name' => 'contact_youtube_url',   'type' => 'url'],
+            ['key' => 'field_ct_twitter',   'label' => 'Twitter/X URL', 'name' => 'contact_twitter_url',   'type' => 'url'],
+        ],
+        'location'   => $ct_page_location,
+        'menu_order' => 40,
+    ]);
+
+    // Contact: Why Reasons (3 fixed)
+    acf_add_local_field_group([
+        'key'    => 'group_ct_reasons',
+        'title'  => 'Contact — Why Contact Us (3 Points)',
+        'fields' => [
+            ['key' => 'field_ct_reason1', 'label' => 'Reason 1', 'name' => 'contact_reason1_text', 'type' => 'text', 'default_value' => 'Free demo — no commitment needed'],
+            ['key' => 'field_ct_reason2', 'label' => 'Reason 2', 'name' => 'contact_reason2_text', 'type' => 'text', 'default_value' => 'Response within 24 hours guaranteed'],
+            ['key' => 'field_ct_reason3', 'label' => 'Reason 3', 'name' => 'contact_reason3_text', 'type' => 'text', 'default_value' => "Expert guidance for your child's learning"],
+        ],
+        'location'   => $ct_page_location,
+        'menu_order' => 50,
+    ]);
+
+    // Contact: FAQ (4 fixed Q&A pairs)
+    acf_add_local_field_group([
+        'key'    => 'group_ct_faq',
+        'title'  => 'Contact — FAQ (4 Questions)',
+        'fields' => [
+            ['key' => 'field_ct_faq1_q', 'label' => 'FAQ 1 — Question', 'name' => 'contact_faq1_q', 'type' => 'text',     'default_value' => 'Is the demo class really free?'],
+            ['key' => 'field_ct_faq1_a', 'label' => 'FAQ 1 — Answer',   'name' => 'contact_faq1_a', 'type' => 'textarea', 'rows' => 2, 'default_value' => 'Yes! Our demo class is 100% free with zero commitment. You can decide after experiencing the class.'],
+            ['key' => 'field_ct_faq2_q', 'label' => 'FAQ 2 — Question', 'name' => 'contact_faq2_q', 'type' => 'text',     'default_value' => 'Which age group is eligible?'],
+            ['key' => 'field_ct_faq2_a', 'label' => 'FAQ 2 — Answer',   'name' => 'contact_faq2_a', 'type' => 'textarea', 'rows' => 2, 'default_value' => 'Our programs are designed for children from Class 1 to Class 10 across all our courses.'],
+            ['key' => 'field_ct_faq3_q', 'label' => 'FAQ 3 — Question', 'name' => 'contact_faq3_q', 'type' => 'text',     'default_value' => 'Are classes online or offline?'],
+            ['key' => 'field_ct_faq3_a', 'label' => 'FAQ 3 — Answer',   'name' => 'contact_faq3_a', 'type' => 'textarea', 'rows' => 2, 'default_value' => 'We offer both live online sessions and in-person classes depending on your location and preference.'],
+            ['key' => 'field_ct_faq4_q', 'label' => 'FAQ 4 — Question', 'name' => 'contact_faq4_q', 'type' => 'text',     'default_value' => 'How soon will I hear back after filling the form?'],
+            ['key' => 'field_ct_faq4_a', 'label' => 'FAQ 4 — Answer',   'name' => 'contact_faq4_a', 'type' => 'textarea', 'rows' => 2, 'default_value' => 'Our team will contact you within 24 hours on your phone or email to schedule the demo.'],
+        ],
+        'location'   => $ct_page_location,
+        'menu_order' => 60,
+    ]);
+
     // Footer settings are managed via WP Admin → Theme Settings (native page).
 
     // ── About Us Page ──────────────────────────────────────────────────────────
