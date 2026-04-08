@@ -627,6 +627,184 @@ function sj_register_acf_fields() {
         'menu_order' => 60,
     ]);
 
+    // ── Phonics Program Page ───────────────────────────────────────────────────
+    $ph_page_location = [[[
+        'param'    => 'page_template',
+        'operator' => '==',
+        'value'    => 'page-phonics.php',
+    ]]];
+
+    // Phonics: Hero Banner
+    acf_add_local_field_group([
+        'key'   => 'group_ph_hero',
+        'title' => 'Phonics — Hero Banner',
+        'fields' => [
+            ['key' => 'field_ph_hero_badge',      'label' => 'Badge Text',          'name' => 'ph_hero_badge',      'type' => 'text',  'default_value' => 'Phonics + Maths Foundation Program'],
+            ['key' => 'field_ph_hero_heading',    'label' => 'Heading (HTML ok)',   'name' => 'ph_hero_heading',    'type' => 'text',  'default_value' => 'Learning Should Not Be Memorised — <span>It Should Be Understood</span>'],
+            ['key' => 'field_ph_hero_subheading', 'label' => 'Sub-heading',         'name' => 'ph_hero_subheading', 'type' => 'textarea', 'rows' => 2],
+            ['key' => 'field_ph_hero_image',      'label' => 'Hero Image',          'name' => 'ph_hero_image',      'type' => 'image', 'return_format' => 'array'],
+            ['key' => 'field_ph_hero_cta1_text',  'label' => 'CTA 1 — Text',        'name' => 'ph_hero_cta1_text',  'type' => 'text',  'default_value' => 'Book Free Demo'],
+            ['key' => 'field_ph_hero_cta1_url',   'label' => 'CTA 1 — URL',         'name' => 'ph_hero_cta1_url',   'type' => 'text',  'default_value' => '#ph-lead-form'],
+            ['key' => 'field_ph_hero_cta2_text',  'label' => 'CTA 2 — Text',        'name' => 'ph_hero_cta2_text',  'type' => 'text',  'default_value' => 'View Curriculum'],
+            ['key' => 'field_ph_hero_cta2_url',   'label' => 'CTA 2 — URL',         'name' => 'ph_hero_cta2_url',   'type' => 'text',  'default_value' => '#ph-curriculum'],
+            ['key' => 'field_ph_stat1_num',       'label' => 'Stat 1 — Number',     'name' => 'ph_stat1_num',       'type' => 'text',  'default_value' => '8K+'],
+            ['key' => 'field_ph_stat1_label',     'label' => 'Stat 1 — Label',      'name' => 'ph_stat1_label',     'type' => 'text',  'default_value' => 'Children Enrolled'],
+            ['key' => 'field_ph_stat2_num',       'label' => 'Stat 2 — Number',     'name' => 'ph_stat2_num',       'type' => 'text',  'default_value' => '95%'],
+            ['key' => 'field_ph_stat2_label',     'label' => 'Stat 2 — Label',      'name' => 'ph_stat2_label',     'type' => 'text',  'default_value' => 'Reading Improvement'],
+            ['key' => 'field_ph_stat3_num',       'label' => 'Stat 3 — Number',     'name' => 'ph_stat3_num',       'type' => 'text',  'default_value' => '2x'],
+            ['key' => 'field_ph_stat3_label',     'label' => 'Stat 3 — Label',      'name' => 'ph_stat3_label',     'type' => 'text',  'default_value' => 'Faster Learning'],
+            ['key' => 'field_ph_step1_text',      'label' => 'Step 1 — Text',       'name' => 'ph_step1_text',      'type' => 'text',  'default_value' => "Choose your child's level"],
+            ['key' => 'field_ph_step2_text',      'label' => 'Step 2 — Text',       'name' => 'ph_step2_text',      'type' => 'text',  'default_value' => 'Attend a Free Trial Class'],
+            ['key' => 'field_ph_step3_text',      'label' => 'Step 3 — Text',       'name' => 'ph_step3_text',      'type' => 'text',  'default_value' => 'Enroll & start learning!'],
+        ],
+        'location'   => $ph_page_location,
+        'menu_order' => 10,
+    ]);
+
+    // Phonics: Curriculum (3 fixed cards)
+    acf_add_local_field_group([
+        'key'   => 'group_ph_curriculum',
+        'title' => 'Phonics — Curriculum',
+        'fields' => [
+            ['key' => 'field_ph_curriculum_heading',    'label' => 'Section Heading', 'name' => 'ph_curriculum_heading',    'type' => 'text', 'default_value' => 'Our Curriculum'],
+            ['key' => 'field_ph_curriculum_subheading', 'label' => 'Section Sub',     'name' => 'ph_curriculum_subheading', 'type' => 'textarea', 'rows' => 2],
+            // Card 1
+            ['key' => 'field_ph_curr1_grade',    'label' => 'Card 1 — Level Name',  'name' => 'ph_curr1_grade',    'type' => 'text',     'default_value' => 'Phonics Basic'],
+            ['key' => 'field_ph_curr1_subtitle', 'label' => 'Card 1 — Sub Label',   'name' => 'ph_curr1_subtitle', 'type' => 'text',     'default_value' => 'Beginner Level'],
+            ['key' => 'field_ph_curr1_topics',   'label' => 'Card 1 — Topics (one per line)', 'name' => 'ph_curr1_topics', 'type' => 'textarea', 'rows' => 5, 'default_value' => "Letter sounds (A–Z)\nBlending 2–3 letter words\nSight words introduction\nBasic phonemic awareness\nFun reading activities"],
+            ['key' => 'field_ph_curr1_pdf',      'label' => 'Card 1 — PDF Download','name' => 'ph_curr1_pdf',      'type' => 'file',     'return_format' => 'array', 'mime_types' => 'pdf'],
+            ['key' => 'field_ph_curr1_color',    'label' => 'Card 1 — Accent Color','name' => 'ph_curr1_color',    'type' => 'select',   'choices' => ['blue' => 'Blue', 'green' => 'Green', 'yellow' => 'Yellow', 'teal' => 'Teal'], 'default_value' => 'blue'],
+            // Card 2
+            ['key' => 'field_ph_curr2_grade',    'label' => 'Card 2 — Level Name',  'name' => 'ph_curr2_grade',    'type' => 'text',     'default_value' => 'Phonics Intermediate'],
+            ['key' => 'field_ph_curr2_subtitle', 'label' => 'Card 2 — Sub Label',   'name' => 'ph_curr2_subtitle', 'type' => 'text',     'default_value' => 'Building Fluency'],
+            ['key' => 'field_ph_curr2_topics',   'label' => 'Card 2 — Topics (one per line)', 'name' => 'ph_curr2_topics', 'type' => 'textarea', 'rows' => 5, 'default_value' => "Digraphs & blends\nLong & short vowel sounds\nSyllable division\nReading simple sentences\nSpelling patterns"],
+            ['key' => 'field_ph_curr2_pdf',      'label' => 'Card 2 — PDF Download','name' => 'ph_curr2_pdf',      'type' => 'file',     'return_format' => 'array', 'mime_types' => 'pdf'],
+            ['key' => 'field_ph_curr2_color',    'label' => 'Card 2 — Accent Color','name' => 'ph_curr2_color',    'type' => 'select',   'choices' => ['blue' => 'Blue', 'green' => 'Green', 'yellow' => 'Yellow', 'teal' => 'Teal'], 'default_value' => 'green'],
+            // Card 3
+            ['key' => 'field_ph_curr3_grade',    'label' => 'Card 3 — Level Name',  'name' => 'ph_curr3_grade',    'type' => 'text',     'default_value' => 'Phonics Advanced'],
+            ['key' => 'field_ph_curr3_subtitle', 'label' => 'Card 3 — Sub Label',   'name' => 'ph_curr3_subtitle', 'type' => 'text',     'default_value' => 'Reading Confidence'],
+            ['key' => 'field_ph_curr3_topics',   'label' => 'Card 3 — Topics (one per line)', 'name' => 'ph_curr3_topics', 'type' => 'textarea', 'rows' => 5, 'default_value' => "Complex phonics rules\nMulti-syllabic words\nFluent paragraph reading\nComprehension skills\nCreative writing basics"],
+            ['key' => 'field_ph_curr3_pdf',      'label' => 'Card 3 — PDF Download','name' => 'ph_curr3_pdf',      'type' => 'file',     'return_format' => 'array', 'mime_types' => 'pdf'],
+            ['key' => 'field_ph_curr3_color',    'label' => 'Card 3 — Accent Color','name' => 'ph_curr3_color',    'type' => 'select',   'choices' => ['blue' => 'Blue', 'green' => 'Green', 'yellow' => 'Yellow', 'teal' => 'Teal'], 'default_value' => 'yellow'],
+        ],
+        'location'   => $ph_page_location,
+        'menu_order' => 20,
+    ]);
+
+    // Phonics: Foundation Split
+    acf_add_local_field_group([
+        'key'   => 'group_ph_foundation',
+        'title' => 'Phonics — Foundation Split',
+        'fields' => [
+            ['key' => 'field_ph_phonics_found_title',  'label' => 'Phonics Card — Title',                'name' => 'ph_phonics_found_title',  'type' => 'text',     'default_value' => 'Phonics Foundation'],
+            ['key' => 'field_ph_phonics_found_points', 'label' => 'Phonics Card — Points (one per line)','name' => 'ph_phonics_found_points', 'type' => 'textarea', 'rows' => 5, 'default_value' => "Letter sounds & blending\nWord formation\nReading fluency\nClear pronunciation\nChild starts reading confidently"],
+            ['key' => 'field_ph_phonics_found_label',  'label' => 'Phonics Card — Bottom Label',         'name' => 'ph_phonics_found_label',  'type' => 'text',     'default_value' => 'Child starts reading confidently'],
+            ['key' => 'field_ph_maths_found_title',    'label' => 'Maths Card — Title',                  'name' => 'ph_maths_found_title',    'type' => 'text',     'default_value' => 'Maths Foundation'],
+            ['key' => 'field_ph_maths_found_points',   'label' => 'Maths Card — Points (one per line)',  'name' => 'ph_maths_found_points',   'type' => 'textarea', 'rows' => 5, 'default_value' => "Number recognition\nCounting & patterns\nBasic operations\nLogical thinking\nChild understands numbers, not just memorizes"],
+            ['key' => 'field_ph_maths_found_label',    'label' => 'Maths Card — Bottom Label',           'name' => 'ph_maths_found_label',    'type' => 'text',     'default_value' => 'Child understands numbers, not just memorizes'],
+        ],
+        'location'   => $ph_page_location,
+        'menu_order' => 30,
+    ]);
+
+    // Phonics: Learning Method (6 fixed cards)
+    acf_add_local_field_group([
+        'key'   => 'group_ph_method',
+        'title' => 'Phonics — Learning Method',
+        'fields' => [
+            ['key' => 'field_ph_method_heading',    'label' => 'Section Heading', 'name' => 'ph_method_heading',    'type' => 'text', 'default_value' => 'Our Learning Method'],
+            ['key' => 'field_ph_method_subheading', 'label' => 'Section Sub',     'name' => 'ph_method_subheading', 'type' => 'textarea', 'rows' => 2],
+            // Card 1
+            ['key' => 'field_ph_method1_title', 'label' => 'Card 1 — Title', 'name' => 'ph_method1_title', 'type' => 'text',   'default_value' => 'Fun & Engaging Learning'],
+            ['key' => 'field_ph_method1_desc',  'label' => 'Card 1 — Desc',  'name' => 'ph_method1_desc',  'type' => 'textarea', 'rows' => 2],
+            ['key' => 'field_ph_method1_icon',  'label' => 'Card 1 — Icon',  'name' => 'ph_method1_icon',  'type' => 'image',  'return_format' => 'array'],
+            ['key' => 'field_ph_method1_color', 'label' => 'Card 1 — Color', 'name' => 'ph_method1_color', 'type' => 'select', 'choices' => ['blue' => 'Blue', 'green' => 'Green', 'yellow' => 'Yellow', 'teal' => 'Teal', 'navy' => 'Navy', 'pink' => 'Pink'], 'default_value' => 'blue'],
+            // Card 2
+            ['key' => 'field_ph_method2_title', 'label' => 'Card 2 — Title', 'name' => 'ph_method2_title', 'type' => 'text',   'default_value' => 'Interactive Live Sessions'],
+            ['key' => 'field_ph_method2_desc',  'label' => 'Card 2 — Desc',  'name' => 'ph_method2_desc',  'type' => 'textarea', 'rows' => 2],
+            ['key' => 'field_ph_method2_icon',  'label' => 'Card 2 — Icon',  'name' => 'ph_method2_icon',  'type' => 'image',  'return_format' => 'array'],
+            ['key' => 'field_ph_method2_color', 'label' => 'Card 2 — Color', 'name' => 'ph_method2_color', 'type' => 'select', 'choices' => ['blue' => 'Blue', 'green' => 'Green', 'yellow' => 'Yellow', 'teal' => 'Teal', 'navy' => 'Navy', 'pink' => 'Pink'], 'default_value' => 'green'],
+            // Card 3
+            ['key' => 'field_ph_method3_title', 'label' => 'Card 3 — Title', 'name' => 'ph_method3_title', 'type' => 'text',   'default_value' => 'Regular Work Sheets'],
+            ['key' => 'field_ph_method3_desc',  'label' => 'Card 3 — Desc',  'name' => 'ph_method3_desc',  'type' => 'textarea', 'rows' => 2],
+            ['key' => 'field_ph_method3_icon',  'label' => 'Card 3 — Icon',  'name' => 'ph_method3_icon',  'type' => 'image',  'return_format' => 'array'],
+            ['key' => 'field_ph_method3_color', 'label' => 'Card 3 — Color', 'name' => 'ph_method3_color', 'type' => 'select', 'choices' => ['blue' => 'Blue', 'green' => 'Green', 'yellow' => 'Yellow', 'teal' => 'Teal', 'navy' => 'Navy', 'pink' => 'Pink'], 'default_value' => 'yellow'],
+            // Card 4
+            ['key' => 'field_ph_method4_title', 'label' => 'Card 4 — Title', 'name' => 'ph_method4_title', 'type' => 'text',   'default_value' => 'Personal Attention'],
+            ['key' => 'field_ph_method4_desc',  'label' => 'Card 4 — Desc',  'name' => 'ph_method4_desc',  'type' => 'textarea', 'rows' => 2],
+            ['key' => 'field_ph_method4_icon',  'label' => 'Card 4 — Icon',  'name' => 'ph_method4_icon',  'type' => 'image',  'return_format' => 'array'],
+            ['key' => 'field_ph_method4_color', 'label' => 'Card 4 — Color', 'name' => 'ph_method4_color', 'type' => 'select', 'choices' => ['blue' => 'Blue', 'green' => 'Green', 'yellow' => 'Yellow', 'teal' => 'Teal', 'navy' => 'Navy', 'pink' => 'Pink'], 'default_value' => 'teal'],
+            // Card 5
+            ['key' => 'field_ph_method5_title', 'label' => 'Card 5 — Title', 'name' => 'ph_method5_title', 'type' => 'text',   'default_value' => 'Story-Based Teaching'],
+            ['key' => 'field_ph_method5_desc',  'label' => 'Card 5 — Desc',  'name' => 'ph_method5_desc',  'type' => 'textarea', 'rows' => 2],
+            ['key' => 'field_ph_method5_icon',  'label' => 'Card 5 — Icon',  'name' => 'ph_method5_icon',  'type' => 'image',  'return_format' => 'array'],
+            ['key' => 'field_ph_method5_color', 'label' => 'Card 5 — Color', 'name' => 'ph_method5_color', 'type' => 'select', 'choices' => ['blue' => 'Blue', 'green' => 'Green', 'yellow' => 'Yellow', 'teal' => 'Teal', 'navy' => 'Navy', 'pink' => 'Pink'], 'default_value' => 'navy'],
+            // Card 6
+            ['key' => 'field_ph_method6_title', 'label' => 'Card 6 — Title', 'name' => 'ph_method6_title', 'type' => 'text',   'default_value' => 'Games & Challenges'],
+            ['key' => 'field_ph_method6_desc',  'label' => 'Card 6 — Desc',  'name' => 'ph_method6_desc',  'type' => 'textarea', 'rows' => 2],
+            ['key' => 'field_ph_method6_icon',  'label' => 'Card 6 — Icon',  'name' => 'ph_method6_icon',  'type' => 'image',  'return_format' => 'array'],
+            ['key' => 'field_ph_method6_color', 'label' => 'Card 6 — Color', 'name' => 'ph_method6_color', 'type' => 'select', 'choices' => ['blue' => 'Blue', 'green' => 'Green', 'yellow' => 'Yellow', 'teal' => 'Teal', 'navy' => 'Navy', 'pink' => 'Pink'], 'default_value' => 'pink'],
+        ],
+        'location'   => $ph_page_location,
+        'menu_order' => 40,
+    ]);
+
+    // Phonics: Demo Videos (4 fixed slots)
+    acf_add_local_field_group([
+        'key'   => 'group_ph_videos',
+        'title' => 'Phonics — Demo Videos',
+        'fields' => [
+            ['key' => 'field_ph_video_heading',    'label' => 'Section Heading', 'name' => 'ph_video_heading',    'type' => 'text', 'default_value' => 'Demo Videos / Student Videos'],
+            ['key' => 'field_ph_video_subheading', 'label' => 'Section Sub',     'name' => 'ph_video_subheading', 'type' => 'textarea', 'rows' => 2],
+            ['key' => 'field_ph_video1_title', 'label' => 'Video 1 — Title',     'name' => 'ph_video1_title', 'type' => 'text'],
+            ['key' => 'field_ph_video1_url',   'label' => 'Video 1 — YouTube URL','name' => 'ph_video1_url',   'type' => 'url'],
+            ['key' => 'field_ph_video1_thumb', 'label' => 'Video 1 — Thumbnail', 'name' => 'ph_video1_thumb', 'type' => 'image', 'return_format' => 'array'],
+            ['key' => 'field_ph_video2_title', 'label' => 'Video 2 — Title',     'name' => 'ph_video2_title', 'type' => 'text'],
+            ['key' => 'field_ph_video2_url',   'label' => 'Video 2 — YouTube URL','name' => 'ph_video2_url',   'type' => 'url'],
+            ['key' => 'field_ph_video2_thumb', 'label' => 'Video 2 — Thumbnail', 'name' => 'ph_video2_thumb', 'type' => 'image', 'return_format' => 'array'],
+            ['key' => 'field_ph_video3_title', 'label' => 'Video 3 — Title',     'name' => 'ph_video3_title', 'type' => 'text'],
+            ['key' => 'field_ph_video3_url',   'label' => 'Video 3 — YouTube URL','name' => 'ph_video3_url',   'type' => 'url'],
+            ['key' => 'field_ph_video3_thumb', 'label' => 'Video 3 — Thumbnail', 'name' => 'ph_video3_thumb', 'type' => 'image', 'return_format' => 'array'],
+            ['key' => 'field_ph_video4_title', 'label' => 'Video 4 — Title',     'name' => 'ph_video4_title', 'type' => 'text'],
+            ['key' => 'field_ph_video4_url',   'label' => 'Video 4 — YouTube URL','name' => 'ph_video4_url',   'type' => 'url'],
+            ['key' => 'field_ph_video4_thumb', 'label' => 'Video 4 — Thumbnail', 'name' => 'ph_video4_thumb', 'type' => 'image', 'return_format' => 'array'],
+        ],
+        'location'   => $ph_page_location,
+        'menu_order' => 50,
+    ]);
+
+    // Phonics: CTA Banner
+    acf_add_local_field_group([
+        'key'   => 'group_ph_cta',
+        'title' => 'Phonics — CTA Banner',
+        'fields' => [
+            ['key' => 'field_ph_cta_heading',   'label' => 'Heading',      'name' => 'ph_cta_heading',   'type' => 'text',     'default_value' => 'Give Your Child the Gift of Confident Reading & Maths'],
+            ['key' => 'field_ph_cta_subtext',   'label' => 'Sub Text',     'name' => 'ph_cta_subtext',   'type' => 'textarea', 'rows' => 2],
+            ['key' => 'field_ph_cta_btn_text',  'label' => 'Button 1 — Text', 'name' => 'ph_cta_btn_text',  'type' => 'text', 'default_value' => 'Book Free Demo Class'],
+            ['key' => 'field_ph_cta_btn_url',   'label' => 'Button 1 — URL',  'name' => 'ph_cta_btn_url',   'type' => 'text', 'default_value' => '#ph-lead-form'],
+            ['key' => 'field_ph_cta_btn2_text', 'label' => 'Button 2 — Text', 'name' => 'ph_cta_btn2_text', 'type' => 'text', 'default_value' => 'Call Us Now'],
+            ['key' => 'field_ph_cta_btn2_url',  'label' => 'Button 2 — URL',  'name' => 'ph_cta_btn2_url',  'type' => 'text', 'default_value' => 'tel:+910000000000'],
+        ],
+        'location'   => $ph_page_location,
+        'menu_order' => 60,
+    ]);
+
+    // Phonics: App Download
+    acf_add_local_field_group([
+        'key'   => 'group_ph_app',
+        'title' => 'Phonics — App Download',
+        'fields' => [
+            ['key' => 'field_ph_app_heading',       'label' => 'Heading',              'name' => 'ph_app_heading',       'type' => 'text',     'default_value' => 'Learn Phonics & Maths Anywhere, Anytime'],
+            ['key' => 'field_ph_app_subtext',        'label' => 'Sub Text',             'name' => 'ph_app_subtext',       'type' => 'textarea', 'rows' => 2],
+            ['key' => 'field_ph_app_android_url',   'label' => 'Google Play Store URL', 'name' => 'ph_app_android_url',   'type' => 'url'],
+            ['key' => 'field_ph_app_android_label', 'label' => 'Android Button Label',  'name' => 'ph_app_android_label', 'type' => 'text', 'default_value' => 'Google Play'],
+            ['key' => 'field_ph_app_ios_url',       'label' => 'Web Portal / App URL',  'name' => 'ph_app_ios_url',       'type' => 'url'],
+            ['key' => 'field_ph_app_ios_label',     'label' => 'iOS/Web Button Label',  'name' => 'ph_app_ios_label',     'type' => 'text', 'default_value' => 'Web Portal'],
+        ],
+        'location'   => $ph_page_location,
+        'menu_order' => 70,
+    ]);
+
     // Footer settings are managed via WP Admin → Theme Settings (native page).
 
     // ── About Us Page ──────────────────────────────────────────────────────────
