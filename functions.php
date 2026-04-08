@@ -352,6 +352,205 @@ function sj_register_acf_fields() {
         'menu_order' => 60,
     ]);
 
+    // ── Vedic Maths Page ───────────────────────────────────────────────────────
+    $vm_page_location = [[[
+        'param'    => 'page_template',
+        'operator' => '==',
+        'value'    => 'page-vedic-maths.php',
+    ]]];
+
+    // VM: Hero
+    acf_add_local_field_group([
+        'key'    => 'group_vm_hero',
+        'title'  => 'Vedic Maths — Hero Banner',
+        'fields' => [
+            ['key' => 'field_vm_hero_badge',     'label' => 'Badge Text',         'name' => 'vm_hero_badge',      'type' => 'text',    'default_value' => "India's #1 Vedic Maths Program for Kids"],
+            ['key' => 'field_vm_hero_heading',   'label' => 'Heading (HTML ok)',  'name' => 'vm_hero_heading',    'type' => 'text',    'default_value' => 'Faster Calculations.<br><span>Sharper Mind.</span><br>Confident Child.'],
+            ['key' => 'field_vm_hero_sub',       'label' => 'Sub-heading',        'name' => 'vm_hero_subheading', 'type' => 'textarea','rows' => 2],
+            ['key' => 'field_vm_hero_cta1_text', 'label' => 'Primary CTA Text',  'name' => 'vm_hero_cta1_text',  'type' => 'text',    'default_value' => 'Book Free Demo'],
+            ['key' => 'field_vm_hero_cta1_url',  'label' => 'Primary CTA URL',   'name' => 'vm_hero_cta1_url',   'type' => 'url'],
+            ['key' => 'field_vm_hero_cta2_text', 'label' => 'Secondary CTA Text','name' => 'vm_hero_cta2_text',  'type' => 'text',    'default_value' => 'View Curriculum'],
+            ['key' => 'field_vm_hero_cta2_url',  'label' => 'Secondary CTA URL', 'name' => 'vm_hero_cta2_url',   'type' => 'url'],
+            ['key' => 'field_vm_hero_image',     'label' => 'Hero Image',         'name' => 'vm_hero_image',      'type' => 'image',   'return_format' => 'array', 'preview_size' => 'medium'],
+            ['key' => 'field_vm_stat1_num',      'label' => 'Stat 1 — Number',   'name' => 'vm_stat1_num',       'type' => 'text',    'default_value' => '10K+'],
+            ['key' => 'field_vm_stat1_lbl',      'label' => 'Stat 1 — Label',    'name' => 'vm_stat1_label',     'type' => 'text',    'default_value' => 'Students Trained'],
+            ['key' => 'field_vm_stat2_num',      'label' => 'Stat 2 — Number',   'name' => 'vm_stat2_num',       'type' => 'text',    'default_value' => '98%'],
+            ['key' => 'field_vm_stat2_lbl',      'label' => 'Stat 2 — Label',    'name' => 'vm_stat2_label',     'type' => 'text',    'default_value' => 'Score Improvement'],
+            ['key' => 'field_vm_stat3_num',      'label' => 'Stat 3 — Number',   'name' => 'vm_stat3_num',       'type' => 'text',    'default_value' => '3x'],
+            ['key' => 'field_vm_stat3_lbl',      'label' => 'Stat 3 — Label',    'name' => 'vm_stat3_label',     'type' => 'text',    'default_value' => 'Faster Calculation'],
+            [
+                'key'          => 'field_vm_hero_steps',
+                'label'        => 'Join Steps',
+                'name'         => 'vm_hero_steps',
+                'type'         => 'repeater',
+                'min'          => 1,
+                'max'          => 5,
+                'layout'       => 'table',
+                'button_label' => 'Add Step',
+                'sub_fields'   => [
+                    ['key' => 'field_vm_step_text', 'label' => 'Step Text', 'name' => 'step_text', 'type' => 'text'],
+                ],
+            ],
+        ],
+        'location'   => $vm_page_location,
+        'menu_order' => 10,
+    ]);
+
+    // VM: Curriculum
+    acf_add_local_field_group([
+        'key'    => 'group_vm_curriculum',
+        'title'  => 'Vedic Maths — Curriculum',
+        'fields' => [
+            ['key' => 'field_vm_curr_heading', 'label' => 'Section Heading',  'name' => 'vm_curriculum_heading',    'type' => 'text',    'default_value' => 'Our Curriculum'],
+            ['key' => 'field_vm_curr_sub',     'label' => 'Section Sub-text', 'name' => 'vm_curriculum_subheading', 'type' => 'textarea','rows' => 2],
+            [
+                'key'          => 'field_vm_curr_items',
+                'label'        => 'Curriculum Cards',
+                'name'         => 'vm_curriculum_items',
+                'type'         => 'repeater',
+                'min'          => 1,
+                'max'          => 6,
+                'layout'       => 'block',
+                'button_label' => 'Add Grade',
+                'sub_fields'   => [
+                    ['key' => 'field_vm_curr_grade',    'label' => 'Grade / Class',      'name' => 'curr_grade',    'type' => 'text'],
+                    ['key' => 'field_vm_curr_subtitle', 'label' => 'Card Sub-title',     'name' => 'curr_subtitle', 'type' => 'text'],
+                    ['key' => 'field_vm_curr_topics',   'label' => 'Topics (one per line)','name' => 'curr_topics', 'type' => 'textarea', 'rows' => 6],
+                    ['key' => 'field_vm_curr_pdf',      'label' => 'Curriculum PDF',     'name' => 'curr_pdf',      'type' => 'file',    'return_format' => 'array', 'library' => 'all'],
+                    [
+                        'key'           => 'field_vm_curr_color',
+                        'label'         => 'Card Accent Colour',
+                        'name'          => 'curr_color',
+                        'type'          => 'select',
+                        'choices'       => ['blue' => 'Blue', 'green' => 'Green', 'yellow' => 'Yellow', 'teal' => 'Teal'],
+                        'default_value' => 'blue',
+                    ],
+                ],
+            ],
+        ],
+        'location'   => $vm_page_location,
+        'menu_order' => 20,
+    ]);
+
+    // VM: Learning Approach
+    acf_add_local_field_group([
+        'key'    => 'group_vm_approach',
+        'title'  => 'Vedic Maths — Learning Approach',
+        'fields' => [
+            ['key' => 'field_vm_approach_heading', 'label' => 'Section Heading',  'name' => 'vm_approach_heading',    'type' => 'text',    'default_value' => 'Learning Approach'],
+            ['key' => 'field_vm_approach_sub',     'label' => 'Section Sub-text', 'name' => 'vm_approach_subheading', 'type' => 'textarea','rows' => 2],
+            [
+                'key'          => 'field_vm_approach_items',
+                'label'        => 'Approach Cards',
+                'name'         => 'vm_approach_items',
+                'type'         => 'repeater',
+                'min'          => 1,
+                'max'          => 9,
+                'layout'       => 'table',
+                'button_label' => 'Add Card',
+                'sub_fields'   => [
+                    ['key' => 'field_vm_approach_title', 'label' => 'Card Title',        'name' => 'approach_title',       'type' => 'text'],
+                    ['key' => 'field_vm_approach_desc',  'label' => 'Card Description',  'name' => 'approach_description', 'type' => 'textarea', 'rows' => 2],
+                    ['key' => 'field_vm_approach_icon',  'label' => 'Custom Icon (opt.)', 'name' => 'approach_icon',        'type' => 'image',    'return_format' => 'array'],
+                    [
+                        'key'           => 'field_vm_approach_color',
+                        'label'         => 'Icon Color',
+                        'name'          => 'approach_color',
+                        'type'          => 'select',
+                        'choices'       => ['blue' => 'Blue', 'green' => 'Green', 'yellow' => 'Yellow', 'teal' => 'Teal', 'navy' => 'Navy'],
+                        'default_value' => 'blue',
+                    ],
+                ],
+            ],
+        ],
+        'location'   => $vm_page_location,
+        'menu_order' => 30,
+    ]);
+
+    // VM: Foundation
+    acf_add_local_field_group([
+        'key'    => 'group_vm_foundation',
+        'title'  => 'Vedic Maths — Foundation Section',
+        'fields' => [
+            ['key' => 'field_vm_found_heading', 'label' => 'Heading (HTML ok)', 'name' => 'vm_foundation_heading', 'type' => 'text',     'default_value' => 'We Fix the Root Problem — Foundation'],
+            ['key' => 'field_vm_found_text',    'label' => 'Body Text',         'name' => 'vm_foundation_text',    'type' => 'textarea', 'rows' => 5],
+            [
+                'key'          => 'field_vm_found_highlights',
+                'label'        => 'Highlight Pills',
+                'name'         => 'vm_foundation_highlights',
+                'type'         => 'repeater',
+                'min'          => 1,
+                'max'          => 6,
+                'layout'       => 'table',
+                'button_label' => 'Add Highlight',
+                'sub_fields'   => [
+                    ['key' => 'field_vm_highlight_text', 'label' => 'Text', 'name' => 'highlight_text', 'type' => 'text'],
+                ],
+            ],
+        ],
+        'location'   => $vm_page_location,
+        'menu_order' => 40,
+    ]);
+
+    // VM: Videos
+    acf_add_local_field_group([
+        'key'    => 'group_vm_videos',
+        'title'  => 'Vedic Maths — Demo Videos',
+        'fields' => [
+            ['key' => 'field_vm_video_heading', 'label' => 'Section Heading',  'name' => 'vm_video_heading',    'type' => 'text',    'default_value' => 'Demo Videos / Student Videos'],
+            ['key' => 'field_vm_video_sub',     'label' => 'Section Sub-text', 'name' => 'vm_video_subheading', 'type' => 'textarea','rows' => 2],
+            [
+                'key'          => 'field_vm_video_items',
+                'label'        => 'Videos',
+                'name'         => 'vm_video_items',
+                'type'         => 'repeater',
+                'min'          => 1,
+                'max'          => 6,
+                'layout'       => 'block',
+                'button_label' => 'Add Video',
+                'sub_fields'   => [
+                    ['key' => 'field_vm_video_title', 'label' => 'Video Title',          'name' => 'video_title', 'type' => 'text'],
+                    ['key' => 'field_vm_video_url',   'label' => 'YouTube URL',          'name' => 'video_url',   'type' => 'url'],
+                    ['key' => 'field_vm_video_thumb', 'label' => 'Thumbnail (fallback)', 'name' => 'video_thumb', 'type' => 'image', 'return_format' => 'array'],
+                ],
+            ],
+        ],
+        'location'   => $vm_page_location,
+        'menu_order' => 50,
+    ]);
+
+    // VM: CTA
+    acf_add_local_field_group([
+        'key'    => 'group_vm_cta',
+        'title'  => 'Vedic Maths — CTA Banner',
+        'fields' => [
+            ['key' => 'field_vm_cta_heading',   'label' => 'CTA Heading',          'name' => 'vm_cta_heading',   'type' => 'text',    'default_value' => 'Give Your Child a Strong Maths Foundation Today'],
+            ['key' => 'field_vm_cta_sub',       'label' => 'CTA Sub-text',         'name' => 'vm_cta_subtext',   'type' => 'textarea','rows' => 2],
+            ['key' => 'field_vm_cta_btn_text',  'label' => 'Primary Button Text',  'name' => 'vm_cta_btn_text',  'type' => 'text',    'default_value' => 'Book Free Demo Class'],
+            ['key' => 'field_vm_cta_btn_url',   'label' => 'Primary Button URL',   'name' => 'vm_cta_btn_url',   'type' => 'url'],
+            ['key' => 'field_vm_cta_btn2_text', 'label' => 'Secondary Button Text','name' => 'vm_cta_btn2_text', 'type' => 'text',    'default_value' => 'Call Us Now'],
+            ['key' => 'field_vm_cta_btn2_url',  'label' => 'Secondary Button URL', 'name' => 'vm_cta_btn2_url',  'type' => 'url'],
+        ],
+        'location'   => $vm_page_location,
+        'menu_order' => 60,
+    ]);
+
+    // VM: App Download
+    acf_add_local_field_group([
+        'key'    => 'group_vm_app',
+        'title'  => 'Vedic Maths — App Download Section',
+        'fields' => [
+            ['key' => 'field_vm_app_heading',      'label' => 'Heading',              'name' => 'vm_app_heading',       'type' => 'text',    'default_value' => 'Learn Vedic Maths Anywhere, Anytime'],
+            ['key' => 'field_vm_app_sub',          'label' => 'Sub-text',             'name' => 'vm_app_subtext',       'type' => 'textarea','rows' => 2],
+            ['key' => 'field_vm_app_android_url',  'label' => 'Android / Play URL',   'name' => 'vm_app_android_url',   'type' => 'url'],
+            ['key' => 'field_vm_app_android_lbl',  'label' => 'Android Button Label', 'name' => 'vm_app_android_label', 'type' => 'text',    'default_value' => 'Google Play'],
+            ['key' => 'field_vm_app_ios_url',      'label' => 'iOS / Web Portal URL', 'name' => 'vm_app_ios_url',       'type' => 'url'],
+            ['key' => 'field_vm_app_ios_lbl',      'label' => 'iOS Button Label',     'name' => 'vm_app_ios_label',     'type' => 'text',    'default_value' => 'Web Portal'],
+        ],
+        'location'   => $vm_page_location,
+        'menu_order' => 70,
+    ]);
+
     // Footer settings are managed via WP Admin → Theme Settings (native page).
 
     // ── About Us Page ──────────────────────────────────────────────────────────
