@@ -353,6 +353,115 @@ function sj_register_acf_fields() {
     ]);
 
     // Footer settings are managed via WP Admin → Theme Settings (native page).
+
+    // ── About Us Page ──────────────────────────────────────────────────────────
+    $about_page_location = [[[
+        'param'    => 'page_template',
+        'operator' => '==',
+        'value'    => 'page-about.php',
+    ]]];
+
+    // About: Hero Banner
+    acf_add_local_field_group([
+        'key'    => 'group_about_hero',
+        'title'  => 'About Us — Hero Banner',
+        'fields' => [
+            ['key' => 'field_about_hero_badge',      'label' => 'Badge Text',          'name' => 'about_hero_badge',       'type' => 'text',    'default_value' => 'About SkillUp Juniors'],
+            ['key' => 'field_about_hero_heading',    'label' => 'Heading (HTML ok)',   'name' => 'about_hero_heading',     'type' => 'text',    'default_value' => 'Because Every Child Deserves <span>the Right Start</span>'],
+            ['key' => 'field_about_hero_subheading', 'label' => 'Sub-heading',         'name' => 'about_hero_subheading',  'type' => 'textarea','rows' => 2],
+            ['key' => 'field_about_hero_cta1_text',  'label' => 'Primary CTA Text',    'name' => 'about_hero_cta1_text',   'type' => 'text',    'default_value' => 'Book Free Demo'],
+            ['key' => 'field_about_hero_cta1_url',   'label' => 'Primary CTA URL',     'name' => 'about_hero_cta1_url',    'type' => 'url'],
+            ['key' => 'field_about_hero_cta2_text',  'label' => 'Secondary CTA Text',  'name' => 'about_hero_cta2_text',   'type' => 'text',    'default_value' => 'Our Approach'],
+            ['key' => 'field_about_hero_cta2_url',   'label' => 'Secondary CTA URL',   'name' => 'about_hero_cta2_url',    'type' => 'url'],
+            ['key' => 'field_about_hero_image',      'label' => 'Hero Image',          'name' => 'about_hero_image',       'type' => 'image',   'return_format' => 'array', 'preview_size' => 'medium'],
+            ['key' => 'field_about_hero_stat1_num',  'label' => 'Float Badge 1 — Number', 'name' => 'about_hero_stat1_num',  'type' => 'text',  'default_value' => '10,000+'],
+            ['key' => 'field_about_hero_stat1_lbl',  'label' => 'Float Badge 1 — Label',  'name' => 'about_hero_stat1_label','type' => 'text',  'default_value' => 'Students'],
+            ['key' => 'field_about_hero_stat2_num',  'label' => 'Float Badge 2 — Number', 'name' => 'about_hero_stat2_num',  'type' => 'text',  'default_value' => '4.9'],
+            ['key' => 'field_about_hero_stat2_lbl',  'label' => 'Float Badge 2 — Label',  'name' => 'about_hero_stat2_label','type' => 'text',  'default_value' => 'Rating'],
+        ],
+        'location'   => $about_page_location,
+        'menu_order' => 10,
+    ]);
+
+    // About: Vision & Mission
+    acf_add_local_field_group([
+        'key'    => 'group_about_vm',
+        'title'  => 'About Us — Vision & Mission',
+        'fields' => [
+            ['key' => 'field_about_vision_title', 'label' => 'Vision Card Title', 'name' => 'about_vision_title', 'type' => 'text',     'default_value' => 'Vision'],
+            ['key' => 'field_about_vision_text',  'label' => 'Vision Text',       'name' => 'about_vision_text',  'type' => 'textarea', 'rows' => 4],
+            ['key' => 'field_about_mission_title','label' => 'Mission Card Title', 'name' => 'about_mission_title','type' => 'text',     'default_value' => 'Mission'],
+            ['key' => 'field_about_mission_text', 'label' => 'Mission Text',      'name' => 'about_mission_text', 'type' => 'textarea', 'rows' => 4],
+        ],
+        'location'   => $about_page_location,
+        'menu_order' => 20,
+    ]);
+
+    // About: Founder Quote
+    acf_add_local_field_group([
+        'key'    => 'group_about_founder',
+        'title'  => 'About Us — Founder Quote & Bio',
+        'fields' => [
+            ['key' => 'field_about_founder_quote', 'label' => 'Quote',        'name' => 'about_founder_quote', 'type' => 'textarea', 'rows' => 3],
+            ['key' => 'field_about_founder_name',  'label' => 'Founder Name', 'name' => 'about_founder_name',  'type' => 'text',     'default_value' => 'Dr. Prakash Bhaliya'],
+            ['key' => 'field_about_founder_role',  'label' => 'Founder Role', 'name' => 'about_founder_role',  'type' => 'text',     'default_value' => 'Founder of SkillUp Juniors'],
+            ['key' => 'field_about_founder_bio',   'label' => 'Bio / About',  'name' => 'about_founder_bio',   'type' => 'textarea', 'rows' => 6],
+            ['key' => 'field_about_founder_image', 'label' => 'Founder Photo','name' => 'about_founder_image', 'type' => 'image',    'return_format' => 'array', 'preview_size' => 'medium'],
+        ],
+        'location'   => $about_page_location,
+        'menu_order' => 30,
+    ]);
+
+    // About: Teaching Approach
+    acf_add_local_field_group([
+        'key'    => 'group_about_approach',
+        'title'  => 'About Us — Teaching Approach',
+        'fields' => [
+            ['key' => 'field_about_approach_heading', 'label' => 'Section Heading',  'name' => 'about_approach_heading',    'type' => 'text',    'default_value' => 'Teaching Approach'],
+            ['key' => 'field_about_approach_sub',     'label' => 'Section Sub-text', 'name' => 'about_approach_subheading', 'type' => 'textarea','rows' => 2],
+            [
+                'key'          => 'field_about_approach_items',
+                'label'        => 'Approach Cards',
+                'name'         => 'about_approach_items',
+                'type'         => 'repeater',
+                'min'          => 1,
+                'max'          => 8,
+                'layout'       => 'block',
+                'button_label' => 'Add Card',
+                'sub_fields'   => [
+                    ['key' => 'field_about_approach_title', 'label' => 'Card Title',       'name' => 'approach_title',       'type' => 'text'],
+                    ['key' => 'field_about_approach_desc',  'label' => 'Card Description', 'name' => 'approach_description', 'type' => 'textarea', 'rows' => 3],
+                    ['key' => 'field_about_approach_icon',  'label' => 'Custom Icon (opt.)','name' => 'approach_icon',       'type' => 'image',    'return_format' => 'array'],
+                    [
+                        'key'           => 'field_about_approach_color',
+                        'label'         => 'Icon Color',
+                        'name'          => 'approach_color',
+                        'type'          => 'select',
+                        'choices'       => ['blue' => 'Blue', 'green' => 'Green', 'yellow' => 'Yellow', 'teal' => 'Teal'],
+                        'default_value' => 'blue',
+                    ],
+                ],
+            ],
+        ],
+        'location'   => $about_page_location,
+        'menu_order' => 40,
+    ]);
+
+    // About: App Download
+    acf_add_local_field_group([
+        'key'    => 'group_about_app',
+        'title'  => 'About Us — App Download Section',
+        'fields' => [
+            ['key' => 'field_about_app_heading',      'label' => 'Heading',              'name' => 'about_app_heading',       'type' => 'text',    'default_value' => 'Start Learning Anywhere, Anytime'],
+            ['key' => 'field_about_app_subtext',      'label' => 'Sub-text',             'name' => 'about_app_subtext',       'type' => 'textarea','rows' => 2],
+            ['key' => 'field_about_app_android_url',  'label' => 'Android / Play URL',   'name' => 'about_app_android_url',   'type' => 'url'],
+            ['key' => 'field_about_app_android_label','label' => 'Android Button Label', 'name' => 'about_app_android_label', 'type' => 'text',    'default_value' => 'Google Play'],
+            ['key' => 'field_about_app_ios_url',      'label' => 'iOS / Web Portal URL', 'name' => 'about_app_ios_url',       'type' => 'url'],
+            ['key' => 'field_about_app_ios_label',    'label' => 'iOS Button Label',     'name' => 'about_app_ios_label',     'type' => 'text',    'default_value' => 'Web Portal'],
+        ],
+        'location'   => $about_page_location,
+        'menu_order' => 50,
+    ]);
 }
 
 // ─── Lead Form AJAX Handler ────────────────────────────────────────────────────
