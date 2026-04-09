@@ -627,6 +627,188 @@ function sj_register_acf_fields() {
         'menu_order' => 60,
     ]);
 
+    // ── Skill Development Page ────────────────────────────────────────────────
+    $sd_page_location = [[[
+        'param'    => 'page_template',
+        'operator' => '==',
+        'value'    => 'page-skill-development.php',
+    ]]];
+
+    // SD: Hero
+    acf_add_local_field_group([
+        'key'    => 'group_sd_hero',
+        'title'  => 'Skill Dev — Hero',
+        'fields' => [
+            ['key' => 'field_sd_hero_badge',      'label' => 'Badge Text',          'name' => 'sd_hero_badge',      'type' => 'text',     'default_value' => 'Junior Skill Development Program'],
+            ['key' => 'field_sd_hero_heading',    'label' => 'Heading (HTML ok)',   'name' => 'sd_hero_heading',    'type' => 'text',     'default_value' => 'Build Confident <span>Personalities</span>'],
+            ['key' => 'field_sd_hero_tagline',    'label' => 'Tagline / Quote',     'name' => 'sd_hero_tagline',    'type' => 'text',     'default_value' => '"We don\'t just teach skills. We build confident personalities."'],
+            ['key' => 'field_sd_hero_sub',        'label' => 'Sub-heading',         'name' => 'sd_hero_subheading', 'type' => 'textarea', 'rows' => 2],
+            ['key' => 'field_sd_stat_number',     'label' => 'Stat — Number',       'name' => 'sd_stat_number',     'type' => 'text',     'default_value' => '5,000+'],
+            ['key' => 'field_sd_stat_label',      'label' => 'Stat — Label',        'name' => 'sd_stat_label',      'type' => 'text',     'default_value' => 'Students'],
+        ],
+        'location'   => $sd_page_location,
+        'menu_order' => 10,
+    ]);
+
+    // SD: Lead Form
+    acf_add_local_field_group([
+        'key'    => 'group_sd_form',
+        'title'  => 'Skill Dev — Lead Form',
+        'fields' => [
+            ['key' => 'field_sd_form_heading', 'label' => 'Form Heading (HTML ok)', 'name' => 'sd_form_heading',    'type' => 'text',     'default_value' => 'Book a <span>Free Demo Class</span> Today!'],
+            ['key' => 'field_sd_form_sub',     'label' => 'Form Sub-text',          'name' => 'sd_form_subheading', 'type' => 'textarea', 'rows' => 2],
+        ],
+        'location'   => $sd_page_location,
+        'menu_order' => 15,
+    ]);
+
+    // SD: Program Focus
+    acf_add_local_field_group([
+        'key'    => 'group_sd_focus',
+        'title'  => 'Skill Dev — Program Focus',
+        'fields' => [
+            ['key' => 'field_sd_focus_heading',    'label' => 'Focus Section Heading', 'name' => 'sd_focus_heading',    'type' => 'text', 'default_value' => 'A structured program focused on:'],
+            ['key' => 'field_sd_focus_point1',     'label' => 'Focus Point 1',         'name' => 'sd_focus_point1',     'type' => 'text', 'default_value' => 'Speaking'],
+            ['key' => 'field_sd_focus_point2',     'label' => 'Focus Point 2',         'name' => 'sd_focus_point2',     'type' => 'text', 'default_value' => 'Reading'],
+            ['key' => 'field_sd_focus_point3',     'label' => 'Focus Point 3',         'name' => 'sd_focus_point3',     'type' => 'text', 'default_value' => 'Listening'],
+            ['key' => 'field_sd_focus_point4',     'label' => 'Focus Point 4',         'name' => 'sd_focus_point4',     'type' => 'text', 'default_value' => 'Writing'],
+            ['key' => 'field_sd_holistic_heading', 'label' => 'Holistic Section Heading','name' => 'sd_holistic_heading','type' => 'text', 'default_value' => 'Holistic Development'],
+            ['key' => 'field_sd_holistic_item1',   'label' => 'Holistic Item 1',        'name' => 'sd_holistic_item1',  'type' => 'text', 'default_value' => 'Communication Skills'],
+            ['key' => 'field_sd_holistic_item2',   'label' => 'Holistic Item 2',        'name' => 'sd_holistic_item2',  'type' => 'text', 'default_value' => 'Personality Development'],
+            ['key' => 'field_sd_holistic_item3',   'label' => 'Holistic Item 3',        'name' => 'sd_holistic_item3',  'type' => 'text', 'default_value' => 'Thinking Skills'],
+            ['key' => 'field_sd_holistic_item4',   'label' => 'Holistic Item 4',        'name' => 'sd_holistic_item4',  'type' => 'text', 'default_value' => 'Leadership Skills'],
+            ['key' => 'field_sd_holistic_item5',   'label' => 'Holistic Item 5',        'name' => 'sd_holistic_item5',  'type' => 'text', 'default_value' => 'Social Awareness'],
+            ['key' => 'field_sd_holistic_item6',   'label' => 'Holistic Item 6',        'name' => 'sd_holistic_item6',  'type' => 'text', 'default_value' => 'Life Skills'],
+        ],
+        'location'   => $sd_page_location,
+        'menu_order' => 20,
+    ]);
+
+    // SD: Course Structure
+    acf_add_local_field_group([
+        'key'    => 'group_sd_structure',
+        'title'  => 'Skill Dev — Course Structure',
+        'fields' => [
+            ['key' => 'field_sd_structure_heading', 'label' => 'Section Heading',    'name' => 'sd_structure_heading', 'type' => 'text', 'default_value' => 'Course Structure'],
+            ['key' => 'field_sd_phase1_label',      'label' => 'Phase 1 — Label',    'name' => 'sd_phase1_label',      'type' => 'text', 'default_value' => 'Startup'],
+            ['key' => 'field_sd_phase1_duration',   'label' => 'Phase 1 — Duration', 'name' => 'sd_phase1_duration',   'type' => 'text', 'default_value' => '1 Month'],
+            ['key' => 'field_sd_phase2_label',      'label' => 'Phase 2 — Label',    'name' => 'sd_phase2_label',      'type' => 'text', 'default_value' => 'Foundation'],
+            ['key' => 'field_sd_phase2_duration',   'label' => 'Phase 2 — Duration', 'name' => 'sd_phase2_duration',   'type' => 'text', 'default_value' => '5 Months'],
+        ],
+        'location'   => $sd_page_location,
+        'menu_order' => 30,
+    ]);
+
+    // SD: Curriculum (5 fixed cards)
+    acf_add_local_field_group([
+        'key'    => 'group_sd_curriculum',
+        'title'  => 'Skill Dev — Curriculum (5 Class Cards)',
+        'fields' => [
+            ['key' => 'field_sd_curr_heading',     'label' => 'Section Heading',       'name' => 'sd_curriculum_heading', 'type' => 'text', 'default_value' => 'Curriculum'],
+            ['key' => 'field_sd_curr_card1_label', 'label' => 'Card 1 — Label',        'name' => 'sd_curr_card1_label',   'type' => 'text', 'default_value' => 'Class 1-2'],
+            ['key' => 'field_sd_curr_card1_desc',  'label' => 'Card 1 — Description',  'name' => 'sd_curr_card1_desc',    'type' => 'textarea', 'rows' => 3],
+            ['key' => 'field_sd_curr_card2_label', 'label' => 'Card 2 — Label',        'name' => 'sd_curr_card2_label',   'type' => 'text', 'default_value' => 'Class 3-4'],
+            ['key' => 'field_sd_curr_card2_desc',  'label' => 'Card 2 — Description',  'name' => 'sd_curr_card2_desc',    'type' => 'textarea', 'rows' => 3],
+            ['key' => 'field_sd_curr_card3_label', 'label' => 'Card 3 — Label',        'name' => 'sd_curr_card3_label',   'type' => 'text', 'default_value' => 'Class 5-6'],
+            ['key' => 'field_sd_curr_card3_desc',  'label' => 'Card 3 — Description',  'name' => 'sd_curr_card3_desc',    'type' => 'textarea', 'rows' => 3],
+            ['key' => 'field_sd_curr_card4_label', 'label' => 'Card 4 — Label',        'name' => 'sd_curr_card4_label',   'type' => 'text', 'default_value' => 'Class 7-8'],
+            ['key' => 'field_sd_curr_card4_desc',  'label' => 'Card 4 — Description',  'name' => 'sd_curr_card4_desc',    'type' => 'textarea', 'rows' => 3],
+            ['key' => 'field_sd_curr_card5_label', 'label' => 'Card 5 — Label',        'name' => 'sd_curr_card5_label',   'type' => 'text', 'default_value' => 'Class 9-10'],
+            ['key' => 'field_sd_curr_card5_desc',  'label' => 'Card 5 — Description',  'name' => 'sd_curr_card5_desc',    'type' => 'textarea', 'rows' => 3],
+        ],
+        'location'   => $sd_page_location,
+        'menu_order' => 40,
+    ]);
+
+    // SD: Learning Approach (6 fixed)
+    acf_add_local_field_group([
+        'key'    => 'group_sd_approach',
+        'title'  => 'Skill Dev — Learning Approach (6 Items)',
+        'fields' => [
+            ['key' => 'field_sd_approach_heading',  'label' => 'Section Heading',   'name' => 'sd_approach_heading',  'type' => 'text', 'default_value' => 'Our Learning Approach'],
+            ['key' => 'field_sd_approach1_title',   'label' => 'Item 1 — Title',    'name' => 'sd_approach1_title',   'type' => 'text', 'default_value' => 'Debates'],
+            ['key' => 'field_sd_approach2_title',   'label' => 'Item 2 — Title',    'name' => 'sd_approach2_title',   'type' => 'text', 'default_value' => 'Group Discussions'],
+            ['key' => 'field_sd_approach3_title',   'label' => 'Item 3 — Title',    'name' => 'sd_approach3_title',   'type' => 'text', 'default_value' => 'Real-life Examples'],
+            ['key' => 'field_sd_approach4_title',   'label' => 'Item 4 — Title',    'name' => 'sd_approach4_title',   'type' => 'text', 'default_value' => 'Innovative Activities'],
+            ['key' => 'field_sd_approach5_title',   'label' => 'Item 5 — Title',    'name' => 'sd_approach5_title',   'type' => 'text', 'default_value' => 'Story-based Teaching'],
+            ['key' => 'field_sd_approach6_title',   'label' => 'Item 6 — Title',    'name' => 'sd_approach6_title',   'type' => 'text', 'default_value' => 'Games & Challenges'],
+        ],
+        'location'   => $sd_page_location,
+        'menu_order' => 50,
+    ]);
+
+    // SD: Real-World Exposure (4 fixed cards)
+    acf_add_local_field_group([
+        'key'    => 'group_sd_exposure',
+        'title'  => 'Skill Dev — Real-World Exposure (4 Cards)',
+        'fields' => [
+            ['key' => 'field_sd_exposure_heading',  'label' => 'Section Heading',    'name' => 'sd_exposure_heading',  'type' => 'text', 'default_value' => 'Builds Real-World Exposure'],
+            ['key' => 'field_sd_exp_card1_title',   'label' => 'Card 1 — Title',     'name' => 'sd_exp_card1_title',   'type' => 'text', 'default_value' => 'Junior Spotlight'],
+            ['key' => 'field_sd_exp_card1_desc',    'label' => 'Card 1 — Desc',      'name' => 'sd_exp_card1_desc',    'type' => 'textarea', 'rows' => 2],
+            ['key' => 'field_sd_exp_card2_title',   'label' => 'Card 2 — Title',     'name' => 'sd_exp_card2_title',   'type' => 'text', 'default_value' => 'Junior Parliament'],
+            ['key' => 'field_sd_exp_card2_desc',    'label' => 'Card 2 — Desc',      'name' => 'sd_exp_card2_desc',    'type' => 'textarea', 'rows' => 2],
+            ['key' => 'field_sd_exp_card3_title',   'label' => 'Card 3 — Title',     'name' => 'sd_exp_card3_title',   'type' => 'text', 'default_value' => 'Junior Entrepreneur'],
+            ['key' => 'field_sd_exp_card3_desc',    'label' => 'Card 3 — Desc',      'name' => 'sd_exp_card3_desc',    'type' => 'textarea', 'rows' => 2],
+            ['key' => 'field_sd_exp_card4_title',   'label' => 'Card 4 — Title',     'name' => 'sd_exp_card4_title',   'type' => 'text', 'default_value' => 'Junior Storytelling'],
+            ['key' => 'field_sd_exp_card4_desc',    'label' => 'Card 4 — Desc',      'name' => 'sd_exp_card4_desc',    'type' => 'textarea', 'rows' => 2],
+        ],
+        'location'   => $sd_page_location,
+        'menu_order' => 60,
+    ]);
+
+    // SD: Videos (3 fixed)
+    acf_add_local_field_group([
+        'key'    => 'group_sd_videos',
+        'title'  => 'Skill Dev — Demos / Kids Videos (3)',
+        'fields' => [
+            ['key' => 'field_sd_video_heading', 'label' => 'Section Heading',  'name' => 'sd_video_heading', 'type' => 'text', 'default_value' => 'Demos & Kids Videos'],
+            ['key' => 'field_sd_video1_url',    'label' => 'Video 1 — URL',    'name' => 'sd_video1_url',    'type' => 'url'],
+            ['key' => 'field_sd_video1_title',  'label' => 'Video 1 — Title',  'name' => 'sd_video1_title',  'type' => 'text', 'default_value' => 'Student Demo 1'],
+            ['key' => 'field_sd_video2_url',    'label' => 'Video 2 — URL',    'name' => 'sd_video2_url',    'type' => 'url'],
+            ['key' => 'field_sd_video2_title',  'label' => 'Video 2 — Title',  'name' => 'sd_video2_title',  'type' => 'text', 'default_value' => 'Student Demo 2'],
+            ['key' => 'field_sd_video3_url',    'label' => 'Video 3 — URL',    'name' => 'sd_video3_url',    'type' => 'url'],
+            ['key' => 'field_sd_video3_title',  'label' => 'Video 3 — Title',  'name' => 'sd_video3_title',  'type' => 'text', 'default_value' => 'Student Demo 3'],
+        ],
+        'location'   => $sd_page_location,
+        'menu_order' => 70,
+    ]);
+
+    // SD: Testimonials (3 fixed)
+    acf_add_local_field_group([
+        'key'    => 'group_sd_testimonials',
+        'title'  => 'Skill Dev — Testimonials (3)',
+        'fields' => [
+            ['key' => 'field_sd_testi_heading',  'label' => 'Section Heading',    'name' => 'sd_testi_heading',  'type' => 'text', 'default_value' => 'What Parents Say'],
+            ['key' => 'field_sd_testi1_name',    'label' => 'Testimonial 1 — Name',   'name' => 'sd_testi1_name',   'type' => 'text',     'default_value' => 'Priya Sharma'],
+            ['key' => 'field_sd_testi1_text',    'label' => 'Testimonial 1 — Quote',  'name' => 'sd_testi1_text',   'type' => 'textarea', 'rows' => 3],
+            ['key' => 'field_sd_testi1_rating',  'label' => 'Testimonial 1 — Rating (1-5)', 'name' => 'sd_testi1_rating', 'type' => 'number', 'default_value' => 5, 'min' => 1, 'max' => 5],
+            ['key' => 'field_sd_testi2_name',    'label' => 'Testimonial 2 — Name',   'name' => 'sd_testi2_name',   'type' => 'text',     'default_value' => 'Ravi Kumar'],
+            ['key' => 'field_sd_testi2_text',    'label' => 'Testimonial 2 — Quote',  'name' => 'sd_testi2_text',   'type' => 'textarea', 'rows' => 3],
+            ['key' => 'field_sd_testi2_rating',  'label' => 'Testimonial 2 — Rating (1-5)', 'name' => 'sd_testi2_rating', 'type' => 'number', 'default_value' => 5, 'min' => 1, 'max' => 5],
+            ['key' => 'field_sd_testi3_name',    'label' => 'Testimonial 3 — Name',   'name' => 'sd_testi3_name',   'type' => 'text',     'default_value' => 'Anitha Reddy'],
+            ['key' => 'field_sd_testi3_text',    'label' => 'Testimonial 3 — Quote',  'name' => 'sd_testi3_text',   'type' => 'textarea', 'rows' => 3],
+            ['key' => 'field_sd_testi3_rating',  'label' => 'Testimonial 3 — Rating (1-5)', 'name' => 'sd_testi3_rating', 'type' => 'number', 'default_value' => 5, 'min' => 1, 'max' => 5],
+        ],
+        'location'   => $sd_page_location,
+        'menu_order' => 80,
+    ]);
+
+    // SD: App Download
+    acf_add_local_field_group([
+        'key'    => 'group_sd_app',
+        'title'  => 'Skill Dev — App Download',
+        'fields' => [
+            ['key' => 'field_sd_app_heading',       'label' => 'Heading',              'name' => 'sd_app_heading',       'type' => 'text',    'default_value' => 'Learn Anytime, Anywhere'],
+            ['key' => 'field_sd_app_sub',           'label' => 'Sub-text',             'name' => 'sd_app_subtext',       'type' => 'textarea','rows' => 2],
+            ['key' => 'field_sd_app_android_url',   'label' => 'Android / Play URL',   'name' => 'sd_app_android_url',   'type' => 'url'],
+            ['key' => 'field_sd_app_android_label', 'label' => 'Android Button Label', 'name' => 'sd_app_android_label', 'type' => 'text',    'default_value' => 'Google Play'],
+            ['key' => 'field_sd_app_ios_url',       'label' => 'iOS / Web Portal URL', 'name' => 'sd_app_ios_url',       'type' => 'url'],
+            ['key' => 'field_sd_app_ios_label',     'label' => 'iOS Button Label',     'name' => 'sd_app_ios_label',     'type' => 'text',    'default_value' => 'Web Portal'],
+        ],
+        'location'   => $sd_page_location,
+        'menu_order' => 90,
+    ]);
+
     // ── Phonics Program Page ───────────────────────────────────────────────────
     $ph_page_location = [[[
         'param'    => 'page_template',

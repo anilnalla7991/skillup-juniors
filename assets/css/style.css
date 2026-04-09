@@ -2562,6 +2562,432 @@ a.ct-info__value:hover { color: var(--clr-blue); }
 }
 
 /* ════════════════════════════════════════════════════════
+   SKILL DEVELOPMENT PAGE  (sd-*)
+   ════════════════════════════════════════════════════════ */
+
+/* ── Hero ───────────────────────────────────────────────── */
+.sd-hero {
+    background: linear-gradient(135deg, var(--clr-navy) 0%, #1a3a7a 55%, #1565a0 100%);
+    color: #fff;
+    padding: 72px 0 64px;
+}
+.sd-hero__inner {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 48px;
+    align-items: center;
+}
+.sd-hero__badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 6px 18px;
+    border-radius: var(--radius-pill);
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.25);
+}
+.sd-hero__heading {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.18;
+    color: #fff;
+    margin-bottom: 16px;
+}
+.sd-hero__heading span { color: var(--clr-yellow); }
+.sd-hero__tagline {
+    font-size: 1rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.78);
+    margin-bottom: 14px;
+}
+.sd-hero__sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+.sd-hero__stat {
+    display: inline-flex;
+    flex-direction: column;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 16px;
+    padding: 16px 28px;
+}
+.sd-hero__stat-num {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--clr-yellow);
+    line-height: 1;
+}
+.sd-hero__stat-lbl {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.75);
+    margin-top: 4px;
+}
+
+/* Lead Form Card inside Hero */
+.sd-form-card {
+    background: #fff;
+    border-radius: var(--radius-card);
+    padding: 36px 32px;
+    box-shadow: var(--shadow-lg);
+}
+.sd-form-card__heading {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--clr-navy);
+    margin-bottom: 8px;
+}
+.sd-form-card__heading span { color: var(--clr-blue); }
+.sd-form-card__sub {
+    font-size: 0.9rem;
+    color: var(--clr-muted);
+    margin-bottom: 20px;
+}
+
+/* ── Program Focus ──────────────────────────────────────── */
+.sd-focus {
+    padding: var(--section-py) 0;
+    background: var(--clr-bg);
+}
+.sd-focus__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+}
+.sd-focus__col {
+    background: var(--clr-navy);
+    color: #fff;
+    border-radius: var(--radius-card);
+    padding: 36px 32px;
+}
+.sd-focus__heading {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--clr-yellow);
+    margin-bottom: 20px;
+}
+.sd-focus__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.sd-focus__list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.98rem;
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+}
+.sd-focus__list li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--clr-yellow);
+}
+
+/* ── Course Structure ───────────────────────────────────── */
+.sd-structure {
+    padding: var(--section-py) 0;
+}
+.sd-structure__track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+.sd-structure__phase-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border-radius: 16px;
+    padding: 28px 48px;
+    min-width: 200px;
+}
+.sd-structure__phase-box--startup {
+    background: var(--clr-blue);
+    color: #fff;
+}
+.sd-structure__phase-box--foundation {
+    background: var(--clr-navy);
+    color: #fff;
+}
+.sd-structure__phase-label {
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+.sd-structure__phase-duration {
+    font-size: 0.92rem;
+    opacity: 0.85;
+}
+.sd-structure__arrow {
+    color: var(--clr-navy);
+    opacity: 0.4;
+    flex-shrink: 0;
+}
+
+/* ── Curriculum ─────────────────────────────────────────── */
+.sd-curriculum {
+    padding: var(--section-py) 0;
+    background: var(--clr-bg);
+}
+.sd-curriculum__scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+.sd-curriculum__scroll::-webkit-scrollbar { height: 6px; }
+.sd-curriculum__scroll::-webkit-scrollbar-track { background: #eee; border-radius: 4px; }
+.sd-curriculum__scroll::-webkit-scrollbar-thumb { background: var(--clr-navy); border-radius: 4px; }
+.sd-curriculum__card {
+    flex: 0 0 220px;
+    scroll-snap-align: start;
+    background: var(--clr-navy);
+    color: #fff;
+    border-radius: var(--radius-card);
+    padding: 28px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.sd-curriculum__label {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--clr-yellow);
+}
+.sd-curriculum__desc {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.6;
+}
+
+/* ── Learning Approach ──────────────────────────────────── */
+.sd-approach {
+    padding: var(--section-py) 0;
+    background: var(--clr-navy);
+}
+.sd-approach__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+.sd-approach__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: var(--radius-card);
+    padding: 32px 20px;
+    text-align: center;
+    transition: background 0.22s, transform 0.22s;
+}
+.sd-approach__item:hover {
+    background: rgba(255,255,255,0.14);
+    transform: translateY(-4px);
+}
+.sd-approach__icon { color: var(--clr-yellow); }
+.sd-approach__label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* ── Real-World Exposure ────────────────────────────────── */
+.sd-exposure {
+    padding: var(--section-py) 0;
+}
+.sd-exposure__scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+.sd-exposure__scroll::-webkit-scrollbar { height: 6px; }
+.sd-exposure__scroll::-webkit-scrollbar-track { background: #eee; border-radius: 4px; }
+.sd-exposure__scroll::-webkit-scrollbar-thumb { background: var(--clr-navy); border-radius: 4px; }
+.sd-exposure__card {
+    flex: 0 0 260px;
+    scroll-snap-align: start;
+    background: var(--clr-navy);
+    color: #fff;
+    border-radius: var(--radius-card);
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.22s, box-shadow 0.22s;
+}
+.sd-exposure__card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+.sd-exposure__card-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--clr-yellow);
+}
+.sd-exposure__card-desc {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.65;
+}
+
+/* ── Videos ─────────────────────────────────────────────── */
+.sd-videos {
+    padding: var(--section-py) 0;
+    background: var(--clr-bg);
+}
+.sd-videos__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+.sd-videos__item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.sd-videos__frame-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #000;
+}
+.sd-videos__frame-wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.sd-videos__caption {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--clr-navy);
+    text-align: center;
+}
+
+/* ── Testimonials ───────────────────────────────────────── */
+.sd-testimonials {
+    padding: var(--section-py) 0;
+}
+.sd-testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+.sd-testi-card {
+    background: var(--clr-bg);
+    border-radius: var(--radius-card);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: var(--shadow-sm);
+}
+.sd-testi-card__stars { color: var(--clr-yellow); font-size: 1.1rem; letter-spacing: 2px; }
+.sd-testi-card__text {
+    font-size: 0.95rem;
+    color: var(--clr-text);
+    line-height: 1.7;
+    flex: 1;
+}
+.sd-testi-card__name {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--clr-navy);
+}
+
+/* ── App Download ───────────────────────────────────────── */
+.sd-app {
+    padding: var(--section-py) 0;
+    background: var(--clr-navy);
+}
+.sd-app__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+.sd-app__heading {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    color: #fff;
+}
+.sd-app__sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.75);
+    max-width: 520px;
+}
+.sd-app__btns {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 8px;
+}
+.sd-app__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--clr-yellow);
+    color: var(--clr-navy);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 14px 32px;
+    border-radius: var(--radius-pill);
+    transition: opacity 0.2s, transform 0.2s;
+}
+.sd-app__btn:hover { opacity: 0.9; transform: translateY(-2px); }
+.sd-app__btn--secondary {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.35);
+}
+.sd-app__btn--secondary:hover { background: rgba(255,255,255,0.22); }
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .sd-hero__inner         { grid-template-columns: 1fr; }
+    .sd-hero__form-wrap     { max-width: 540px; }
+    .sd-approach__grid      { grid-template-columns: repeat(2, 1fr); }
+    .sd-videos__grid        { grid-template-columns: 1fr 1fr; }
+    .sd-testimonials__grid  { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+    .sd-focus__grid         { grid-template-columns: 1fr; }
+    .sd-approach__grid      { grid-template-columns: repeat(2, 1fr); }
+    .sd-videos__grid        { grid-template-columns: 1fr; }
+    .sd-testimonials__grid  { grid-template-columns: 1fr; }
+    .sd-structure__track    { flex-direction: column; }
+    .sd-structure__arrow    { transform: rotate(90deg); }
+}
+@media (max-width: 480px) {
+    .sd-approach__grid      { grid-template-columns: 1fr; }
+    .sd-app__btns           { flex-direction: column; align-items: center; }
+}
+
+/* ════════════════════════════════════════════════════════
    PHONICS PROGRAM PAGE  (ph-*)
    ════════════════════════════════════════════════════════ */
 
