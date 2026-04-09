@@ -137,18 +137,19 @@ ul { list-style: none; }
     justify-content: center;
     background: var(--clr-navy);
     border-radius: var(--radius-pill);
-    padding: 7px 16px;
+    padding: 6px 10px;
     gap: 0;
     flex-wrap: nowrap;
+    overflow: hidden;
 }
-.sj-nav__list li { flex-shrink: 0; }
+.sj-nav__list li { flex-shrink: 1; min-width: 0; }
 .sj-nav__list li a {
     display: block;
     color: var(--clr-white);
-    font-size: 13.5px;
+    font-size: 12.5px;
     font-weight: 600;
-    letter-spacing: 0.2px;
-    padding: 9px 15px;
+    letter-spacing: 0.1px;
+    padding: 8px 11px;
     border-radius: var(--radius-pill);
     transition: background 0.22s;
     white-space: nowrap;
@@ -4032,10 +4033,10 @@ a.ct-info__value:hover { color: var(--clr-blue); }
 }
 
 /* ════════════════════════════════════════════════════════
-   RESPONSIVE — MOBILE (max 860px)
+   RESPONSIVE — MOBILE (max 1080px)
    Switch to hamburger + side drawer
    ════════════════════════════════════════════════════════ */
-@media (max-width: 860px) {
+@media (max-width: 1080px) {
     /* Show hamburger, hide desktop nav + CTA */
     .sj-header__toggle { display: flex; }
     .sj-header__nav    { display: none; }
