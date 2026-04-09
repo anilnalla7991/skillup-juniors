@@ -2948,7 +2948,7 @@ a.ct-info__value:hover { color: var(--clr-blue); }
 }
 
 /* ── JNE App (reuses ph-app, minor override) ────────────── */
-.jne-app { background: linear-gradient(135deg, var(--clr-navy) 0%, #163060 100%); }
+.jne-app { background: linear-gradient(135deg, var(--clr-green) 0%, #1a9a5c 100%); }
 
 /* ── Responsive ─────────────────────────────────────────── */
 @media (max-width: 1100px) {
@@ -3333,7 +3333,7 @@ a.ct-info__value:hover { color: var(--clr-blue); }
 /* ── App Download ───────────────────────────────────────── */
 .sd-app {
     padding: var(--section-py) 0;
-    background: var(--clr-navy);
+    background: linear-gradient(135deg, var(--clr-green) 0%, #1a9a5c 100%);
 }
 .sd-app__inner {
     display: flex;
@@ -3953,7 +3953,7 @@ a.ct-info__value:hover { color: var(--clr-blue); }
 
 /* ── App Download ───────────────────────────────────────── */
 .ph-app {
-    background: linear-gradient(135deg, var(--clr-navy) 0%, #1a3a7a 100%);
+    background: linear-gradient(135deg, var(--clr-green) 0%, #1a9a5c 100%);
     padding: 72px 0;
 }
 .ph-app__inner { display: flex; justify-content: center; }
