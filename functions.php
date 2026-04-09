@@ -54,6 +54,7 @@ function sj_header_fallback_menu() {
         home_url('/vedic-maths')        => 'Vedic Maths Program',
         home_url('/phonics')            => 'Phonics Program',
         home_url('/skill-development')  => 'Skill Development',
+        home_url('/junior-news-express') => 'Junior News Express',
         home_url('/contact')            => 'Contact Us',
     ];
     echo '<ul class="sj-nav__list">';
@@ -70,6 +71,7 @@ function sj_drawer_fallback_menu() {
         home_url('/vedic-maths')        => 'Vedic Maths Program',
         home_url('/phonics')            => 'Phonics Program',
         home_url('/skill-development')  => 'Skill Development',
+        home_url('/junior-news-express') => 'Junior News Express',
         home_url('/contact')            => 'Contact Us',
     ];
     echo '<ul class="sj-drawer__list">';
@@ -625,6 +627,137 @@ function sj_register_acf_fields() {
         ],
         'location'   => $ct_page_location,
         'menu_order' => 60,
+    ]);
+
+    // ── Junior News Express Page ──────────────────────────────────────────────
+    $jne_page_location = [[[
+        'param'    => 'page_template',
+        'operator' => '==',
+        'value'    => 'page-junior-news-express.php',
+    ]]];
+
+    // JNE: Hero
+    acf_add_local_field_group([
+        'key'    => 'group_jne_hero',
+        'title'  => 'JNE — Hero',
+        'fields' => [
+            ['key' => 'field_jne_hero_badge',      'label' => 'Badge Text',          'name' => 'jne_hero_badge',      'type' => 'text',     'default_value' => 'Junior News Express'],
+            ['key' => 'field_jne_hero_heading',    'label' => 'Heading (HTML ok)',   'name' => 'jne_hero_heading',    'type' => 'text',     'default_value' => 'Understanding Daily <span>Newspaper for Kids</span>'],
+            ['key' => 'field_jne_hero_tagline',    'label' => 'Tagline',             'name' => 'jne_hero_tagline',    'type' => 'text',     'default_value' => 'Try Daily News, Also Daily Learning'],
+            ['key' => 'field_jne_hero_sub',        'label' => 'Sub-heading',         'name' => 'jne_hero_subheading', 'type' => 'textarea', 'rows' => 2],
+            ['key' => 'field_jne_hero_detail1',    'label' => 'Detail 1 (class/age)','name' => 'jne_hero_detail1',   'type' => 'text',     'default_value' => 'Class 1–10 | Boys & Girls'],
+            ['key' => 'field_jne_hero_detail2',    'label' => 'Detail 2 (frequency)','name' => 'jne_hero_detail2',   'type' => 'text',     'default_value' => '5 Days a Week'],
+            ['key' => 'field_jne_hero_image',      'label' => 'Hero Image',          'name' => 'jne_hero_image',      'type' => 'image',    'return_format' => 'array', 'preview_size' => 'medium'],
+            ['key' => 'field_jne_hero_cta1_text',  'label' => 'CTA 1 — Text',        'name' => 'jne_hero_cta1_text',  'type' => 'text',     'default_value' => 'Book Free Demo'],
+            ['key' => 'field_jne_hero_cta1_url',   'label' => 'CTA 1 — URL',         'name' => 'jne_hero_cta1_url',   'type' => 'text',     'default_value' => '#jne-lead-form'],
+            ['key' => 'field_jne_hero_cta2_text',  'label' => 'CTA 2 — Text',        'name' => 'jne_hero_cta2_text',  'type' => 'text',     'default_value' => 'Learn More'],
+            ['key' => 'field_jne_hero_cta2_url',   'label' => 'CTA 2 — URL',         'name' => 'jne_hero_cta2_url',   'type' => 'text',     'default_value' => '#jne-intro'],
+            ['key' => 'field_jne_step1_text',      'label' => 'Step 1 — Text',       'name' => 'jne_step1_text',      'type' => 'text',     'default_value' => 'Choose your child\'s grade'],
+            ['key' => 'field_jne_step2_text',      'label' => 'Step 2 — Text',       'name' => 'jne_step2_text',      'type' => 'text',     'default_value' => 'Attend a Free Trial Session'],
+            ['key' => 'field_jne_step3_text',      'label' => 'Step 3 — Text',       'name' => 'jne_step3_text',      'type' => 'text',     'default_value' => 'Enroll & start learning!'],
+        ],
+        'location'   => $jne_page_location,
+        'menu_order' => 10,
+    ]);
+
+    // JNE: Lead Form
+    acf_add_local_field_group([
+        'key'    => 'group_jne_form',
+        'title'  => 'JNE — Lead Form',
+        'fields' => [
+            ['key' => 'field_jne_form_heading', 'label' => 'Form Heading (HTML ok)', 'name' => 'jne_form_heading',    'type' => 'text',     'default_value' => 'Book a <span>Free Demo Session</span> Today!'],
+            ['key' => 'field_jne_form_sub',     'label' => 'Form Sub-text',          'name' => 'jne_form_subheading', 'type' => 'textarea', 'rows' => 2],
+            ['key' => 'field_jne_form_perk1',   'label' => 'Perk 1',                 'name' => 'jne_form_perk1',      'type' => 'text',     'default_value' => '100% Free — No Commitment'],
+            ['key' => 'field_jne_form_perk2',   'label' => 'Perk 2',                 'name' => 'jne_form_perk2',      'type' => 'text',     'default_value' => 'Live Online or In-Person'],
+            ['key' => 'field_jne_form_perk3',   'label' => 'Perk 3',                 'name' => 'jne_form_perk3',      'type' => 'text',     'default_value' => 'Certified Expert Trainers'],
+        ],
+        'location'   => $jne_page_location,
+        'menu_order' => 20,
+    ]);
+
+    // JNE: Introducing Section (4 benefit cards)
+    acf_add_local_field_group([
+        'key'    => 'group_jne_intro',
+        'title'  => 'JNE — Introducing (4 Benefit Cards)',
+        'fields' => [
+            ['key' => 'field_jne_intro_heading', 'label' => 'Section Heading', 'name' => 'jne_intro_heading', 'type' => 'text',     'default_value' => 'Introducing Juniors News Express'],
+            ['key' => 'field_jne_intro_sub',     'label' => 'Section Sub',     'name' => 'jne_intro_sub',     'type' => 'text',     'default_value' => 'A unique program where children learn to:'],
+            ['key' => 'field_jne_intro_card1',   'label' => 'Card 1 — Text',   'name' => 'jne_intro_card1',   'type' => 'text',     'default_value' => 'Understand daily news in a simple way'],
+            ['key' => 'field_jne_intro_card2',   'label' => 'Card 2 — Text',   'name' => 'jne_intro_card2',   'type' => 'text',     'default_value' => 'Express their thoughts confidently'],
+            ['key' => 'field_jne_intro_card3',   'label' => 'Card 3 — Text',   'name' => 'jne_intro_card3',   'type' => 'text',     'default_value' => 'Stay aware of national & international events'],
+            ['key' => 'field_jne_intro_card4',   'label' => 'Card 4 — Text',   'name' => 'jne_intro_card4',   'type' => 'text',     'default_value' => 'Improve vocabulary & communication'],
+        ],
+        'location'   => $jne_page_location,
+        'menu_order' => 30,
+    ]);
+
+    // JNE: How We Teach / What We Cover
+    acf_add_local_field_group([
+        'key'    => 'group_jne_teach_cover',
+        'title'  => 'JNE — How We Teach / What We Cover',
+        'fields' => [
+            ['key' => 'field_jne_teach_heading', 'label' => 'Teach Card — Heading', 'name' => 'jne_teach_heading', 'type' => 'text', 'default_value' => 'HOW WE TEACH'],
+            ['key' => 'field_jne_teach_item1',   'label' => 'Teach Item 1',         'name' => 'jne_teach_item1',   'type' => 'text', 'default_value' => 'Story Format'],
+            ['key' => 'field_jne_teach_item2',   'label' => 'Teach Item 2',         'name' => 'jne_teach_item2',   'type' => 'text', 'default_value' => 'Real-life Examples'],
+            ['key' => 'field_jne_teach_item3',   'label' => 'Teach Item 3 (opt.)',  'name' => 'jne_teach_item3',   'type' => 'text'],
+            ['key' => 'field_jne_cover_heading', 'label' => 'Cover Card — Heading', 'name' => 'jne_cover_heading', 'type' => 'text', 'default_value' => 'WHAT WE COVER'],
+            ['key' => 'field_jne_cover_item1',   'label' => 'Cover Item 1',         'name' => 'jne_cover_item1',   'type' => 'text', 'default_value' => 'The Hindu'],
+            ['key' => 'field_jne_cover_item2',   'label' => 'Cover Item 2',         'name' => 'jne_cover_item2',   'type' => 'text', 'default_value' => 'The Indian Express'],
+            ['key' => 'field_jne_cover_item3',   'label' => 'Cover Item 3 (opt.)',  'name' => 'jne_cover_item3',   'type' => 'text'],
+        ],
+        'location'   => $jne_page_location,
+        'menu_order' => 40,
+    ]);
+
+    // JNE: Daily Learning Structure (5 fixed items)
+    acf_add_local_field_group([
+        'key'    => 'group_jne_structure',
+        'title'  => 'JNE — Daily Learning Structure (5 Items)',
+        'fields' => [
+            ['key' => 'field_jne_structure_heading', 'label' => 'Section Heading',  'name' => 'jne_structure_heading', 'type' => 'text', 'default_value' => 'Daily Learning Structure'],
+            ['key' => 'field_jne_structure_sub',     'label' => 'Section Sub',      'name' => 'jne_structure_sub',     'type' => 'text', 'default_value' => 'Every Session Includes:'],
+            ['key' => 'field_jne_structure_item1',   'label' => 'Item 1 — Text',    'name' => 'jne_structure_item1',   'type' => 'text', 'default_value' => '5 National & International Topics'],
+            ['key' => 'field_jne_structure_item2',   'label' => 'Item 2 — Text',    'name' => 'jne_structure_item2',   'type' => 'text', 'default_value' => '3 Editorial Discussion'],
+            ['key' => 'field_jne_structure_item3',   'label' => 'Item 3 — Text',    'name' => 'jne_structure_item3',   'type' => 'text', 'default_value' => '5 New Terminologies'],
+            ['key' => 'field_jne_structure_item4',   'label' => 'Item 4 — Text',    'name' => 'jne_structure_item4',   'type' => 'text', 'default_value' => 'Quizzes (Daily / Weekly / Monthly)'],
+            ['key' => 'field_jne_structure_item5',   'label' => 'Item 5 — Text',    'name' => 'jne_structure_item5',   'type' => 'text', 'default_value' => 'Daily Notes PDF for Revision'],
+        ],
+        'location'   => $jne_page_location,
+        'menu_order' => 50,
+    ]);
+
+    // JNE: Learning Method (6 fixed cards)
+    acf_add_local_field_group([
+        'key'    => 'group_jne_method',
+        'title'  => 'JNE — Our Learning Method (6 Cards)',
+        'fields' => [
+            ['key' => 'field_jne_method_heading', 'label' => 'Section Heading',  'name' => 'jne_method_heading',  'type' => 'text',     'default_value' => 'Our Learning Method'],
+            ['key' => 'field_jne_method_sub',     'label' => 'Section Sub-text', 'name' => 'jne_method_sub',      'type' => 'textarea', 'rows' => 2],
+            ['key' => 'field_jne_method1_title',  'label' => 'Card 1 — Title',   'name' => 'jne_method1_title',   'type' => 'text',     'default_value' => 'Fun & Engaging Learning'],
+            ['key' => 'field_jne_method2_title',  'label' => 'Card 2 — Title',   'name' => 'jne_method2_title',   'type' => 'text',     'default_value' => 'Interactive Live Sessions'],
+            ['key' => 'field_jne_method3_title',  'label' => 'Card 3 — Title',   'name' => 'jne_method3_title',   'type' => 'text',     'default_value' => 'Mentor Guidance'],
+            ['key' => 'field_jne_method4_title',  'label' => 'Card 4 — Title',   'name' => 'jne_method4_title',   'type' => 'text',     'default_value' => 'Personal Attention'],
+            ['key' => 'field_jne_method5_title',  'label' => 'Card 5 — Title',   'name' => 'jne_method5_title',   'type' => 'text',     'default_value' => 'Story-based Teaching'],
+            ['key' => 'field_jne_method6_title',  'label' => 'Card 6 — Title',   'name' => 'jne_method6_title',   'type' => 'text',     'default_value' => 'Games & Challenges'],
+        ],
+        'location'   => $jne_page_location,
+        'menu_order' => 60,
+    ]);
+
+    // JNE: App Download
+    acf_add_local_field_group([
+        'key'    => 'group_jne_app',
+        'title'  => 'JNE — App Download',
+        'fields' => [
+            ['key' => 'field_jne_app_heading',       'label' => 'Heading',              'name' => 'jne_app_heading',       'type' => 'text',    'default_value' => 'Read, Learn & Grow — Anytime, Anywhere'],
+            ['key' => 'field_jne_app_sub',           'label' => 'Sub-text',             'name' => 'jne_app_subtext',       'type' => 'textarea','rows' => 2],
+            ['key' => 'field_jne_app_android_url',   'label' => 'Android / Play URL',   'name' => 'jne_app_android_url',   'type' => 'url'],
+            ['key' => 'field_jne_app_android_label', 'label' => 'Android Button Label', 'name' => 'jne_app_android_label', 'type' => 'text',    'default_value' => 'Google Play'],
+            ['key' => 'field_jne_app_ios_url',       'label' => 'iOS / Web Portal URL', 'name' => 'jne_app_ios_url',       'type' => 'url'],
+            ['key' => 'field_jne_app_ios_label',     'label' => 'iOS Button Label',     'name' => 'jne_app_ios_label',     'type' => 'text',    'default_value' => 'Web Portal'],
+        ],
+        'location'   => $jne_page_location,
+        'menu_order' => 70,
     ]);
 
     // ── Skill Development Page ────────────────────────────────────────────────

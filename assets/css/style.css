@@ -2562,6 +2562,418 @@ a.ct-info__value:hover { color: var(--clr-blue); }
 }
 
 /* ════════════════════════════════════════════════════════
+   JUNIOR NEWS EXPRESS PAGE  (jne-*)
+   ════════════════════════════════════════════════════════ */
+
+/* ── Hero ───────────────────────────────────────────────── */
+.jne-hero {
+    position: relative;
+    background: linear-gradient(135deg, var(--clr-navy) 0%, #1a3a7a 60%, #0e5f8a 100%);
+    color: #fff;
+    padding: 72px 0 64px;
+    overflow: hidden;
+}
+.jne-hero__shapes { position: absolute; inset: 0; pointer-events: none; }
+.jne-hero__shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.07;
+    background: #fff;
+}
+.jne-hero__shape--1 { width: 420px; height: 420px; top: -140px; right: -100px; }
+.jne-hero__shape--2 { width: 260px; height: 260px; bottom: -80px; left: -60px; }
+
+.jne-hero__inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 56px;
+    align-items: center;
+}
+.jne-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    padding: 6px 18px 6px 10px;
+    border-radius: var(--radius-pill);
+    margin-bottom: 20px;
+}
+.jne-hero__badge-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--clr-yellow);
+    flex-shrink: 0;
+}
+.jne-hero__heading {
+    font-size: clamp(2rem, 3.8vw, 2.9rem);
+    font-weight: 800;
+    line-height: 1.18;
+    color: #fff;
+    margin-bottom: 12px;
+}
+.jne-hero__heading span { color: var(--clr-yellow); }
+.jne-hero__tagline {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 12px;
+}
+.jne-hero__sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 20px;
+}
+.jne-hero__details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+.jne-hero__detail {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    background: rgba(255,255,255,0.1);
+    border-radius: var(--radius-pill);
+    padding: 6px 14px;
+}
+.jne-hero__steps {
+    margin-bottom: 28px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 16px 20px;
+    max-width: 420px;
+}
+.jne-hero__steps-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--clr-yellow);
+    margin-bottom: 10px;
+}
+.jne-hero__steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding-left: 20px;
+    list-style: decimal;
+}
+.jne-hero__steps-list li {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.88);
+}
+.jne-hero__actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+/* Hero Visual */
+.jne-hero__visual { position: relative; }
+.jne-hero__img {
+    width: 100%;
+    border-radius: 24px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+    display: block;
+}
+.jne-hero__img-placeholder {
+    width: 100%;
+    min-height: 340px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.9rem;
+}
+.jne-hero__newspaper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.jne-np { font-size: 1.4rem; font-weight: 800; }
+.jne-np--1 { color: var(--clr-yellow); }
+.jne-np--2 { color: rgba(255,255,255,0.7); font-size: 1.1rem; }
+.jne-np--3 { font-size: 3rem; }
+
+/* ── Lead Form ──────────────────────────────────────────── */
+.jne-lead-wrap {
+    background: var(--clr-navy);
+    padding: 64px 0;
+}
+.jne-lead-wrap__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+}
+.jne-lead-wrap__heading {
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+.jne-lead-wrap__heading span { color: var(--clr-yellow); }
+.jne-lead-wrap__sub {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.72);
+    margin-bottom: 24px;
+    line-height: 1.65;
+}
+.jne-lead-wrap__perks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.jne-lead-wrap__perks li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.93rem;
+    color: rgba(255,255,255,0.85);
+}
+.jne-perk-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--clr-yellow);
+    color: var(--clr-navy);
+    font-size: 12px;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+.jne-form {
+    background: #fff;
+    border-radius: var(--radius-card);
+    padding: 36px 32px;
+}
+
+/* ── Introducing JNE ────────────────────────────────────── */
+.jne-intro {
+    padding: var(--section-py) 0;
+    background: var(--clr-bg);
+}
+.jne-intro__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+.jne-intro__card {
+    background: var(--clr-navy);
+    color: #fff;
+    border-radius: var(--radius-card);
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    transition: transform 0.22s, box-shadow 0.22s;
+}
+.jne-intro__card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+.jne-intro__card-icon {
+    width: 44px; height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--clr-yellow);
+    color: var(--clr-navy);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.jne-intro__card-text {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.5;
+}
+
+/* ── How We Teach / What We Cover ──────────────────────── */
+.jne-teach-cover {
+    padding: var(--section-py) 0;
+}
+.jne-teach-cover__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+}
+.jne-tc-card {
+    border-radius: var(--radius-card);
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.jne-tc-card--teach { background: var(--clr-navy); }
+.jne-tc-card--cover { background: var(--clr-blue); }
+.jne-tc-card__icon {
+    width: 52px; height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.15);
+    border-radius: 14px;
+    color: var(--clr-yellow);
+}
+.jne-tc-card__title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--clr-yellow);
+    letter-spacing: 0.5px;
+}
+.jne-tc-card__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.jne-tc-card__list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+}
+.jne-tc-card__bullet {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: var(--clr-yellow);
+    color: var(--clr-navy);
+    font-size: 11px;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+/* ── Daily Learning Structure ───────────────────────────── */
+.jne-structure {
+    padding: var(--section-py) 0;
+    background: var(--clr-navy);
+}
+.jne-structure__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+.jne-structure__card {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius-card);
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+    transition: background 0.22s, transform 0.22s;
+}
+.jne-structure__card:hover {
+    background: rgba(255,255,255,0.18);
+    transform: translateY(-4px);
+}
+.jne-structure__card-icon {
+    color: var(--clr-yellow);
+}
+.jne-structure__card-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.5;
+}
+
+/* ── Our Learning Method ────────────────────────────────── */
+.jne-method {
+    padding: var(--section-py) 0;
+    background: var(--clr-bg);
+}
+.jne-method__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+.jne-method__card {
+    background: #fff;
+    border-radius: var(--radius-card);
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.22s, box-shadow 0.22s;
+}
+.jne-method__card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+.jne-method__icon {
+    width: 56px; height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--clr-navy);
+    color: var(--clr-yellow);
+    border-radius: 16px;
+}
+.jne-method__title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--clr-navy);
+}
+
+/* ── JNE App (reuses ph-app, minor override) ────────────── */
+.jne-app { background: linear-gradient(135deg, var(--clr-navy) 0%, #163060 100%); }
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 1100px) {
+    .jne-intro__grid        { grid-template-columns: repeat(2, 1fr); }
+    .jne-structure__grid    { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 1024px) {
+    .jne-hero__inner        { grid-template-columns: 1fr; }
+    .jne-hero__visual       { display: none; }
+    .jne-lead-wrap__inner   { grid-template-columns: 1fr; gap: 32px; }
+    .jne-method__grid       { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+    .jne-teach-cover__grid  { grid-template-columns: 1fr; }
+    .jne-intro__grid        { grid-template-columns: 1fr; }
+    .jne-structure__grid    { grid-template-columns: repeat(2, 1fr); }
+    .jne-method__grid       { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+    .jne-hero__actions      { flex-direction: column; }
+    .jne-hero__actions .sj-btn { width: 100%; justify-content: center; }
+    .jne-structure__grid    { grid-template-columns: 1fr; }
+    .jne-method__grid       { grid-template-columns: 1fr; }
+}
+
+/* ════════════════════════════════════════════════════════
    SKILL DEVELOPMENT PAGE  (sd-*)
    ════════════════════════════════════════════════════════ */
 
