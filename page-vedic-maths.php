@@ -218,16 +218,24 @@ get_header();
     <!-- ══════════════════════════════════════
          SECTION 2 — LEAD FORM (inline)
     ══════════════════════════════════════ -->
+    <?php
+    $vm_form_heading  = get_field('vm_form_heading')  ?: 'Book a <span>Free Demo Class</span> Today!';
+    $vm_form_sub      = get_field('vm_form_sub')      ?: 'Fill in your details and our expert Vedic Maths trainer will contact you within 24 hours.';
+    $vm_form_perk1    = get_field('vm_form_perk1')    ?: '100% Free — No Commitment';
+    $vm_form_perk2    = get_field('vm_form_perk2')    ?: 'Live Online or In-Person';
+    $vm_form_perk3    = get_field('vm_form_perk3')    ?: 'Certified Expert Trainers';
+    $vm_form_btn_text = get_field('vm_form_btn_text') ?: 'Book My Free Trial Class';
+    ?>
     <section class="vm-lead-wrap" id="vm-lead-form">
         <div class="sj-container">
             <div class="vm-lead-wrap__inner">
                 <div class="vm-lead-wrap__text">
-                    <h2 class="vm-lead-wrap__heading">Book a <span>Free Demo Class</span> Today!</h2>
-                    <p class="vm-lead-wrap__sub">Fill in your details and our expert Vedic Maths trainer will contact you within 24 hours.</p>
+                    <h2 class="vm-lead-wrap__heading"><?php echo wp_kses($vm_form_heading, ['span' => [], 'br' => [], 'strong' => []]); ?></h2>
+                    <p class="vm-lead-wrap__sub"><?php echo esc_html($vm_form_sub); ?></p>
                     <ul class="vm-lead-wrap__perks">
-                        <li><span class="vm-perk-icon" aria-hidden="true">&#10003;</span> 100% Free — No Commitment</li>
-                        <li><span class="vm-perk-icon" aria-hidden="true">&#10003;</span> Live Online or In-Person</li>
-                        <li><span class="vm-perk-icon" aria-hidden="true">&#10003;</span> Certified Expert Trainers</li>
+                        <?php foreach ([$vm_form_perk1, $vm_form_perk2, $vm_form_perk3] as $perk) : if (!$perk) continue; ?>
+                            <li><span class="vm-perk-icon" aria-hidden="true">&#10003;</span> <?php echo esc_html($perk); ?></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
                 <form class="sj-form vm-form" id="vm-lead-form-el" novalidate>
@@ -245,12 +253,12 @@ get_header();
                             <input type="email" name="email"       placeholder="Email Address *"      required class="sj-form__input">
                         </div>
                         <div class="sj-form__group">
-                            <input type="text"  name="child_age"   placeholder="Child's Age / Grade *"required class="sj-form__input">
+                            <input type="text"  name="child_age"   placeholder="Child's Age / Grade *" required class="sj-form__input">
                         </div>
                     </div>
                     <div class="sj-form__actions">
                         <button type="submit" class="sj-btn sj-btn--navy sj-form__submit" style="width:100%;">
-                            <span class="sj-btn-text">Book My Free Demo</span>
+                            <span class="sj-btn-text"><?php echo esc_html($vm_form_btn_text); ?></span>
                             <span class="sj-btn-spinner" aria-hidden="true"></span>
                         </button>
                     </div>

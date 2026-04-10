@@ -395,6 +395,22 @@ function sj_register_acf_fields() {
         'menu_order' => 10,
     ]);
 
+    // VM: Lead Form
+    acf_add_local_field_group([
+        'key'    => 'group_vm_form',
+        'title'  => 'Vedic Maths — Lead Form (Book a Demo)',
+        'fields' => [
+            ['key' => 'field_vm_form_heading',  'label' => 'Heading',       'name' => 'vm_form_heading',  'type' => 'text',    'default_value' => 'Book a <span>Free Demo Class</span> Today!'],
+            ['key' => 'field_vm_form_sub',      'label' => 'Sub-text',      'name' => 'vm_form_sub',      'type' => 'textarea','rows' => 2, 'default_value' => 'Fill in your details and our expert Vedic Maths trainer will contact you within 24 hours.'],
+            ['key' => 'field_vm_form_perk1',    'label' => 'Perk 1',        'name' => 'vm_form_perk1',    'type' => 'text',    'default_value' => '100% Free — No Commitment'],
+            ['key' => 'field_vm_form_perk2',    'label' => 'Perk 2',        'name' => 'vm_form_perk2',    'type' => 'text',    'default_value' => 'Live Online or In-Person'],
+            ['key' => 'field_vm_form_perk3',    'label' => 'Perk 3',        'name' => 'vm_form_perk3',    'type' => 'text',    'default_value' => 'Certified Expert Trainers'],
+            ['key' => 'field_vm_form_btn_text', 'label' => 'Button Text',   'name' => 'vm_form_btn_text', 'type' => 'text',    'default_value' => 'Book My Free Trial Class'],
+        ],
+        'location'   => $vm_page_location,
+        'menu_order' => 15,
+    ]);
+
     // VM: Curriculum (3 fixed cards — no repeater)
     acf_add_local_field_group([
         'key'    => 'group_vm_curriculum',
