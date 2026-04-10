@@ -27,7 +27,7 @@ function sj_enqueue_assets() {
         'sj-script',
         get_template_directory_uri() . '/assets/js/script.js',
         [],
-        '2.1',
+        '2.2',
         true
     );
     wp_localize_script('sj-script', 'sj_ajax', [

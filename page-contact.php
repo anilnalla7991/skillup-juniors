@@ -244,7 +244,7 @@ get_header();
                         </div>
 
                         <div class="sj-form__actions">
-                            <button type="submit" class="sj-btn sj-btn--navy ct-form__submit">
+                            <button type="submit" class="sj-btn sj-btn--navy sj-form__submit ct-form__submit">
                                 <span class="sj-btn-text">Send My Enquiry &amp; Book Demo</span>
                                 <span class="sj-btn-spinner" aria-hidden="true"></span>
                             </button>

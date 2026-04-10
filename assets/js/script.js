@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
         form.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const btn   = form.querySelector('.sj-form__submit');
+            const btn   = form.querySelector('.sj-form__submit') || form.querySelector('[type="submit"]');
             const msgEl = form.querySelector('.sj-form__msg');
             const data  = new FormData(form);
 
