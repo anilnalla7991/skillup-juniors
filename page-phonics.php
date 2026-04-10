@@ -196,16 +196,24 @@ get_header();
     <!-- ══════════════════════════════════════
          SECTION 2 — LEAD FORM
     ══════════════════════════════════════ -->
+    <?php
+    $ph_form_heading  = get_field('ph_form_heading')  ?: 'Book a <span>Free Demo Class</span> Today!';
+    $ph_form_sub      = get_field('ph_form_sub')      ?: 'Fill in your details and our expert Phonics trainer will contact you within 24 hours.';
+    $ph_form_perk1    = get_field('ph_form_perk1')    ?: '100% Free — No Commitment';
+    $ph_form_perk2    = get_field('ph_form_perk2')    ?: 'Live Online or In-Person';
+    $ph_form_perk3    = get_field('ph_form_perk3')    ?: 'Certified Expert Trainers';
+    $ph_form_btn_text = get_field('ph_form_btn_text') ?: 'Book My Free Demo';
+    ?>
     <section class="ph-lead-wrap" id="ph-lead-form">
         <div class="sj-container">
             <div class="ph-lead-wrap__inner">
                 <div class="ph-lead-wrap__text">
-                    <h2 class="ph-lead-wrap__heading">Book a <span>Free Demo Class</span> Today!</h2>
-                    <p class="ph-lead-wrap__sub">Fill in your details and our expert Phonics trainer will contact you within 24 hours.</p>
+                    <h2 class="ph-lead-wrap__heading"><?php echo wp_kses($ph_form_heading, ['span' => [], 'br' => [], 'strong' => []]); ?></h2>
+                    <p class="ph-lead-wrap__sub"><?php echo esc_html($ph_form_sub); ?></p>
                     <ul class="ph-lead-wrap__perks">
-                        <li><span class="ph-perk-icon" aria-hidden="true">&#10003;</span> 100% Free — No Commitment</li>
-                        <li><span class="ph-perk-icon" aria-hidden="true">&#10003;</span> Live Online or In-Person</li>
-                        <li><span class="ph-perk-icon" aria-hidden="true">&#10003;</span> Certified Expert Trainers</li>
+                        <?php foreach ([$ph_form_perk1, $ph_form_perk2, $ph_form_perk3] as $perk) : if (!$perk) continue; ?>
+                            <li><span class="ph-perk-icon" aria-hidden="true">&#10003;</span> <?php echo esc_html($perk); ?></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
                 <form class="sj-form ph-form" id="ph-lead-form-el" novalidate>
@@ -228,7 +236,7 @@ get_header();
                     </div>
                     <div class="sj-form__actions">
                         <button type="submit" class="sj-btn sj-btn--navy sj-form__submit" style="width:100%">
-                            <span class="sj-btn-text">Book My Free Demo</span>
+                            <span class="sj-btn-text"><?php echo esc_html($ph_form_btn_text); ?></span>
                             <span class="sj-btn-spinner" aria-hidden="true"></span>
                         </button>
                     </div>
