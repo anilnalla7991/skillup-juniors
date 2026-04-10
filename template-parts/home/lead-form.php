@@ -51,6 +51,7 @@ $perk3      = get_field('home_form_perk3')      ?: 'Certified Expert Trainers';
                             <option value="phonics">Phonics Program</option>
                             <option value="phonics-maths">Phonics + Maths Combo</option>
                             <option value="skill-development">Skill Development Program</option>
+                            <option value="junior-news-express">Junior News Express Program</option>
                         </select>
                     </div>
                 </div>
