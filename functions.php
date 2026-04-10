@@ -1280,6 +1280,7 @@ function sj_handle_lead_form() {
     $email       = sanitize_email($_POST['email']            ?? '');
     $child_age   = sanitize_text_field($_POST['child_age']   ?? '');
     $program     = sanitize_text_field($_POST['program']     ?? '');
+    $message     = sanitize_textarea_field($_POST['message'] ?? '');
 
     if (empty($parent_name) || empty($phone) || empty($email)) {
         wp_send_json_error(['message' => 'Please fill in all required fields.']);
@@ -1291,10 +1292,15 @@ function sj_handle_lead_form() {
 
     $admin_email = get_option('admin_email');
     $subject     = 'New Demo Booking — SkillUp Juniors';
-    $body        = sprintf(
-        "New Lead Enquiry\n\nName: %s\nPhone: %s\nEmail: %s\nChild Age: %s\nProgram: %s",
-        $parent_name, $phone, $email, $child_age, $program
-    );
+    $body        = "New Lead Enquiry\n\n";
+    $body       .= "Name:      {$parent_name}\n";
+    $body       .= "Phone:     {$phone}\n";
+    $body       .= "Email:     {$email}\n";
+    $body       .= "Child Age: {$child_age}\n";
+    $body       .= "Program:   {$program}\n";
+    if ($message) {
+        $body   .= "Message:   {$message}\n";
+    }
 
     wp_mail($admin_email, $subject, $body);
 
