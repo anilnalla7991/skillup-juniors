@@ -675,7 +675,7 @@ body.sj-drawer-open { overflow: hidden; }
 }
 .sj-courses__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 24px;
 }
 
@@ -756,69 +756,60 @@ body.sj-drawer-open { overflow: hidden; }
    LEARNING APPROACH
    ════════════════════════════════════════════════════════ */
 .sj-approach {
-    background: var(--clr-navy);
+    background: var(--clr-blue);
     padding: var(--section-py) 0;
 }
-.sj-approach__steps {
+.sj-approach__grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 0;
-    position: relative;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
-.sj-approach__step {
-    position: relative;
+.sj-approach__card {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 0 16px;
+    padding: 28px 20px;
+    background: rgba(255,255,255,0.13);
+    border-radius: var(--radius-card);
+    border: 1px solid rgba(255,255,255,0.22);
+    transition: background 0.25s;
+}
+.sj-approach__card:hover {
+    background: rgba(255,255,255,0.22);
 }
 
-.sj-approach__step-num {
-    width: 64px; height: 64px;
-    background: var(--clr-blue);
+.sj-approach__card-icon {
+    width: 60px; height: 60px;
+    background: rgba(255,255,255,0.2);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 18px;
-    position: relative;
-    z-index: 1;
+    margin-bottom: 14px;
     flex-shrink: 0;
-    box-shadow: 0 4px 20px rgba(41, 171, 226, 0.4);
 }
-.sj-approach__step-num span {
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: var(--clr-white);
-}
-.sj-approach__step-num img {
-    width: 32px; height: 32px;
+.sj-approach__card-icon img {
+    width: 30px; height: 30px;
     object-fit: contain;
 }
-
-/* Connector line between steps */
-.sj-approach__connector {
-    position: absolute;
-    top: 32px;
-    left: calc(50% + 32px);
-    width: calc(100% - 32px);
-    height: 2px;
-    background: rgba(255,255,255,0.2);
-    z-index: 0;
+.sj-approach__card-icon svg {
+    width: 28px; height: 28px;
+    stroke: var(--clr-white);
 }
 
-.sj-approach__step-title {
-    font-size: 1rem;
+.sj-approach__card-title {
+    font-size: 0.95rem;
     font-weight: 700;
     color: var(--clr-white);
-    margin-bottom: 8px;
+    line-height: 1.4;
 }
-.sj-approach__step-desc {
+.sj-approach__card-desc {
     font-size: 0.82rem;
-    color: rgba(255,255,255,0.62);
+    color: rgba(255,255,255,0.78);
     line-height: 1.6;
+    margin-top: 8px;
 }
 
 
@@ -4025,8 +4016,8 @@ a.ct-info__value:hover { color: var(--clr-blue); }
 
     .sj-lead-form__inner { grid-template-columns: 1fr; gap: 32px; }
 
-    .sj-approach__steps     { grid-template-columns: repeat(3, 1fr); gap: 32px; }
-    .sj-approach__connector { display: none; }
+    .sj-approach__grid      { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .sj-courses__grid       { grid-template-columns: repeat(2, 1fr); }
 
     .sj-footer__grid { grid-template-columns: 1fr 1fr; gap: 36px; }
     .sj-footer__top  { padding: 48px 0 36px; }
@@ -4048,7 +4039,7 @@ a.ct-info__value:hover { color: var(--clr-blue); }
 
     .sj-mission-about__grid  { grid-template-columns: 1fr; }
     .sj-courses__grid        { grid-template-columns: 1fr; }
-    .sj-approach__steps      { grid-template-columns: 1fr; gap: 28px; }
+    .sj-approach__grid       { grid-template-columns: 1fr; gap: 16px; }
     .sj-testimonials__grid   { grid-template-columns: 1fr; }
 
     .sj-form__row { grid-template-columns: 1fr; }

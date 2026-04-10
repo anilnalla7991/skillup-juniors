@@ -12,9 +12,10 @@ $color_map = [
 ];
 
 $default_courses = [
-    ['title' => 'Skill Development Program', 'description' => 'Build essential 21st-century skills including leadership, communication, and creative thinking for holistic growth.', 'color' => 'green',  'link' => '#'],
-    ['title' => 'Vedic Maths Program',        'description' => 'Master lightning-fast mental maths using ancient Vedic techniques. Solve complex calculations in seconds.',           'color' => 'blue',   'link' => '#'],
-    ['title' => 'Phonics + Maths Program',    'description' => 'A powerful combination of phonics-based reading and maths skills for complete academic excellence.',                'color' => 'yellow', 'link' => '#'],
+    ['title' => 'Skill Development Program', 'description' => 'Build essential 21st-century skills including leadership, communication, and creative thinking for holistic growth.', 'color' => 'green',  'link' => home_url('/skill-development')],
+    ['title' => 'Vedic Maths Program',        'description' => 'Master lightning-fast mental maths using ancient Vedic techniques. Solve complex calculations in seconds.',           'color' => 'blue',   'link' => home_url('/vedic-maths')],
+    ['title' => 'Phonics + Maths Program',    'description' => 'A powerful combination of phonics-based reading and maths skills for complete academic excellence.',                'color' => 'yellow', 'link' => home_url('/phonics')],
+    ['title' => 'Junior News Express',        'description' => 'A fun, engaging newspaper program that builds reading comprehension, vocabulary, and current affairs awareness in young learners.', 'color' => 'teal',   'link' => home_url('/junior-news-express')],
 ];
 ?>
 
