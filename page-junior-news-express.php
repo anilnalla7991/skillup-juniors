@@ -30,6 +30,7 @@ $jne_form_sub     = get_field('jne_form_subheading') ?: 'Fill in your details an
 $jne_perk1        = get_field('jne_form_perk1')      ?: '100% Free — No Commitment';
 $jne_perk2        = get_field('jne_form_perk2')      ?: 'Live Online or In-Person';
 $jne_perk3        = get_field('jne_form_perk3')      ?: 'Certified Expert Trainers';
+$jne_form_btn_text = get_field('jne_form_btn_text')  ?: 'Book My Free Trial Class';
 
 // ── Introducing JNE ───────────────────────────────────────────────────────────
 $jne_intro_heading = get_field('jne_intro_heading')  ?: 'Introducing Juniors News Express';
@@ -223,7 +224,7 @@ get_header();
                     </div>
                     <div class="sj-form__actions">
                         <button type="submit" class="sj-btn sj-btn--navy sj-form__submit" style="width:100%">
-                            <span class="sj-btn-text">Book My Free Demo</span>
+                            <span class="sj-btn-text"><?php echo esc_html($jne_form_btn_text); ?></span>
                             <span class="sj-btn-spinner" aria-hidden="true"></span>
                         </button>
                     </div>

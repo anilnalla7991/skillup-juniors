@@ -15,6 +15,7 @@ $sd_stat_label      = get_field('sd_stat_label')       ?: 'Students';
 // ── Lead Form ─────────────────────────────────────────────────────────────────
 $sd_form_heading    = get_field('sd_form_heading')     ?: 'Book a <span>Free Demo Class</span> Today!';
 $sd_form_sub        = get_field('sd_form_subheading')  ?: 'Fill in your details and our expert trainer will contact you within 24 hours.';
+$sd_form_btn_text   = get_field('sd_form_btn_text')    ?: 'Book My Free Trial Class';
 
 // ── Program Focus ─────────────────────────────────────────────────────────────
 $sd_focus_heading    = get_field('sd_focus_heading')    ?: 'A structured program focused on:';
@@ -150,12 +151,14 @@ get_header();
                                         <option value="skill-development" selected>Skill Development Program</option>
                                         <option value="vedic-maths">Vedic Maths Program</option>
                                         <option value="phonics">Phonics Program</option>
+                                        <option value="phonics-maths">Phonics + Maths Combo</option>
+                                        <option value="junior-news-express">Junior News Express Program</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="sj-form__actions">
                                 <button type="submit" class="sj-btn sj-btn--yellow sj-form__submit" style="width:100%;">
-                                    <span class="sj-btn-text">Book My Free Demo</span>
+                                    <span class="sj-btn-text"><?php echo esc_html($sd_form_btn_text); ?></span>
                                     <span class="sj-btn-spinner" aria-hidden="true"></span>
                                 </button>
                             </div>
