@@ -263,92 +263,97 @@ function sj_register_acf_fields() {
         'menu_order' => 30,
     ]);
 
-    // ── Home: Courses ──────────────────────────────────────────────────────────
+    // ── Home: Courses (4 fixed cards — no repeater) ───────────────────────────
     acf_add_local_field_group([
         'key'    => 'group_home_courses',
         'title'  => 'Home — Courses Section',
         'fields' => [
             ['key' => 'field_home_courses_heading', 'label' => 'Section Heading',  'name' => 'home_courses_heading',    'type' => 'text',    'default_value' => 'Our Programs'],
             ['key' => 'field_home_courses_sub',     'label' => 'Section Sub-text', 'name' => 'home_courses_subheading', 'type' => 'textarea','rows' => 2],
-            [
-                'key'        => 'field_home_courses_list',
-                'label'      => 'Courses',
-                'name'       => 'home_courses_list',
-                'type'       => 'repeater',
-                'min'        => 1,
-                'max'        => 6,
-                'layout'     => 'block',
-                'button_label' => 'Add Course',
-                'sub_fields' => [
-                    ['key' => 'field_home_course_title', 'label' => 'Course Title',       'name' => 'course_title',       'type' => 'text'],
-                    ['key' => 'field_home_course_desc',  'label' => 'Short Description',  'name' => 'course_description', 'type' => 'textarea', 'rows' => 3],
-                    ['key' => 'field_home_course_icon',  'label' => 'Course Icon',        'name' => 'course_icon',        'type' => 'image',    'return_format' => 'array'],
-                    ['key' => 'field_home_course_link',  'label' => 'Course Page URL',    'name' => 'course_link',        'type' => 'url'],
-                    [
-                        'key'           => 'field_home_course_color',
-                        'label'         => 'Card Colour',
-                        'name'          => 'course_color',
-                        'type'          => 'select',
-                        'choices'       => ['blue' => 'Blue', 'green' => 'Green', 'yellow' => 'Yellow', 'teal' => 'Teal'],
-                        'default_value' => 'blue',
-                    ],
-                ],
-            ],
+            // Course 1
+            ['key' => 'field_home_c1_title', 'label' => 'Course 1 — Title',       'name' => 'home_c1_title', 'type' => 'text',    'default_value' => 'Skill Development Program'],
+            ['key' => 'field_home_c1_desc',  'label' => 'Course 1 — Description', 'name' => 'home_c1_desc',  'type' => 'textarea','rows' => 3],
+            ['key' => 'field_home_c1_link',  'label' => 'Course 1 — Page URL',    'name' => 'home_c1_link',  'type' => 'url'],
+            ['key' => 'field_home_c1_color', 'label' => 'Course 1 — Colour',      'name' => 'home_c1_color', 'type' => 'select',  'choices' => ['green' => 'Green', 'blue' => 'Blue', 'yellow' => 'Yellow', 'teal' => 'Teal'], 'default_value' => 'green'],
+            ['key' => 'field_home_c1_icon',  'label' => 'Course 1 — Icon',        'name' => 'home_c1_icon',  'type' => 'image',   'return_format' => 'array'],
+            // Course 2
+            ['key' => 'field_home_c2_title', 'label' => 'Course 2 — Title',       'name' => 'home_c2_title', 'type' => 'text',    'default_value' => 'Vedic Maths Program'],
+            ['key' => 'field_home_c2_desc',  'label' => 'Course 2 — Description', 'name' => 'home_c2_desc',  'type' => 'textarea','rows' => 3],
+            ['key' => 'field_home_c2_link',  'label' => 'Course 2 — Page URL',    'name' => 'home_c2_link',  'type' => 'url'],
+            ['key' => 'field_home_c2_color', 'label' => 'Course 2 — Colour',      'name' => 'home_c2_color', 'type' => 'select',  'choices' => ['green' => 'Green', 'blue' => 'Blue', 'yellow' => 'Yellow', 'teal' => 'Teal'], 'default_value' => 'blue'],
+            ['key' => 'field_home_c2_icon',  'label' => 'Course 2 — Icon',        'name' => 'home_c2_icon',  'type' => 'image',   'return_format' => 'array'],
+            // Course 3
+            ['key' => 'field_home_c3_title', 'label' => 'Course 3 — Title',       'name' => 'home_c3_title', 'type' => 'text',    'default_value' => 'Phonics + Maths Program'],
+            ['key' => 'field_home_c3_desc',  'label' => 'Course 3 — Description', 'name' => 'home_c3_desc',  'type' => 'textarea','rows' => 3],
+            ['key' => 'field_home_c3_link',  'label' => 'Course 3 — Page URL',    'name' => 'home_c3_link',  'type' => 'url'],
+            ['key' => 'field_home_c3_color', 'label' => 'Course 3 — Colour',      'name' => 'home_c3_color', 'type' => 'select',  'choices' => ['green' => 'Green', 'blue' => 'Blue', 'yellow' => 'Yellow', 'teal' => 'Teal'], 'default_value' => 'yellow'],
+            ['key' => 'field_home_c3_icon',  'label' => 'Course 3 — Icon',        'name' => 'home_c3_icon',  'type' => 'image',   'return_format' => 'array'],
+            // Course 4
+            ['key' => 'field_home_c4_title', 'label' => 'Course 4 — Title',       'name' => 'home_c4_title', 'type' => 'text',    'default_value' => 'Junior News Express'],
+            ['key' => 'field_home_c4_desc',  'label' => 'Course 4 — Description', 'name' => 'home_c4_desc',  'type' => 'textarea','rows' => 3],
+            ['key' => 'field_home_c4_link',  'label' => 'Course 4 — Page URL',    'name' => 'home_c4_link',  'type' => 'url'],
+            ['key' => 'field_home_c4_color', 'label' => 'Course 4 — Colour',      'name' => 'home_c4_color', 'type' => 'select',  'choices' => ['green' => 'Green', 'blue' => 'Blue', 'yellow' => 'Yellow', 'teal' => 'Teal'], 'default_value' => 'teal'],
+            ['key' => 'field_home_c4_icon',  'label' => 'Course 4 — Icon',        'name' => 'home_c4_icon',  'type' => 'image',   'return_format' => 'array'],
         ],
         'location' => $front_page_location,
         'menu_order' => 40,
     ]);
 
-    // ── Home: Learning Approach ────────────────────────────────────────────────
+    // ── Home: Learning Approach (6 fixed items — no repeater) ────────────────
     acf_add_local_field_group([
         'key'    => 'group_home_approach',
         'title'  => 'Home — Learning Approach Section',
         'fields' => [
             ['key' => 'field_home_approach_heading', 'label' => 'Section Heading',  'name' => 'home_approach_heading',    'type' => 'text',    'default_value' => 'Our Learning Approach'],
             ['key' => 'field_home_approach_sub',     'label' => 'Section Sub-text', 'name' => 'home_approach_subheading', 'type' => 'textarea','rows' => 2],
-            [
-                'key'        => 'field_home_approach_steps',
-                'label'      => 'Steps',
-                'name'       => 'home_approach_steps',
-                'type'       => 'repeater',
-                'min'        => 1,
-                'max'        => 6,
-                'layout'     => 'table',
-                'button_label' => 'Add Step',
-                'sub_fields' => [
-                    ['key' => 'field_home_step_title', 'label' => 'Step Title',       'name' => 'step_title',       'type' => 'text'],
-                    ['key' => 'field_home_step_desc',  'label' => 'Step Description', 'name' => 'step_description', 'type' => 'textarea', 'rows' => 2],
-                    ['key' => 'field_home_step_icon',  'label' => 'Step Icon (opt.)', 'name' => 'step_icon',        'type' => 'image',    'return_format' => 'array'],
-                ],
-            ],
+            // Item 1
+            ['key' => 'field_home_ap1_title', 'label' => 'Item 1 — Title', 'name' => 'home_ap1_title', 'type' => 'text',  'default_value' => 'Fun & Engaging Learning'],
+            ['key' => 'field_home_ap1_icon',  'label' => 'Item 1 — Icon',  'name' => 'home_ap1_icon',  'type' => 'image', 'return_format' => 'array'],
+            // Item 2
+            ['key' => 'field_home_ap2_title', 'label' => 'Item 2 — Title', 'name' => 'home_ap2_title', 'type' => 'text',  'default_value' => 'Interactive Live Sessions'],
+            ['key' => 'field_home_ap2_icon',  'label' => 'Item 2 — Icon',  'name' => 'home_ap2_icon',  'type' => 'image', 'return_format' => 'array'],
+            // Item 3
+            ['key' => 'field_home_ap3_title', 'label' => 'Item 3 — Title', 'name' => 'home_ap3_title', 'type' => 'text',  'default_value' => 'Regular Work Sheets'],
+            ['key' => 'field_home_ap3_icon',  'label' => 'Item 3 — Icon',  'name' => 'home_ap3_icon',  'type' => 'image', 'return_format' => 'array'],
+            // Item 4
+            ['key' => 'field_home_ap4_title', 'label' => 'Item 4 — Title', 'name' => 'home_ap4_title', 'type' => 'text',  'default_value' => 'Personal Attention'],
+            ['key' => 'field_home_ap4_icon',  'label' => 'Item 4 — Icon',  'name' => 'home_ap4_icon',  'type' => 'image', 'return_format' => 'array'],
+            // Item 5
+            ['key' => 'field_home_ap5_title', 'label' => 'Item 5 — Title', 'name' => 'home_ap5_title', 'type' => 'text',  'default_value' => 'Practice with Fun Challenges'],
+            ['key' => 'field_home_ap5_icon',  'label' => 'Item 5 — Icon',  'name' => 'home_ap5_icon',  'type' => 'image', 'return_format' => 'array'],
+            // Item 6
+            ['key' => 'field_home_ap6_title', 'label' => 'Item 6 — Title', 'name' => 'home_ap6_title', 'type' => 'text',  'default_value' => 'Step-by-Step Concept Clarity'],
+            ['key' => 'field_home_ap6_icon',  'label' => 'Item 6 — Icon',  'name' => 'home_ap6_icon',  'type' => 'image', 'return_format' => 'array'],
         ],
         'location' => $front_page_location,
         'menu_order' => 50,
     ]);
 
-    // ── Home: Testimonials ─────────────────────────────────────────────────────
+    // ── Home: Testimonials (3 fixed — no repeater) ────────────────────────────
     acf_add_local_field_group([
         'key'    => 'group_home_testimonials',
-        'title'  => 'Home — Testimonials Section',
+        'title'  => 'Home — Testimonials (What Parents Say)',
         'fields' => [
             ['key' => 'field_home_testi_heading', 'label' => 'Section Heading',  'name' => 'home_testimonials_heading',    'type' => 'text',    'default_value' => 'What Parents Say'],
             ['key' => 'field_home_testi_sub',     'label' => 'Section Sub-text', 'name' => 'home_testimonials_subheading', 'type' => 'textarea','rows' => 2],
-            [
-                'key'        => 'field_home_testi_list',
-                'label'      => 'Testimonials',
-                'name'       => 'home_testimonials_list',
-                'type'       => 'repeater',
-                'min'        => 1,
-                'layout'     => 'block',
-                'button_label' => 'Add Testimonial',
-                'sub_fields' => [
-                    ['key' => 'field_home_testi_name',    'label' => 'Parent Name',  'name' => 'testimonial_name',    'type' => 'text'],
-                    ['key' => 'field_home_testi_role',    'label' => 'Role / Child', 'name' => 'testimonial_role',    'type' => 'text'],
-                    ['key' => 'field_home_testi_content', 'label' => 'Message',      'name' => 'testimonial_content', 'type' => 'textarea', 'rows' => 3],
-                    ['key' => 'field_home_testi_image',   'label' => 'Photo (opt.)', 'name' => 'testimonial_image',   'type' => 'image',    'return_format' => 'array'],
-                    ['key' => 'field_home_testi_rating',  'label' => 'Rating (1-5)', 'name' => 'testimonial_rating',  'type' => 'number',   'min' => 1, 'max' => 5, 'default_value' => 5],
-                ],
-            ],
+            // Testimonial 1
+            ['key' => 'field_home_t1_name',    'label' => 'Testimonial 1 — Parent Name',  'name' => 'home_t1_name',    'type' => 'text',    'default_value' => 'Priya Sharma'],
+            ['key' => 'field_home_t1_role',    'label' => 'Testimonial 1 — Role / Child', 'name' => 'home_t1_role',    'type' => 'text',    'default_value' => 'Parent of Arjun, Age 9'],
+            ['key' => 'field_home_t1_content', 'label' => 'Testimonial 1 — Message',      'name' => 'home_t1_content', 'type' => 'textarea','rows' => 3],
+            ['key' => 'field_home_t1_rating',  'label' => 'Testimonial 1 — Rating (1-5)', 'name' => 'home_t1_rating',  'type' => 'number',  'min' => 1, 'max' => 5, 'default_value' => 5],
+            ['key' => 'field_home_t1_image',   'label' => 'Testimonial 1 — Photo (opt.)', 'name' => 'home_t1_image',   'type' => 'image',   'return_format' => 'array'],
+            // Testimonial 2
+            ['key' => 'field_home_t2_name',    'label' => 'Testimonial 2 — Parent Name',  'name' => 'home_t2_name',    'type' => 'text',    'default_value' => 'Rahul Mehta'],
+            ['key' => 'field_home_t2_role',    'label' => 'Testimonial 2 — Role / Child', 'name' => 'home_t2_role',    'type' => 'text',    'default_value' => 'Parent of Ananya, Age 7'],
+            ['key' => 'field_home_t2_content', 'label' => 'Testimonial 2 — Message',      'name' => 'home_t2_content', 'type' => 'textarea','rows' => 3],
+            ['key' => 'field_home_t2_rating',  'label' => 'Testimonial 2 — Rating (1-5)', 'name' => 'home_t2_rating',  'type' => 'number',  'min' => 1, 'max' => 5, 'default_value' => 5],
+            ['key' => 'field_home_t2_image',   'label' => 'Testimonial 2 — Photo (opt.)', 'name' => 'home_t2_image',   'type' => 'image',   'return_format' => 'array'],
+            // Testimonial 3
+            ['key' => 'field_home_t3_name',    'label' => 'Testimonial 3 — Parent Name',  'name' => 'home_t3_name',    'type' => 'text',    'default_value' => 'Sunita Reddy'],
+            ['key' => 'field_home_t3_role',    'label' => 'Testimonial 3 — Role / Child', 'name' => 'home_t3_role',    'type' => 'text',    'default_value' => 'Parent of Karthik, Age 11'],
+            ['key' => 'field_home_t3_content', 'label' => 'Testimonial 3 — Message',      'name' => 'home_t3_content', 'type' => 'textarea','rows' => 3],
+            ['key' => 'field_home_t3_rating',  'label' => 'Testimonial 3 — Rating (1-5)', 'name' => 'home_t3_rating',  'type' => 'number',  'min' => 1, 'max' => 5, 'default_value' => 5],
+            ['key' => 'field_home_t3_image',   'label' => 'Testimonial 3 — Photo (opt.)', 'name' => 'home_t3_image',   'type' => 'image',   'return_format' => 'array'],
         ],
         'location' => $front_page_location,
         'menu_order' => 60,
