@@ -47,10 +47,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ── Lead Form AJAX Submit ──────────────────────────────
-    const form = document.getElementById('sj-lead-form');
+    // ── Lead Form AJAX Submit (all pages) ─────────────────
+    function showMsg(el, text, type) {
+        el.textContent = text;
+        el.className   = 'sj-form__msg sj-form__msg--' + type;
+        el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
 
-    if (form) {
+    document.querySelectorAll('.sj-form').forEach(function (form) {
         form.addEventListener('submit', function (e) {
             e.preventDefault();
 
@@ -93,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 })
                 .catch(function () {
-                    showMsg(msgEl, 'Network error. Please try again.', 'error');
+                    showMsg(msgEl, 'Network error. Please check your connection and try again.', 'error');
                 })
                 .finally(function () {
                     btn.classList.remove('is-loading');
@@ -104,12 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
         form.querySelectorAll('.sj-form__input').forEach(function (field) {
             field.addEventListener('input', function () { field.style.borderColor = ''; });
         });
-    }
-
-    function showMsg(el, text, type) {
-        el.textContent = text;
-        el.className   = 'sj-form__msg sj-form__msg--' + type;
-    }
+    });
 
     // ── Smooth Scroll for Anchor Links ────────────────────
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
