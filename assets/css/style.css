@@ -958,13 +958,16 @@ body.sj-drawer-open { overflow: hidden; }
 .sj-footer__powered-logo {
     background: #fff;
     border-radius: 8px;
-    padding: 8px 12px;
+    padding: 6px 10px;
     display: inline-flex;
     align-items: center;
+    overflow: hidden;
 }
 .sj-footer__powered-logo img {
-    height: 64px;
-    width: auto;
+    width: 180px;
+    height: 44px;
+    object-fit: cover;
+    object-position: center 48%;
     display: block;
 }
 .sj-footer__powered-text {
