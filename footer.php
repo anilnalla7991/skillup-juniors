@@ -52,7 +52,6 @@ $copyright = get_option('sj_footer_copyright', '&copy; ' . date('Y') . ' SkillUp
                                 height="auto"
                             >
                         </div>
-                        <span class="sj-footer__powered-text">ThinkBuild Education Private Limited</span>
                     </div>
 
                 </div>

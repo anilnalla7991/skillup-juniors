@@ -963,7 +963,7 @@ body.sj-drawer-open { overflow: hidden; }
     align-items: center;
 }
 .sj-footer__powered-logo img {
-    height: 32px;
+    height: 64px;
     width: auto;
     display: block;
 }
