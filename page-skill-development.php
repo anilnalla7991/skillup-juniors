@@ -236,12 +236,12 @@ get_header();
                         <span class="sd-curriculum__label"><?php echo esc_html($card['label']); ?></span>
                         <p class="sd-curriculum__desc"><?php echo esc_html($card['desc']); ?></p>
                         <?php if (!empty($card['pdf'])) : ?>
-                            <a href="<?php echo esc_url($card['pdf']); ?>" class="sd-curriculum__card-btn" download>
+                            <a href="<?php echo esc_url($card['pdf']); ?>" class="sd-curriculum__card-btn" download target="_blank" rel="noopener">
                                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                                 Download Curriculum
                             </a>
                         <?php else : ?>
-                            <span class="sd-curriculum__card-btn sd-curriculum__card-btn--disabled">
+                            <span class="sd-curriculum__card-btn sd-curriculum__card-btn--disabled" title="PDF coming soon">
                                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                                 Download Curriculum
                             </span>
