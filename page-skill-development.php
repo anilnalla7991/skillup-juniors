@@ -42,11 +42,11 @@ $sd_phase2_duration   = get_field('sd_phase2_duration')   ?: '5 Months';
 // ── Curriculum ────────────────────────────────────────────────────────────────
 $sd_curr_heading = get_field('sd_curriculum_heading') ?: 'Curriculum';
 $sd_curr_cards   = [
-    ['label' => get_field('sd_curr_card1_label') ?: 'Class 1-2',  'desc' => get_field('sd_curr_card1_desc') ?: 'Foundation level: basic communication, listening, and expressive speaking skills.'],
-    ['label' => get_field('sd_curr_card2_label') ?: 'Class 3-4',  'desc' => get_field('sd_curr_card2_desc') ?: 'Intermediate: reading comprehension, confidence building, and group activities.'],
-    ['label' => get_field('sd_curr_card3_label') ?: 'Class 5-6',  'desc' => get_field('sd_curr_card3_desc') ?: 'Advanced: debates, presentations, leadership exercises, and creative writing.'],
-    ['label' => get_field('sd_curr_card4_label') ?: 'Class 7-8',  'desc' => get_field('sd_curr_card4_desc') ?: 'Expert: public speaking, entrepreneurship basics, and social awareness projects.'],
-    ['label' => get_field('sd_curr_card5_label') ?: 'Class 9-10', 'desc' => get_field('sd_curr_card5_desc') ?: 'Master: life skills, personality development, and real-world skill challenges.'],
+    ['label' => get_field('sd_curr_card1_label') ?: 'Class 1-2',  'desc' => get_field('sd_curr_card1_desc') ?: 'Foundation level: basic communication, listening, and expressive speaking skills.', 'pdf' => get_field('sd_curr_card1_pdf') ?: ''],
+    ['label' => get_field('sd_curr_card2_label') ?: 'Class 3-4',  'desc' => get_field('sd_curr_card2_desc') ?: 'Intermediate: reading comprehension, confidence building, and group activities.',   'pdf' => get_field('sd_curr_card2_pdf') ?: ''],
+    ['label' => get_field('sd_curr_card3_label') ?: 'Class 5-6',  'desc' => get_field('sd_curr_card3_desc') ?: 'Advanced: debates, presentations, leadership exercises, and creative writing.',    'pdf' => get_field('sd_curr_card3_pdf') ?: ''],
+    ['label' => get_field('sd_curr_card4_label') ?: 'Class 7-8',  'desc' => get_field('sd_curr_card4_desc') ?: 'Expert: public speaking, entrepreneurship basics, and social awareness projects.', 'pdf' => get_field('sd_curr_card4_pdf') ?: ''],
+    ['label' => get_field('sd_curr_card5_label') ?: 'Class 9-10', 'desc' => get_field('sd_curr_card5_desc') ?: 'Master: life skills, personality development, and real-world skill challenges.',   'pdf' => get_field('sd_curr_card5_pdf') ?: ''],
 ];
 
 // ── Learning Approach ─────────────────────────────────────────────────────────
@@ -235,14 +235,19 @@ get_header();
                     <div class="sd-curriculum__card">
                         <span class="sd-curriculum__label"><?php echo esc_html($card['label']); ?></span>
                         <p class="sd-curriculum__desc"><?php echo esc_html($card['desc']); ?></p>
+                        <?php if (!empty($card['pdf'])) : ?>
+                            <a href="<?php echo esc_url($card['pdf']); ?>" class="sd-curriculum__card-btn" download>
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                Download Curriculum
+                            </a>
+                        <?php else : ?>
+                            <span class="sd-curriculum__card-btn sd-curriculum__card-btn--disabled">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                Download Curriculum
+                            </span>
+                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
-            </div>
-            <div class="sd-curriculum__cta">
-                <a href="<?php echo esc_url(get_field('sd_curriculum_pdf') ?: '#'); ?>" class="sd-curriculum__download-btn" <?php if (get_field('sd_curriculum_pdf')) echo 'download'; ?>>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    Download Curriculum
-                </a>
             </div>
         </div>
     </section>
