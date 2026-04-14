@@ -3181,6 +3181,29 @@ a.ct-info__value:hover { color: var(--clr-blue); }
     line-height: 1.6;
 }
 
+.sd-curriculum__cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 36px;
+}
+.sd-curriculum__download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--clr-yellow);
+    color: var(--clr-navy);
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 14px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+}
+.sd-curriculum__download-btn:hover {
+    background: #e6a800;
+    transform: translateY(-2px);
+}
+
 /* ── Learning Approach ──────────────────────────────────── */
 .sd-approach {
     padding: var(--section-py) 0;
