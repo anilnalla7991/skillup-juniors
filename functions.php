@@ -107,10 +107,12 @@ function sj_settings_page_html() {
             'sj_footer_tagline',    'sj_footer_address',
             'sj_footer_phone',      'sj_footer_email',
             'sj_footer_copyright',
+            'sj_social_instagram',  'sj_social_youtube',
+            'sj_social_facebook',   'sj_social_whatsapp',
         ];
         foreach ($fields as $key) {
             $val = $_POST[$key] ?? '';
-            if (in_array($key, ['sj_header_login_url', 'sj_header_app_url'])) {
+            if (in_array($key, ['sj_header_login_url', 'sj_header_app_url', 'sj_social_instagram', 'sj_social_youtube', 'sj_social_facebook', 'sj_social_whatsapp'])) {
                 update_option($key, esc_url_raw($val));
             } elseif ($key === 'sj_footer_email') {
                 update_option($key, sanitize_email($val));
@@ -134,6 +136,10 @@ function sj_settings_page_html() {
         'phone'       => get_option('sj_footer_phone',      ''),
         'email'       => get_option('sj_footer_email',      ''),
         'copyright'   => get_option('sj_footer_copyright',  '&copy; ' . date('Y') . ' SkillUp Juniors. All Rights Reserved.'),
+        'instagram'   => get_option('sj_social_instagram',  'https://www.instagram.com/skillupjuniors/'),
+        'youtube'     => get_option('sj_social_youtube',    'https://www.youtube.com/@SkillUpJuniors'),
+        'facebook'    => get_option('sj_social_facebook',   'https://www.facebook.com/profile.php?id=61581372873657'),
+        'whatsapp'    => get_option('sj_social_whatsapp',   'https://wa.me/919160902424'),
     ];
     ?>
     <div class="wrap">
@@ -182,6 +188,27 @@ function sj_settings_page_html() {
                 <tr>
                     <th scope="row"><label for="sj_footer_copyright">Copyright Text</label></th>
                     <td><input type="text" id="sj_footer_copyright" name="sj_footer_copyright" value="<?php echo esc_attr($v['copyright']); ?>" class="regular-text"></td>
+                </tr>
+            </table>
+
+            <h2 style="border-bottom:1px solid #ddd;padding-bottom:8px;margin-top:30px;">&#128241; Social Media Links</h2>
+            <p style="color:#666;margin-bottom:10px;">These links appear in the footer and contact page social icons.</p>
+            <table class="form-table" role="presentation">
+                <tr>
+                    <th scope="row"><label for="sj_social_instagram">Instagram URL</label></th>
+                    <td><input type="url" id="sj_social_instagram" name="sj_social_instagram" value="<?php echo esc_attr($v['instagram']); ?>" class="regular-text" placeholder="https://www.instagram.com/skillupjuniors/"></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="sj_social_youtube">YouTube URL</label></th>
+                    <td><input type="url" id="sj_social_youtube" name="sj_social_youtube" value="<?php echo esc_attr($v['youtube']); ?>" class="regular-text" placeholder="https://www.youtube.com/@SkillUpJuniors"></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="sj_social_facebook">Facebook URL</label></th>
+                    <td><input type="url" id="sj_social_facebook" name="sj_social_facebook" value="<?php echo esc_attr($v['facebook']); ?>" class="regular-text" placeholder="https://www.facebook.com/..."></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="sj_social_whatsapp">WhatsApp URL</label></th>
+                    <td><input type="url" id="sj_social_whatsapp" name="sj_social_whatsapp" value="<?php echo esc_attr($v['whatsapp']); ?>" class="regular-text" placeholder="https://wa.me/919160902424"></td>
                 </tr>
             </table>
 
