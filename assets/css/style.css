@@ -1581,12 +1581,13 @@ body.sj-drawer-open { overflow: hidden; }
     .ab-founder__photo,
     .ab-founder__photo-placeholder { max-width: 280px; height: auto; }
     .ab-app__inner { grid-template-columns: 1fr; gap: 40px; }
-    .ab-app__visual { display: none; }
+    .ab-app__visual { display: flex; justify-content: center; }
 }
 
 @media (max-width: 768px) {
     .ab-hero__inner  { grid-template-columns: 1fr; text-align: center; gap: 36px; }
-    .ab-hero__visual { display: none; }
+    .ab-hero__visual { display: flex; justify-content: center; }
+    .ab-hero__img    { width: 100%; max-width: 400px; height: auto; border-radius: var(--radius-card); }
     .ab-hero__sub    { margin-inline: auto; }
     .ab-hero__actions { justify-content: center; }
     .ab-vm__grid     { grid-template-columns: 1fr; gap: 20px; }
@@ -2189,7 +2190,9 @@ body.sj-drawer-open { overflow: hidden; }
 /* ── Vedic Maths Responsive ── */
 @media (max-width: 1024px) {
     .vm-hero__inner           { grid-template-columns: 1fr; gap: 36px; text-align: center; }
-    .vm-hero__visual          { display: none; }
+    .vm-hero__visual          { display: flex; justify-content: center; }
+    .vm-hero__img             { width: 100%; max-width: 420px; height: auto; border-radius: var(--radius-card); }
+    .vm-hero__img-placeholder { width: 100%; max-width: 420px; }
     .vm-hero__sub             { margin-inline: auto; }
     .vm-hero__stats           { justify-content: center; }
     .vm-hero__actions         { justify-content: center; }
@@ -2951,7 +2954,8 @@ a.ct-info__value:hover { color: var(--clr-blue); }
 }
 @media (max-width: 1024px) {
     .jne-hero__inner        { grid-template-columns: 1fr; }
-    .jne-hero__visual       { display: none; }
+    .jne-hero__visual       { display: flex; justify-content: center; }
+    .jne-hero__img          { width: 100%; max-width: 420px; height: auto; border-radius: var(--radius-card); }
     .jne-lead-wrap__inner   { grid-template-columns: 1fr; gap: 32px; }
     .jne-method__grid       { grid-template-columns: repeat(2, 1fr); }
 }
@@ -3446,8 +3450,9 @@ a.ct-info__value:hover { color: var(--clr-blue); }
 }
 @media (max-width: 768px) {
     .sd-banner__inner       { grid-template-columns: 1fr; min-height: auto; padding: 48px 0; }
-    .sd-banner__overlay     { background: rgba(10,25,70,0.80); }
-    .sd-banner__visual      { display: none; }
+    .sd-banner__overlay     { background: rgba(10,25,70,0.75); }
+    .sd-banner__visual      { display: flex; justify-content: center; }
+    .sd-banner__img         { width: 100%; max-width: 420px; height: auto; border-radius: var(--radius-card); }
     .sd-banner__btn         { align-self: center; }
     .sd-banner__text        { align-items: center; text-align: center; }
     .sd-banner__sub         { max-width: 100%; }
@@ -4075,7 +4080,9 @@ a.ct-info__value:hover { color: var(--clr-blue); }
     :root { --section-py: 60px; }
 
     .sj-hero__inner   { grid-template-columns: 1fr; text-align: center; }
-    .sj-hero__visual  { display: none; }
+    .sj-hero__visual  { display: flex; justify-content: center; }
+    .sj-hero__img     { width: 100%; max-width: 400px; height: auto; border-radius: var(--radius-card); }
+    .sj-hero__img-placeholder { width: 100%; max-width: 400px; }
     .sj-hero__sub     { margin-inline: auto; }
     .sj-hero__actions { justify-content: center; }
     .sj-hero__stats   { justify-content: center; }
