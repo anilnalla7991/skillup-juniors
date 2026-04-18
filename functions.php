@@ -968,6 +968,21 @@ function sj_register_acf_fields() {
         'menu_order' => 60,
     ]);
 
+    // SD: Banner / Image Section
+    acf_add_local_field_group([
+        'key'    => 'group_sd_banner',
+        'title'  => 'Skill Dev — Banner / Image Section',
+        'fields' => [
+            ['key' => 'field_sd_banner_image',    'label' => 'Banner Image',       'name' => 'sd_banner_image',    'type' => 'image',    'return_format' => 'array'],
+            ['key' => 'field_sd_banner_heading',  'label' => 'Heading',            'name' => 'sd_banner_heading',  'type' => 'text',     'default_value' => 'Join 5,000+ Students Building Confident Futures'],
+            ['key' => 'field_sd_banner_subtext',  'label' => 'Sub Text',           'name' => 'sd_banner_subtext',  'type' => 'textarea', 'rows' => 2],
+            ['key' => 'field_sd_banner_btn_text', 'label' => 'Button Text',        'name' => 'sd_banner_btn_text', 'type' => 'text',     'default_value' => 'Book Free Demo Class'],
+            ['key' => 'field_sd_banner_btn_url',  'label' => 'Button URL',         'name' => 'sd_banner_btn_url',  'type' => 'text',     'default_value' => '#sd-lead-form'],
+        ],
+        'location'   => $sd_page_location,
+        'menu_order' => 65,
+    ]);
+
     // SD: Videos (10 slots)
     acf_add_local_field_group([
         'key'    => 'group_sd_videos',

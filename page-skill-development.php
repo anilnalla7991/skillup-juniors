@@ -69,6 +69,13 @@ $sd_exposure_cards   = [
     ['title' => get_field('sd_exp_card4_title') ?: 'Junior Storytelling', 'desc' => get_field('sd_exp_card4_desc') ?: 'Craft and present stories to build narrative and expressive abilities.'],
 ];
 
+// ── Banner ────────────────────────────────────────────────────────────────────
+$sd_banner_image    = get_field('sd_banner_image');
+$sd_banner_heading  = get_field('sd_banner_heading')  ?: 'Join 5,000+ Students Building Confident Futures';
+$sd_banner_subtext  = get_field('sd_banner_subtext')  ?: '';
+$sd_banner_btn_text = get_field('sd_banner_btn_text') ?: 'Book Free Demo Class';
+$sd_banner_btn_url  = get_field('sd_banner_btn_url')  ?: '#sd-lead-form';
+
 // ── Videos ───────────────────────────────────────────────────────────────────
 $sd_video_heading = get_field('sd_video_heading') ?: 'Demos & Kids Videos';
 $sd_videos = [];
@@ -298,6 +305,31 @@ get_header();
                         <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ BANNER / IMAGE SECTION ══════════════════════════════════════════ -->
+    <?php
+    $sd_banner_bg_style = $sd_banner_image
+        ? 'style="background-image: url(' . esc_url($sd_banner_image['url']) . ');"'
+        : '';
+    ?>
+    <section class="sd-banner" <?php echo $sd_banner_bg_style; ?>>
+        <div class="sd-banner__overlay"></div>
+        <div class="sj-container">
+            <div class="sd-banner__inner">
+                <?php if ($sd_banner_heading) : ?>
+                    <h2 class="sd-banner__heading"><?php echo esc_html($sd_banner_heading); ?></h2>
+                <?php endif; ?>
+                <?php if ($sd_banner_subtext) : ?>
+                    <p class="sd-banner__sub"><?php echo esc_html($sd_banner_subtext); ?></p>
+                <?php endif; ?>
+                <?php if ($sd_banner_btn_text && $sd_banner_btn_url) : ?>
+                    <a href="<?php echo esc_url($sd_banner_btn_url); ?>" class="sj-btn sj-btn--yellow sd-banner__btn">
+                        <?php echo esc_html($sd_banner_btn_text); ?>
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
     </section>

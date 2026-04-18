@@ -3286,6 +3286,49 @@ a.ct-info__value:hover { color: var(--clr-blue); }
 }
 
 /* ── Videos ─────────────────────────────────────────────── */
+/* ── Banner / Image Section ─────────────────────────────── */
+.sd-banner {
+    position: relative;
+    min-height: 360px;
+    background-color: var(--clr-navy);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+}
+.sd-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10,25,70,0.82) 0%, rgba(10,25,70,0.55) 100%);
+}
+.sd-banner__inner {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 700px;
+    margin-inline: auto;
+    padding: 72px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+.sd-banner__heading {
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    font-weight: 800;
+    color: var(--clr-white);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+.sd-banner__sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+    max-width: 560px;
+}
+.sd-banner__btn { margin-top: 8px; }
+
 .sd-videos {
     padding: var(--section-py) 0;
     background: var(--clr-bg);
@@ -3389,6 +3432,8 @@ a.ct-info__value:hover { color: var(--clr-blue); }
 @media (max-width: 480px) {
     .sd-approach__grid      { grid-template-columns: 1fr; }
     .sd-app__btns           { flex-direction: column; align-items: center; }
+    .sd-banner              { min-height: 280px; }
+    .sd-banner__inner       { padding: 52px 16px; }
 }
 
 /* ════════════════════════════════════════════════════════
