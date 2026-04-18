@@ -69,13 +69,6 @@ $sd_exposure_cards   = [
     ['title' => get_field('sd_exp_card4_title') ?: 'Junior Storytelling', 'desc' => get_field('sd_exp_card4_desc') ?: 'Craft and present stories to build narrative and expressive abilities.'],
 ];
 
-// ── Banner ────────────────────────────────────────────────────────────────────
-$sd_banner_image    = get_field('sd_banner_image');
-$sd_banner_heading  = get_field('sd_banner_heading')  ?: 'Join 5,000+ Students Building Confident Futures';
-$sd_banner_subtext  = get_field('sd_banner_subtext')  ?: '';
-$sd_banner_btn_text = get_field('sd_banner_btn_text') ?: 'Book Free Demo Class';
-$sd_banner_btn_url  = get_field('sd_banner_btn_url')  ?: '#sd-lead-form';
-
 // ── Videos ───────────────────────────────────────────────────────────────────
 $sd_video_heading = get_field('sd_video_heading') ?: 'Demos & Kids Videos';
 $sd_videos = [];
@@ -94,6 +87,13 @@ $sd_testi_list    = [
     ['name' => get_field('sd_testi3_name') ?: 'Anitha Reddy',  'text' => get_field('sd_testi3_text') ?: 'Highly recommend! The structured curriculum and caring teachers make all the difference.',                 'rating' => (int)(get_field('sd_testi3_rating') ?: 5)],
 ];
 
+// ── Page Banner (top) ─────────────────────────────────────────────────────────
+$sd_banner_image    = get_field('sd_banner_image');
+$sd_banner_heading  = get_field('sd_banner_heading')  ?: 'Build Confident <span>Personalities</span> in Your Child';
+$sd_banner_subtext  = get_field('sd_banner_subtext')  ?: 'A holistic skill development program designed for curious young minds.';
+$sd_banner_btn_text = get_field('sd_banner_btn_text') ?: 'Book Free Demo';
+$sd_banner_btn_url  = get_field('sd_banner_btn_url')  ?: '#sd-lead-form';
+
 // ── App Download ──────────────────────────────────────────────────────────────
 $sd_app_heading       = get_field('sd_app_heading')       ?: 'Learn Anytime, Anywhere';
 $sd_app_sub           = get_field('sd_app_subtext')       ?: 'Download our app or access the web portal to continue your child\'s skill journey on any device.';
@@ -106,6 +106,37 @@ get_header();
 ?>
 
 <main class="sj-page sj-page--skill-development">
+
+    <!-- ══ PAGE BANNER ═══════════════════════════════════════════════════ -->
+    <section class="sd-banner" <?php if ($sd_banner_image) echo 'style="background-image:url(' . esc_url($sd_banner_image['url']) . ');"'; ?>>
+        <div class="sd-banner__overlay"></div>
+        <div class="sj-container">
+            <div class="sd-banner__inner">
+                <div class="sd-banner__text">
+                    <?php if ($sd_banner_heading) : ?>
+                        <h1 class="sd-banner__heading">
+                            <?php echo wp_kses($sd_banner_heading, ['span' => [], 'br' => [], 'strong' => []]); ?>
+                        </h1>
+                    <?php endif; ?>
+                    <?php if ($sd_banner_subtext) : ?>
+                        <p class="sd-banner__sub"><?php echo esc_html($sd_banner_subtext); ?></p>
+                    <?php endif; ?>
+                    <?php if ($sd_banner_btn_text && $sd_banner_btn_url) : ?>
+                        <a href="<?php echo esc_url($sd_banner_btn_url); ?>" class="sj-btn sj-btn--yellow sd-banner__btn">
+                            <?php echo esc_html($sd_banner_btn_text); ?>
+                        </a>
+                    <?php endif; ?>
+                </div>
+                <?php if ($sd_banner_image) : ?>
+                    <div class="sd-banner__visual">
+                        <img src="<?php echo esc_url($sd_banner_image['url']); ?>"
+                             alt="<?php echo esc_attr($sd_banner_image['alt'] ?: 'Skill Development'); ?>"
+                             class="sd-banner__img" loading="eager">
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </section>
 
     <!-- ══ HERO ══════════════════════════════════════════════════════════ -->
     <section class="sd-hero">
@@ -305,31 +336,6 @@ get_header();
                         <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
-            </div>
-        </div>
-    </section>
-
-    <!-- ══ BANNER / IMAGE SECTION ══════════════════════════════════════════ -->
-    <?php
-    $sd_banner_bg_style = $sd_banner_image
-        ? 'style="background-image: url(' . esc_url($sd_banner_image['url']) . ');"'
-        : '';
-    ?>
-    <section class="sd-banner" <?php echo $sd_banner_bg_style; ?>>
-        <div class="sd-banner__overlay"></div>
-        <div class="sj-container">
-            <div class="sd-banner__inner">
-                <?php if ($sd_banner_heading) : ?>
-                    <h2 class="sd-banner__heading"><?php echo esc_html($sd_banner_heading); ?></h2>
-                <?php endif; ?>
-                <?php if ($sd_banner_subtext) : ?>
-                    <p class="sd-banner__sub"><?php echo esc_html($sd_banner_subtext); ?></p>
-                <?php endif; ?>
-                <?php if ($sd_banner_btn_text && $sd_banner_btn_url) : ?>
-                    <a href="<?php echo esc_url($sd_banner_btn_url); ?>" class="sj-btn sj-btn--yellow sd-banner__btn">
-                        <?php echo esc_html($sd_banner_btn_text); ?>
-                    </a>
-                <?php endif; ?>
             </div>
         </div>
     </section>

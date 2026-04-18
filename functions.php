@@ -968,19 +968,19 @@ function sj_register_acf_fields() {
         'menu_order' => 60,
     ]);
 
-    // SD: Banner / Image Section
+    // SD: Page Banner (top of page, below header)
     acf_add_local_field_group([
         'key'    => 'group_sd_banner',
-        'title'  => 'Skill Dev — Banner / Image Section',
+        'title'  => 'Skill Dev — Page Banner (Top)',
         'fields' => [
-            ['key' => 'field_sd_banner_image',    'label' => 'Banner Image',       'name' => 'sd_banner_image',    'type' => 'image',    'return_format' => 'array'],
-            ['key' => 'field_sd_banner_heading',  'label' => 'Heading',            'name' => 'sd_banner_heading',  'type' => 'text',     'default_value' => 'Join 5,000+ Students Building Confident Futures'],
-            ['key' => 'field_sd_banner_subtext',  'label' => 'Sub Text',           'name' => 'sd_banner_subtext',  'type' => 'textarea', 'rows' => 2],
-            ['key' => 'field_sd_banner_btn_text', 'label' => 'Button Text',        'name' => 'sd_banner_btn_text', 'type' => 'text',     'default_value' => 'Book Free Demo Class'],
-            ['key' => 'field_sd_banner_btn_url',  'label' => 'Button URL',         'name' => 'sd_banner_btn_url',  'type' => 'text',     'default_value' => '#sd-lead-form'],
+            ['key' => 'field_sd_banner_image',    'label' => 'Banner Image',  'name' => 'sd_banner_image',    'type' => 'image',    'return_format' => 'array', 'instructions' => 'Recommended: 1400×500px or wider. Displays as right-side visual on desktop.'],
+            ['key' => 'field_sd_banner_heading',  'label' => 'Heading',       'name' => 'sd_banner_heading',  'type' => 'text',     'default_value' => 'Build Confident Personalities in Your Child'],
+            ['key' => 'field_sd_banner_subtext',  'label' => 'Sub Text',      'name' => 'sd_banner_subtext',  'type' => 'textarea', 'rows' => 2, 'default_value' => 'A holistic skill development program designed for curious young minds.'],
+            ['key' => 'field_sd_banner_btn_text', 'label' => 'Button Text',   'name' => 'sd_banner_btn_text', 'type' => 'text',     'default_value' => 'Book Free Demo'],
+            ['key' => 'field_sd_banner_btn_url',  'label' => 'Button URL',    'name' => 'sd_banner_btn_url',  'type' => 'text',     'default_value' => '#sd-lead-form'],
         ],
         'location'   => $sd_page_location,
-        'menu_order' => 65,
+        'menu_order' => 0,
     ]);
 
     // SD: Videos (10 slots)
