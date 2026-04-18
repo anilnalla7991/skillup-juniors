@@ -308,7 +308,7 @@ get_header();
             <div class="sj-section-header">
                 <h2 class="sj-section-title"><?php echo esc_html($sd_video_heading); ?></h2>
             </div>
-            <div class="sd-videos__grid">
+            <div class="vm-videos__scroll">
                 <?php foreach ($sd_videos as $v) :
                     if (!$v['url']) continue;
                     $embed_url = $v['url'];
@@ -316,15 +316,18 @@ get_header();
                         $embed_url = 'https://www.youtube.com/embed/' . $m[1];
                     }
                 ?>
-                    <div class="sd-videos__item">
-                        <div class="sd-videos__frame-wrap">
+                    <div class="vm-video-card">
+                        <div class="vm-video-card__embed">
                             <iframe src="<?php echo esc_url($embed_url); ?>"
                                     title="<?php echo esc_attr($v['title']); ?>"
+                                    frameborder="0"
                                     loading="lazy"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen></iframe>
                         </div>
-                        <p class="sd-videos__caption"><?php echo esc_html($v['title']); ?></p>
+                        <?php if ($v['title']) : ?>
+                            <p class="vm-video-card__title"><?php echo esc_html($v['title']); ?></p>
+                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
             </div>

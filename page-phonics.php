@@ -403,6 +403,7 @@ get_header();
                     $vtitle    = $vid['video_title'] ?? '';
                     $vurl      = $vid['video_url']   ?? '';
                     $vthumb    = $vid['video_thumb']  ?? null;
+                    if (!$vurl) continue;
                     $embed_url = '';
                     if ($vurl) {
                         preg_match('/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/', $vurl, $m);
@@ -433,7 +434,7 @@ get_header();
                                 <span>Add Video URL via ACF</span>
                             </div>
                         <?php endif; ?>
-                        <?php if ($vtitle && $vtitle !== "Video {$vtitle}") : ?>
+                        <?php if ($vtitle) : ?>
                             <p class="vm-video-card__title"><?php echo esc_html($vtitle); ?></p>
                         <?php endif; ?>
                     </div>

@@ -410,7 +410,7 @@ get_header();
                     $vtitle = $vid['video_title'] ?? '';
                     $vurl   = $vid['video_url']   ?? '';
                     $vthumb = $vid['video_thumb']  ?? null;
-                    // Convert YouTube share/watch URL to embed URL
+                    if (!$vurl) continue;
                     $embed_url = '';
                     if ($vurl) {
                         preg_match('/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/', $vurl, $m);
