@@ -71,11 +71,13 @@ $sd_exposure_cards   = [
 
 // ── Videos ───────────────────────────────────────────────────────────────────
 $sd_video_heading = get_field('sd_video_heading') ?: 'Demos & Kids Videos';
-$sd_videos = [
-    ['url' => get_field('sd_video1_url'), 'title' => get_field('sd_video1_title') ?: 'Student Demo 1'],
-    ['url' => get_field('sd_video2_url'), 'title' => get_field('sd_video2_title') ?: 'Student Demo 2'],
-    ['url' => get_field('sd_video3_url'), 'title' => get_field('sd_video3_title') ?: 'Student Demo 3'],
-];
+$sd_videos = [];
+for ($i = 1; $i <= 10; $i++) {
+    $sd_videos[] = [
+        'url'   => get_field("sd_video{$i}_url")   ?: '',
+        'title' => get_field("sd_video{$i}_title") ?: "Student Demo {$i}",
+    ];
+}
 
 // ── Testimonials ──────────────────────────────────────────────────────────────
 $sd_testi_heading = get_field('sd_testi_heading') ?: 'What Parents Say';

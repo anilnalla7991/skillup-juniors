@@ -93,7 +93,7 @@ $vm_video_heading = get_field('vm_video_heading')    ?: 'Demo Videos / Student V
 $vm_video_sub     = get_field('vm_video_subheading') ?: 'Watch our students solve complex calculations in seconds — the Vedic Maths way!';
 
 $vm_video_list = [];
-for ( $i = 1; $i <= 4; $i++ ) {
+for ( $i = 1; $i <= 10; $i++ ) {
     $title = get_field( "vm_video{$i}_title" );
     $url   = get_field( "vm_video{$i}_url" );
     $thumb = get_field( "vm_video{$i}_thumb" );

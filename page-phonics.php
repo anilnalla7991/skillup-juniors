@@ -90,7 +90,7 @@ $ph_video_heading = get_field('ph_video_heading')    ?: 'Demo Videos / Student V
 $ph_video_sub     = get_field('ph_video_subheading') ?: 'Watch our students read fluently and solve problems with confidence — the SkillUp Juniors way!';
 
 $ph_video_list = [];
-for ($i = 1; $i <= 4; $i++) {
+for ($i = 1; $i <= 10; $i++) {
     $ph_video_list[] = [
         'video_title' => get_field("ph_video{$i}_title") ?: "Video {$i}",
         'video_url'   => get_field("ph_video{$i}_url")   ?: '',
