@@ -109,12 +109,13 @@ function sj_settings_page_html() {
             'sj_footer_copyright',
             'sj_social_instagram',  'sj_social_youtube',
             'sj_social_facebook',   'sj_social_whatsapp',
+            'sj_notify_email',
         ];
         foreach ($fields as $key) {
             $val = $_POST[$key] ?? '';
             if (in_array($key, ['sj_header_login_url', 'sj_header_app_url', 'sj_social_instagram', 'sj_social_youtube', 'sj_social_facebook', 'sj_social_whatsapp'])) {
                 update_option($key, esc_url_raw($val));
-            } elseif ($key === 'sj_footer_email') {
+            } elseif (in_array($key, ['sj_footer_email', 'sj_notify_email'])) {
                 update_option($key, sanitize_email($val));
             } elseif ($key === 'sj_footer_address') {
                 update_option($key, sanitize_textarea_field($val));
@@ -136,6 +137,7 @@ function sj_settings_page_html() {
         'phone'       => get_option('sj_footer_phone',      ''),
         'email'       => get_option('sj_footer_email',      ''),
         'copyright'   => get_option('sj_footer_copyright',  '&copy; ' . date('Y') . ' SkillUp Juniors. All Rights Reserved.'),
+        'notify_email' => get_option('sj_notify_email', 'skillupjuniors@gmail.com'),
         'instagram'   => get_option('sj_social_instagram',  'https://www.instagram.com/skillupjuniors/'),
         'youtube'     => get_option('sj_social_youtube',    'https://www.youtube.com/@SkillUpJuniors'),
         'facebook'    => get_option('sj_social_facebook',   'https://www.facebook.com/profile.php?id=61581372873657'),
@@ -188,6 +190,18 @@ function sj_settings_page_html() {
                 <tr>
                     <th scope="row"><label for="sj_footer_copyright">Copyright Text</label></th>
                     <td><input type="text" id="sj_footer_copyright" name="sj_footer_copyright" value="<?php echo esc_attr($v['copyright']); ?>" class="regular-text"></td>
+                </tr>
+            </table>
+
+            <h2 style="border-bottom:1px solid #ddd;padding-bottom:8px;margin-top:30px;">&#128276; Lead Form Notifications</h2>
+            <p style="color:#666;margin-bottom:10px;">When someone submits a demo booking form, an email notification is sent to this address.</p>
+            <table class="form-table" role="presentation">
+                <tr>
+                    <th scope="row"><label for="sj_notify_email">Notification Email</label></th>
+                    <td>
+                        <input type="email" id="sj_notify_email" name="sj_notify_email" value="<?php echo esc_attr($v['notify_email']); ?>" class="regular-text" placeholder="skillupjuniors@gmail.com">
+                        <p class="description" style="margin-top:6px;">&#9888;&#65039; For Gmail delivery, install the free <strong>WP Mail SMTP</strong> plugin and connect it to your Gmail account.</p>
+                    </td>
                 </tr>
             </table>
 
@@ -1393,19 +1407,23 @@ function sj_handle_lead_form() {
         wp_send_json_error(['message' => 'Please enter a valid email address.']);
     }
 
-    $admin_email = get_option('admin_email');
-    $subject     = 'New Demo Booking — SkillUp Juniors';
-    $body        = "New Lead Enquiry\n\n";
-    $body       .= "Name:      {$parent_name}\n";
-    $body       .= "Phone:     {$phone}\n";
-    $body       .= "Email:     {$email}\n";
-    $body       .= "Child Age: {$child_age}\n";
-    $body       .= "Program:   {$program}\n";
+    $notify_email = get_option('sj_notify_email', 'skillupjuniors@gmail.com');
+    $subject      = 'New Demo Booking — SkillUp Juniors';
+    $body         = "New Lead Enquiry from Website\n";
+    $body        .= str_repeat('-', 40) . "\n";
+    $body        .= "Name:      {$parent_name}\n";
+    $body        .= "Phone:     {$phone}\n";
+    $body        .= "Email:     {$email}\n";
+    $body        .= "Child Age: {$child_age}\n";
+    $body        .= "Program:   {$program}\n";
     if ($message) {
-        $body   .= "Message:   {$message}\n";
+        $body    .= "Message:   {$message}\n";
     }
+    $body        .= str_repeat('-', 40) . "\n";
+    $body        .= "Submitted: " . current_time('d M Y, h:i A') . "\n";
 
-    wp_mail($admin_email, $subject, $body);
+    $headers = ['Content-Type: text/plain; charset=UTF-8'];
+    wp_mail($notify_email, $subject, $body, $headers);
 
     wp_send_json_success(['message' => 'Thank you! We will contact you within 24 hours.']);
 }
